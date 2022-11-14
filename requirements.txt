@@ -1,0 +1,4 @@
+flask
+flask-testing
+flask-mysqldb
+flask-jwt-extended
