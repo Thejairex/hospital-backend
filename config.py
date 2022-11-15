@@ -14,10 +14,10 @@ class Config:
     MYSQL_PASSWORD_DEV = ""
     MYSQL_DB_DEV = "hospital"
     
-    MYSQL_HOST = os.environ.get("MYSQL_HOST", "")
-    MYSQL_USER = os.environ.get("MYSQL_USER", "")
-    MYSQL_PASSWORD = os.environ.get("MYSQL_PASSWORD", "")
-    MYSQL_DB = os.environ.get("MYSQL_DB", "")
+    MYSQL_HOST = 'HospitalBackend.mysql.pythonanywhere-services.com'
+    MYSQL_USER = 'HospitalBackend'
+    MYSQL_PASSWORD = 'aiwa2015'
+    MYSQL_DB = 'HospitalBackend$hospital'
 
     MY_SECRET_JWT = os.environ.get("MY_SECRET_JWT", "")
 
