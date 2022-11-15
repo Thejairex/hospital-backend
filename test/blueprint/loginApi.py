@@ -64,25 +64,24 @@ def user():
 
 # SignUp Route
 @loginApi.route("/api/signup", methods=['POST'])
-# @verify_jwt_in_request(optional=True) 
+@jwt_required(locations='cookies') 
 def signup():
-    if request.method == 'POST':
+    current_user = get_jwt_identity()
+    if request.method == 'POST' and current_user.role == 1:
         username = request.json.get("username", None)
         email = request.json.get("email", None)
         password = request.json.get("password", None)
         password = hashlib.sha256(password.encode('utf-8')).hexdigest()
-        # current_user = get_jwt_identity()
+        role = request.json.get("role", None)
+        current_user = get_jwt_identity()
         
         fetchUser = qUser.userLogin(username)
         
         if fetchUser == None:
             
-            # if current_user.role == 1:
-            #     role = request.json.get("role", None)
-            #     userData = qUser.userRegister(username, password, email, role)
+            if current_user.role == 1:
                 
-            # else:
-            userData = qUser.userRegister(username, password, email, 0)
+                userData = qUser.userRegister(username, password, email, role)
             
             if userData != None:
 

@@ -3,6 +3,8 @@ from config import Config
 from flask import Flask
 from flask_mysqldb import MySQL
 from flask_jwt_extended import JWTManager
+import json
+
 
 from blueprint.loginApi import loginApi
 
@@ -41,14 +43,36 @@ class MyTest(TestCase):
         assert response.status_code == 200
 
     def test_register_user_success(self):
-        response = self.client.post('/api/signup', json={
+        c = self.client
+        # c.set_cookie('Authorization: bearer')
+        response = c.post('/api/signup', json={
             'username': 'jair',
             'password': '123123123',
             'email': 'jair@gmail.com'
         })
+        
+        
         assert response.status_code == 200
         
-        
+    def test_jwt_cookie_success(self):
+        response = self.client.post('/api/login', json={
+            'username': 'jair',
+            'password': '123123123'
+        })
+        cookie = next(
+            (cookie for cookie in self.client.cookie_jar if cookie.name == "access_token_cookie"),
+            None
+        )
+        # assert cookie is not None
+        # assert cookie.value == response.get_json()['accessToken']
+        self.client.set_cookie('localhost', 'accessToken', response.get_json()['accessToken'])
+        response2 = self.client.post('/api/signup', json={
+            'username': 'jair',
+            'password': '123123123',
+            'email': 'jair@gmail.com'
+        })
+        assert response2.status_code == 200
+            
 if __name__ == '__main__':
     app = MyTest.create_test_app()
     
