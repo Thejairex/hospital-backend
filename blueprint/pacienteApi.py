@@ -30,7 +30,8 @@ def pacientes():
                 'telefono': data[5],
                 'fecha_hora_ingreso': data[6],
                 'fecha_hora_egreso': data[7],
-                'tipo_sangre': data[8]
+                'tipo_sangre': data[8],
+                'direccion': data[9]
             })
             
         return jsonify(jsonPaciente), 200
@@ -45,8 +46,9 @@ def pacientes():
         fecha_hora_ingreso = request.json.get('fecha_hora_ingreso', None)
         fecha_hora_egreso = request.json.get('fecha_hora_egreso', None)
         tipo_sangre = request.json.get('tipo_sangre', None)
+        direccion = request.json.get('direccion', None)
         
-        return jsonify(qPacientes.insertar_paciente(dni,nombre, apellido, fecha_nac,telefono, sexo, fecha_hora_ingreso, fecha_hora_egreso, tipo_sangre)), 200
+        return jsonify(qPacientes.insertar_paciente(dni,nombre, apellido, fecha_nac,telefono, sexo, fecha_hora_ingreso, fecha_hora_egreso, tipo_sangre, direccion)), 200
 
 @pacienteApi.route('/api/pacientes/<dni>', methods=['POST','GET','DELETE'])
 @jwt_required(locations=['cookies','headers'])
