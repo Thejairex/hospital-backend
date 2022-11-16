@@ -7,7 +7,7 @@ class qLlamada:
         try:  
             cur = mysql.connection.cursor()
             query = 'SELECT MAX(id_llamada) FROM llamada'
-            cur.execut(query)
+            cur.execute(query)
             return cur.fetchone()
         
         except Exception as e:
