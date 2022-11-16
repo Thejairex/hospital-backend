@@ -79,7 +79,7 @@ class MyTest(TestCase):
         self.client.set_cookie('localhost', 'accessToken', user.get_json()['accessToken'])
         # borrar_zona = self.client.delete('/api/zona/20', headers = user.headers)
         traer_una_zona = self.client.get('/api/zonas/4')
-        # editar_zona = self.client.post('/api/zonas/1', json=traer_una_zona.get_json() ,headers = user.headers)
+        editar_zona = self.client.post('/api/zonas/1', json=traer_una_zona.get_json() ,headers = user.headers)
         
         id_forma_llamada = [x[0] for x in query.qFormaLLamada()]
         dni_enfermero = [x[0] for x in query.qEnfermero()]
@@ -87,17 +87,17 @@ class MyTest(TestCase):
         agregar_zona = self.client.post('/api/zonas', json={
             'nombre': 'Quirofano',
             'numero': 5,
-            'id_forma_llamada': id_forma_llamada[1],
-            'dni_enfermero': dni_enfermero[14],
-            'id_llamada': qLlamada.traer_ultima_llamada(),
-            'descripcion': 'fasdasdsd',
+            'id_forma_llamada': 1,
+            'dni_enfermero': dni_enfermero[0],
+            'id_llamada': 25,
+            'descripcion': 'f',
             'estado': 0
             },headers = user.headers)
         
         # assert todas_zonas.status_code == 200
         # # assert borrar_zona.status_code == 200
         # assert traer_una_zona.status_code == 200
-        # assert editar_zona.status_code == 200
+        assert editar_zona.status_code == 200
         assert agregar_zona.status_code == 200
     
     # Testing todos los procesos de enfermero

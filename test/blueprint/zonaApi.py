@@ -45,8 +45,8 @@ def zonas():
         nombre = request.json.get('nombre', None)
         numero = request.json.get('numero', None)   
         id_forma_llamada = request.json.get('id_forma_llamada', None)
-        dni_enfermero = request.json.get('dni_paciente', None)
-        id_llamada = qLlamada.traer_ultima_llamada() 
+        dni_enfermero = request.json.get('dni_enfermero', None)
+        id_llamada = qLlamada.traer_ultima_llamada()[0]
         descripcion = request.json.get('descripcion', None)
         estado = request.json.get('estado', None)
         
@@ -84,8 +84,8 @@ def zona(id):
             nombre = request.json.get('nombre', None)
             numero = request.json.get('numero', None)   
             id_forma_llamada = request.json.get('id_forma_llamada', None)
-            dni_enfermero = request.json.get('dni_paciente', None)
-            id_llamada = qLlamada.traer_ultima_llamada()
+            dni_enfermero = request.json.get('dni_enfermero', None)
+            id_llamada = qLlamada.traer_ultima_llamada()[0]
             descripcion = request.json.get('descripcion', None)
             estado = request.json.get('estado', None)
             

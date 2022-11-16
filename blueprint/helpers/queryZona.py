@@ -7,8 +7,8 @@ class qZona:
     def insertar_zona(self, nombre,numero, id_forma_llamada, dni_enfermero, id_llamada, descripcion, estado):
         try:
             cur = mysql.connection.cursor()
-            query = """INSERT INTO zona(id_zona, nombre, numero, id_forma_llamada, dni_enfermero, id_llamada, descripcion, estado) VALUES (null,'{}',{},{},{},{},'{}',{})""".format(nombre,numero, id_forma_llamada, dni_enfermero, id_llamada, descripcion, estado)
-            
+            query = """INSERT INTO `zona`(`id_zona`, `nombre`, `numero`, `id_forma_llamada`, `dni_enfermero`, `id_llamada`, `descripcion`, `estado`) VALUES (null,'{}',{},{},{},{},'{}',{})""".format(nombre,numero, id_forma_llamada, dni_enfermero, id_llamada, descripcion, estado)
+            # INSERT INTO `zona`(`id_zona`, `nombre`, `numero`, `id_forma_llamada`, `dni_enfermero`, `id_llamada`, `descripcion`, `estado`) VALUES (null,'LOL',1,1,15752301,25,'LOLOLOLO',0)
             cur.execute(query)
             mysql.connection.commit()
             return True 
