@@ -7,7 +7,7 @@ from blueprint.helpers.queryZona import qZona
 
 zonaApi = Blueprint('zonaApi', __name__, template_folder='app/templates')
 
-@zonaApi.route('/api/zonas', methods = ['GET'])
+@zonaApi.route('/api/zonas', methods = ['GET','POST'])
 def zonas():
     if request.method == 'GET':
         dataZonas = qZona.traer_zonas()
@@ -26,7 +26,16 @@ def zonas():
             
         return jsonify(jsonZona), 200
 
-@zonaApi.route('/api/zona/<id>', methods=['POST','GET','DELETE'])
+    if request.method == 'POST':
+        nombre = request.json.get('nombre', None)
+        numero = request.json.get('numero', None)   
+        id_forma_llamada = request.json.get('id_forma_llamada', None)
+        dni_paciente = request.json.get('dni_paciente', None)
+        dni_enfermero = request.json.get('dni_enfermero', None)
+        
+        return jsonify(qZona.insertar_zona(nombre,numero, id_forma_llamada, dni_paciente, dni_enfermero)), 200
+
+@zonaApi.route('/api/zonas/<id>', methods=['POST','GET','DELETE'])
 @jwt_required(locations=['cookies','headers'])
 def zona(id):
     if request.method == 'GET':
@@ -58,13 +67,4 @@ def zona(id):
             return jsonify(qZona.editar_zona(id_zona, nombre, numero, id_forma_llamada, dni_paciente, dni_enfermero)), 200
     else:
         return jsonify({'msg': 'No autorizado'}), 403
-@zonaApi.route('/api/zona/add', methods=['POST'])
-def nueva_zona():
-    if request.method == 'POST':
-        nombre = request.json.get('nombre', None)
-        numero = request.json.get('numero', None)   
-        id_forma_llamada = request.json.get('id_forma_llamada', None)
-        dni_paciente = request.json.get('dni_paciente', None)
-        dni_enfermero = request.json.get('dni_enfermero', None)
-        
-        return jsonify(qZona.insertar_zona(nombre,numero, id_forma_llamada, dni_paciente, dni_enfermero)), 200
+    

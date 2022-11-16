@@ -10,10 +10,10 @@ class Config:
     TEMPLATE_FOLDER = '/templates'
     STATIC_FOLDER = '/static'
 
-    MYSQL_HOST_DEV = "localhost"
-    MYSQL_USER_DEV = "root"
-    MYSQL_PASSWORD_DEV = ""
-    MYSQL_DB_DEV = "hospital"
+    MYSQL_HOST_DEV = os.environ.get("MYSQL_HOST", "")
+    MYSQL_USER_DEV = os.environ.get("MYSQL_USER", "")
+    MYSQL_PASSWORD_DEV = os.environ.get("MYSQL_PASSWORD", "")
+    MYSQL_DB_DEV = os.environ.get("MYSQL_DB", "")
 
     MYSQL_HOST = 'Thejairex2.mysql.pythonanywhere-services.com'
     MYSQL_USER = 'Thejairex2'

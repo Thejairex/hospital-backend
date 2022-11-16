@@ -13,10 +13,10 @@ app = Flask(__name__, static_folder='../static', template_folder='../templates')
 MySQL(app)
 
 app.config["JWT_SECRET_KEY"] = Config.MY_SECRET_JWT
-app.config['MYSQL_HOST'] = Config.MYSQL_HOST
-app.config['MYSQL_USER'] = Config.MYSQL_USER
-app.config['MYSQL_PASSWORD'] = Config.MYSQL_PASSWORD
-app.config['MYSQL_DB'] = Config.MYSQL_DB
+app.config['MYSQL_HOST'] = Config.MYSQL_HOST_DEV
+app.config['MYSQL_USER'] = Config.MYSQL_USER_DEV
+app.config['MYSQL_PASSWORD'] = Config.MYSQL_PASSWORD_DEV
+app.config['MYSQL_DB'] = Config.MYSQL_DB_DEV
 
 jwt = JWTManager(app)
 
