@@ -4,13 +4,21 @@ from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_requir
 import hashlib
 
 from blueprint.helpers.queryZona import qZona
-
+from blueprint.helpers.queryLlamada import qLlamada
 zonaApi = Blueprint('zonaApi', __name__, template_folder='app/templates')
 
 @zonaApi.route('/api/zonas', methods = ['GET','POST'])
 def zonas():
     if request.method == 'GET':
-        dataZonas = qZona.traer_zonas()
+        
+        colum = []
+        data = []
+        
+        for x in request.args:
+            colum.append(x)
+            data.append(request.args.get(x))
+        print(len(colum),data)
+        dataZonas = qZona.traer_zonas(colum, data)
         
         jsonZona = []
         
@@ -20,14 +28,15 @@ def zonas():
                 'nombre': data[1],
                 'numero': data[2],
                 'id_forma_llamada': data[3],
-                'dni_paciente': data[4],
-                'dni_enfermero': data[5],
-                'id_llamada': data[6],
-                'descripcion': data[7],
-                'nombre_paciente': data[8],
-                'apellido_paciente': data[9],
-                'nombre_enfermero': data[10],
-                'apellido_enfermero': data[11]
+                'dni_enfermero': data[4],
+                'id_llamada': data[5],
+                'descripcion': data[6],
+                'estado': data[7],
+                'dni_paciente': data[8],
+                'nombre_paciente': data[9],
+                'apellido_paciente': data[10],
+                'nombre_enfermero': data[11],
+                'apellido_enfermero': data[12]
             })
             
         return jsonify(jsonZona), 200
@@ -36,10 +45,12 @@ def zonas():
         nombre = request.json.get('nombre', None)
         numero = request.json.get('numero', None)   
         id_forma_llamada = request.json.get('id_forma_llamada', None)
-        dni_paciente = request.json.get('dni_paciente', None)
-        dni_enfermero = request.json.get('dni_enfermero', None)
+        dni_enfermero = request.json.get('dni_paciente', None)
+        id_llamada = qLlamada.traer_ultima_llamada()
+        descripcion = request.json.get('descripcion', None)
+        estado = request.json.get('estado', None)
         
-        return jsonify(qZona.insertar_zona(nombre,numero, id_forma_llamada, dni_paciente, dni_enfermero)), 200
+        return jsonify(qZona.insertar_zona(nombre,numero, id_forma_llamada, dni_enfermero, id_llamada, descripcion, estado)), 200
 
 @zonaApi.route('/api/zonas/<id>', methods=['POST','GET','DELETE'])
 @jwt_required(locations=['cookies','headers'])
@@ -48,15 +59,20 @@ def zona(id):
         dataZona = qZona.traer_una_zona(id)
         
         return jsonify({
-            'id_zona': dataZona[0],
-            'nombre': dataZona[1],
-            'numero': dataZona[2],
-            'id_forma_llamada': dataZona[3],
-            'dni_paciente': dataZona[4],
-            'dni_enfermero': dataZona[5],
-            'id_llamada': dataZona[6],
-            'descripcion': dataZona[7]
-        }), 200
+                'id_zona': dataZona[0],
+                'nombre': dataZona[1],
+                'numero': dataZona[2],
+                'id_forma_llamada': dataZona[3],
+                'dni_enfermero': dataZona[4],
+                'id_llamada': dataZona[5],
+                'descripcion': dataZona[6],
+                'estado': dataZona[7],
+                'dni_paciente': dataZona[8],
+                'nombre_paciente': dataZona[9],
+                'apellido_paciente': dataZona[10],
+                'nombre_enfermero': dataZona[11],
+                'apellido_enfermero': dataZona[12]
+            }), 200
         
     if get_jwt_identity()['role'] == 'administrador':
         
@@ -65,16 +81,15 @@ def zona(id):
             return jsonify(qZona.borrar_zona(id)), 200
         
         if request.method == 'POST':
-            id_zona = id
             nombre = request.json.get('nombre', None)
-            numero = request.json.get('numero', None)
+            numero = request.json.get('numero', None)   
             id_forma_llamada = request.json.get('id_forma_llamada', None)
-            dni_paciente = request.json.get('dni_paciente', None)
-            dni_enfermero = request.json.get('dni_enfermero', None)
-            id_llamada = request.json.get('id_llamada', None)
+            dni_enfermero = request.json.get('dni_paciente', None)
+            id_llamada = qLlamada.traer_ultima_llamada()
             descripcion = request.json.get('descripcion', None)
+            estado = request.json.get('estado', None)
             
-            return jsonify(qZona.editar_zona(id_zona, nombre, numero, id_forma_llamada, dni_paciente, dni_enfermero,id_llamada, descripcion)), 200
+            return jsonify(qZona.editar_zona(id, nombre, numero, id_forma_llamada, dni_enfermero, id_llamada,descripcion, estado)), 200
     else:
-        return jsonify({'msg': 'No autorizado'}), 403
+        return jsonify({'msg': 'No autorizado'}), 401
     

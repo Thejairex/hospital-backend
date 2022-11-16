@@ -11,7 +11,7 @@ from blueprint.pacienteApi import pacienteApi
 from blueprint.enfermeroApi import enfermeroApi
 
 from blueprint.helpers.querys_test import query
-
+from blueprint.helpers.queryLlamada import qLlamada
 class MyTest(TestCase):
     
     # Inicializa la aplicacion
@@ -79,24 +79,25 @@ class MyTest(TestCase):
         self.client.set_cookie('localhost', 'accessToken', user.get_json()['accessToken'])
         # borrar_zona = self.client.delete('/api/zona/20', headers = user.headers)
         traer_una_zona = self.client.get('/api/zonas/4')
-        editar_zona = self.client.post('/api/zonas/1', json=traer_una_zona.get_json() ,headers = user.headers)
+        # editar_zona = self.client.post('/api/zonas/1', json=traer_una_zona.get_json() ,headers = user.headers)
         
         id_forma_llamada = [x[0] for x in query.qFormaLLamada()]
-        dni_paciente = [x[0] for x in query.qPaciente()]
         dni_enfermero = [x[0] for x in query.qEnfermero()]
         
         agregar_zona = self.client.post('/api/zonas', json={
             'nombre': 'Quirofano',
             'numero': 5,
-            'id_forma_llamada': id_forma_llamada[0],
-            'dni_paciente': dni_paciente[22],
-            'dni_enfermero': dni_enfermero[22]
+            'id_forma_llamada': id_forma_llamada[1],
+            'dni_enfermero': dni_enfermero[14],
+            'id_llamada': qLlamada.traer_ultima_llamada(),
+            'descripcion': 'fasdasdsd',
+            'estado': 0
             },headers = user.headers)
         
-        assert todas_zonas.status_code == 200
-        # assert borrar_zona.status_code == 200
-        assert traer_una_zona.status_code == 200
-        assert editar_zona.status_code == 200
+        # assert todas_zonas.status_code == 200
+        # # assert borrar_zona.status_code == 200
+        # assert traer_una_zona.status_code == 200
+        # assert editar_zona.status_code == 200
         assert agregar_zona.status_code == 200
     
     # Testing todos los procesos de enfermero
