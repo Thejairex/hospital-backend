@@ -21,7 +21,13 @@ def zonas():
                 'numero': data[2],
                 'id_forma_llamada': data[3],
                 'dni_paciente': data[4],
-                'dni:enfermero': data[5]
+                'dni_enfermero': data[5],
+                'id_llamada': data[6],
+                'descripcion': data[7],
+                'nombre_paciente': data[8],
+                'apellido_paciente': data[9],
+                'nombre_enfermero': data[10],
+                'apellido_enfermero': data[11]
             })
             
         return jsonify(jsonZona), 200
@@ -47,7 +53,9 @@ def zona(id):
             'numero': dataZona[2],
             'id_forma_llamada': dataZona[3],
             'dni_paciente': dataZona[4],
-            'dni_enfermero': dataZona[5]
+            'dni_enfermero': dataZona[5],
+            'id_llamada': dataZona[6],
+            'descripcion': dataZona[7]
         }), 200
         
     if get_jwt_identity()['role'] == 'administrador':
@@ -63,8 +71,10 @@ def zona(id):
             id_forma_llamada = request.json.get('id_forma_llamada', None)
             dni_paciente = request.json.get('dni_paciente', None)
             dni_enfermero = request.json.get('dni_enfermero', None)
+            id_llamada = request.json.get('id_llamada', None)
+            descripcion = request.json.get('descripcion', None)
             
-            return jsonify(qZona.editar_zona(id_zona, nombre, numero, id_forma_llamada, dni_paciente, dni_enfermero)), 200
+            return jsonify(qZona.editar_zona(id_zona, nombre, numero, id_forma_llamada, dni_paciente, dni_enfermero,id_llamada, descripcion)), 200
     else:
         return jsonify({'msg': 'No autorizado'}), 403
     

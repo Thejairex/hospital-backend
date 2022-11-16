@@ -17,10 +17,10 @@ class qZona:
     
     # Edita un registro de una zona
     @classmethod
-    def editar_zona(self, id_zona, nombre, numero, id_forma_llamada, dni_paciente, dni_enfermero):
+    def editar_zona(self, id_zona, nombre, numero, id_forma_llamada, dni_paciente, dni_enfermero, id_llamada, descripcion):
         try:
             cur = mysql.connection.cursor()
-            query = "UPDATE zona SET nombre = '{}', numero = {}, id_forma_llamada = {}, dni_paciente = {}, dni_enfermero = {} WHERE id_zona = {}".format(nombre, numero, id_forma_llamada, dni_paciente, dni_enfermero, id_zona)
+            query = "UPDATE zona SET nombre = '{}', numero = {}, id_forma_llamada = {}, dni_paciente = {}, dni_enfermero = {}, id_llamada = {}, descripcion = '{}'  WHERE id_zona = {}".format(nombre, numero, id_forma_llamada, dni_paciente, dni_enfermero, id_zona, id_llamada, descripcion)
             
             cur.execute(query)
             mysql.connection.commit()
@@ -47,7 +47,10 @@ class qZona:
     def traer_zonas(self):
         try:
             cur = mysql.connection.cursor()
-            query = "SELECT * FROM zona"
+            query = """SELECT z.*, p.nombre "nombre_paciente", p.apellido "apellido_paciente", e.nombre "nombre_enfermero", e.apellido "apellido_enfermero", l.id_llamada FROM `zona` Z
+                INNER JOIN paciente p ON Z.dni_paciente = p.dni_paciente
+                INNER JOIN enfermero e ON Z.dni_enfermero = e.dni_enfermero
+                INNER JOIN llamada l on z.id_llamada = l.id_llamada"""
             
             cur.execute(query)
             
