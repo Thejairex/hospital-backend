@@ -21,7 +21,7 @@ class qLlamada:
     def traer_llamadas(self ,column, data):
         try:
             cur = mysql.connection.cursor()
-            query = """SELECT l.*, p.nombre "nombre_paciente", p.apellido "apellido_paciente", z.nombre "nombre_zona", z.numero "numero_zona" FROM `llamada` l
+            query = """SELECT l.*, p.nombre "nombre_paciente", p.apellido "apellido_paciente",z.id_zona , z.nombre "nombre_zona", z.numero "numero_zona" FROM `llamada` l
                     LEFT JOIN paciente p ON l.dni_paciente = p.dni_paciente
                     LEFT JOIN zona_llamada zl on l.id_llamada = zl.id_llamada
                     LEFT JOIN zona z ON zl.id_zona = z.id_zona"""
@@ -44,10 +44,10 @@ class qLlamada:
     def traer_una_llamada(self, id_llamada):
         try:
             cur = mysql.connection.cursor()
-            query = """SELECT l.*, p.nombre "nombre_paciente", p.apellido "apellido_paciente", z.nombre "nombre_zona", z.numero "numero_zona" FROM `llamada` l
-                LEFT JOIN paciente p ON l.dni_paciente = p.dni_paciente
-                LEFT JOIN zona_llamada zl on l.id_llamada = zl.id_llamada
-                LEFT JOIN zona z ON zl.id_zona = z.id_zona WHERE l.id_llamada = {}""".format(id_llamada)
+            query = """SELECT l.*, p.nombre "nombre_paciente", p.apellido "apellido_paciente",z.id_zona , z.nombre "nombre_zona", z.numero "numero_zona" FROM `llamada` l
+                    LEFT JOIN paciente p ON l.dni_paciente = p.dni_paciente
+                    LEFT JOIN zona_llamada zl on l.id_llamada = zl.id_llamada
+                    LEFT JOIN zona z ON zl.id_zona = z.id_zona WHERE l.id_llamada = {}""".format(id_llamada)
             
             cur.execute(query)
             

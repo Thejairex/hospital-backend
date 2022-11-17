@@ -28,9 +28,13 @@ def pacientes():
                 'fecha_hora_llamada': data[3],
                 'fecha_hora_atentido': data[4],
                 'origen_llamada': data[5],
-                'nombre_paciente': data[6],
-                'apellido_paciente': data[7],
-                'dni_enfermero': data[8]
+                'dni_enfermero': data[6],
+                'nombre_paciente': data[7],
+                'apellido_paciente': data[8],
+                'id_zona': data[9],
+                'nombre_zona': data[10],
+                'numero_zona': data[11]
+                
             })
             
         return jsonify(jsonPaciente), 200
@@ -58,9 +62,12 @@ def zona(id):
                     'fecha_hora_llamada': data[3],
                     'fecha_hora_atentido': data[4],
                     'origen_llamada': data[5],
-                    'nombre_paciente': data[6],
-                    'apellido_paciente': data[7],
-                    'dni_enfermero': data[8]
+                    'dni_enfermero': data[6],
+                    'nombre_paciente': data[7],
+                    'apellido_paciente': data[8],
+                    'id_zona': data[9],
+                    'nombre_zona': data[10],
+                    'numero_zona': data[11]
                 }), 200
         else:
             return jsonify({
