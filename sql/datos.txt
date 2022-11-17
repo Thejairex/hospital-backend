@@ -1,0 +1,9 @@
+el sistema web fue a modo de demostracion online, este sistema se se muentra de forma offline trendra limitaciones.
+estado de medico
+codigo azul
+
+codigo azul hacer un random de las zonas disponibles, 
+asignar a medico de cabezera, medico suplente o medico de tercera con todos sus datos.
+
+
+cecular ok/recibido => aceptado si a los 10 segundos no reponde se envia la alerta al tercer medico.

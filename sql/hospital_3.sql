@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2022 a las 00:42:30
+-- Tiempo de generación: 17-11-2022 a las 03:33:35
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -68,32 +68,31 @@ CREATE TABLE `enfermero` (
 --
 
 INSERT INTO `enfermero` (`dni_enfermero`, `nombre`, `apellido`, `sexo`, `telefono`, `fecha_nac`, `estado`) VALUES
-(15752301, 'Olympia', 'Donaldson', 'Femenino', 7127848, '0000-00-00', 0),
-(17645132, 'Carissa', 'Haynes', 'Masculino', 1786791, '0000-00-00', 0),
-(19681332, 'Jennifer', 'Jacobson', 'Femenino', 1828075, '0000-00-00', 0),
-(25058397, 'Abbot', 'Rollins', 'Masculino', 2835147, '0000-00-00', 0),
-(30869558, 'Allen', 'Hampton', 'Femenino', 5446768, '0000-00-00', 0),
-(31299616, 'Stewart', 'Cook', 'Femenino', 2661898, '0000-00-00', 0),
-(41917631, 'Felix', 'Kinney', 'Masculino', 6042828, '0000-00-00', 0),
-(46502872, 'Wing', 'Kirby', 'Masculino', 5482060, '0000-00-00', 0),
-(50164879, 'Lois', 'Kirkland', 'Masculino', 2433016, '0000-00-00', 0),
-(54984044, 'Tanek', 'Wyatt', 'Femenino', 3284265, '0000-00-00', 0),
-(55530097, 'Macaulay', 'Skinner', 'Masculino', 9116851, '0000-00-00', 0),
-(57122918, 'Charlotte', 'Bradshaw', 'Masculino', 9714271, '0000-00-00', 0),
-(58117520, 'Rana', 'Gill', 'Femenino', 8612787, '0000-00-00', 0),
-(58377713, 'Marny', 'Galloway', 'Femenino', 4712104, '0000-00-00', 0),
-(58451379, 'Moana', 'Walters', 'Femenino', 4988112, '0000-00-00', 0),
-(68430449, 'Richard', 'Bray', 'Femenino', 3694302, '0000-00-00', 0),
-(70994638, 'Garth', 'Oliver', 'Femenino', 3866683, '0000-00-00', 0),
-(71176427, 'Aidan', 'Leach', 'Femenino', 7723088, '0000-00-00', 0),
-(75941397, 'Giselle', 'Ward', 'Masculino', 3858580, '0000-00-00', 0),
-(76154950, 'Akeem', 'Espinoza', 'Masculino', 2228964, '0000-00-00', 0),
-(87246215, 'Hunter', 'Mckay', 'Masculino', 1771145, '0000-00-00', 0),
-(92813644, 'Madeson', 'Hammond', 'Masculino', 3641054, '0000-00-00', 0),
-(93767789, 'Nash', 'Wilson', 'Masculino', 8667186, '0000-00-00', 0),
-(98331588, 'Catherine', 'Wade', 'Femenino', 3245147, '0000-00-00', 0),
-(98648257, 'Xyla', 'Rivera', 'Masculino', 2872479, '0000-00-00', 0),
-(250583972, 'Abbotasd', 'Rollinsas', 'Masculino', 2835147, '0000-00-00', 0);
+(20479161, 'Griffin', 'Dai Sheppard', 'Masculino', 3738079, '2001-12-15', 1),
+(26118066, 'Steven', 'Colette Jones', 'Femenino', 7142779, '1971-12-05', 0),
+(27081025, 'Eve', 'Rana Sherman', 'Femenino', 4469815, '1981-12-07', 0),
+(30211954, 'Angelica', 'Garrison Valencia', 'Femenino', 9408861, '1956-06-26', 1),
+(32595766, 'Danielle', 'Kyle Leach', 'Femenino', 7576773, '1964-01-20', 1),
+(39759950, 'Daria', 'Colton Cantrell', 'Masculino', 6750028, '1981-05-11', 1),
+(42204455, 'Daquan', 'Sheila Gentry', 'Masculino', 5854325, '2001-09-02', 0),
+(42865726, 'Acton', 'Oleg Cantu', 'Femenino', 877317, '1967-04-06', 1),
+(53400328, 'Orlando', 'Norman Gaines', 'Masculino', 7553074, '2010-09-27', 0),
+(56294117, 'Hanna', 'Benedict Stewart', 'Masculino', 5046043, '2010-02-01', 1),
+(68950765, 'Jakeem', 'Brian Forbes', 'Masculino', 1545256, '2012-02-04', 0),
+(70592330, 'Nash', 'Jolene Rogers', 'Masculino', 8607118, '2000-12-20', 0),
+(74120879, 'Isaac', 'Colton Wagner', 'Femenino', 9426743, '1982-08-08', 0),
+(77144022, 'Quin', 'Alexa O\'Neill', 'Femenino', 8372714, '1990-08-25', 1),
+(78025393, 'Rhoda', 'Theodore Mcpherson', 'Femenino', 3227251, '2001-12-08', 0),
+(81808503, 'Felix', 'Ciara Ewing', 'Masculino', 9684486, '2017-04-02', 0),
+(82359841, 'Pearl', 'Gay Meyers', 'Femenino', 8468487, '2000-03-15', 1),
+(83031287, 'Eugenia', 'Teegan Kim', 'Femenino', 5185666, '1986-04-05', 0),
+(84958402, 'Tanek', 'Howard Harding', 'Femenino', 6422139, '2006-05-14', 0),
+(87579908, 'George', 'Wyoming Prince', 'Femenino', 4819242, '1992-08-28', 0),
+(88396721, 'Porter', 'Kelsie Larsen', 'Femenino', 8584314, '1957-07-08', 0),
+(91056678, 'Hedda', 'Ross Browning', 'Femenino', 1534102, '2020-10-20', 1),
+(92937187, 'Irene', 'Lance Joyner', 'Masculino', 8736750, '1990-09-25', 1),
+(93841374, 'Rahim', 'Lyle Cross', 'Masculino', 7837874, '1976-01-23', 1),
+(250583972, 'Abbot1', 'Rollins2', 'Masculino', 2835147, '2010-09-27', 0);
 
 -- --------------------------------------------------------
 
@@ -269,26 +268,11 @@ CREATE TABLE `zona` (
 --
 
 INSERT INTO `zona` (`id_zona`, `nombre`, `numero`, `id_forma_llamada`, `dni_enfermero`, `id_llamada`, `descripcion`, `estado`) VALUES
-(130, 'Quirofano', 5, 1, 15752301, 24, 'f', 0),
-(131, 'Quirofano', 5, 1, 15752301, 24, 'f', 0),
-(132, 'Quirofano', 5, 1, 15752301, 24, 'f', 0),
-(133, 'Quirofano', 5, 1, 15752301, 24, 'f', 0),
-(134, 'Quirofano', 5, 1, 15752301, 24, 'f', 0),
-(135, 'Quirofano', 5, 1, 15752301, 24, 'f', 0),
-(136, 'Quirofano', 5, 1, 15752301, 24, 'f', 0),
-(137, 'Quirofano', 5, 1, 15752301, 24, 'f', 0),
-(138, 'Quirofano', 5, 1, 15752301, 24, 'f', 0),
-(139, 'Quirofano', 5, 1, 15752301, 24, 'f', 0),
-(140, 'Quirofano', 5, 1, 15752301, 24, 'f', 0),
-(141, 'Quirofano', 5, 1, 15752301, 24, 'f', 0),
-(142, 'Quirofano', 5, 1, 15752301, 24, 'f', 0),
-(143, 'Quirofano', 5, 1, 15752301, 24, 'f', 0),
-(144, 'Quirofano', 5, 1, 15752301, 24, 'f', 0),
-(145, 'Quirofano', 5, 1, 15752301, 24, 'f', 0),
-(146, 'Quirofano', 5, 1, 15752301, 24, 'f', 0),
-(147, 'Quirofano', 5, 1, 15752301, 24, 'f', 0),
-(148, 'Quirofano', 5, 1, 15752301, 24, 'f', 0),
-(149, 'Quirofano', 5, 1, 15752301, 24, 'f', 0);
+(156, 'Quirofano', 5, 1, 20479161, 24, 'f', 0),
+(157, 'Quirofano', 5, 1, 20479161, 24, 'f', 0),
+(158, 'Quirofano', 5, 1, 20479161, 24, 'f', 0),
+(159, 'Quirofano', 5, 1, 20479161, 24, 'f', 0),
+(160, 'Quirofano', 5, 1, 20479161, 24, 'f', 0);
 
 --
 -- Índices para tablas volcadas
@@ -413,7 +397,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `zona`
 --
 ALTER TABLE `zona`
-  MODIFY `id_zona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
+  MODIFY `id_zona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
 
 --
 -- Restricciones para tablas volcadas

@@ -44,7 +44,7 @@ def pacientes():
         telefono = request.json.get('telefono', None)
         sexo = request.json.get('sexo', None)
         fecha_hora_ingreso = request.json.get('fecha_hora_ingreso', None)
-        fecha_hora_egreso = request.json.get('fecha_hora_egreso', None)
+        fecha_hora_egreso = request.json.get('fecha_hora_egreso', 'null')
         tipo_sangre = request.json.get('tipo_sangre', None)
         direccion = request.json.get('direccion', None)
         

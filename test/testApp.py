@@ -117,7 +117,7 @@ class MyTest(TestCase):
         # borrar_paciente = self.client.delete('/api/pacientes/18316403')
         # assert borrar_paciente.status_code == 200
         insertar_paciente = self.client.post('/api/pacientes', json={
-            "dni_paciente": 30432182,
+            "dni_paciente": 91728333,
             "nombre": "Aquila",
             "apellido": "Cox",
             "fecha_nac": "1982-02-06",
@@ -128,7 +128,7 @@ class MyTest(TestCase):
             "tipo_sangre": "AB",
             "direccion": 'Alejo Bruix 5455'
         })
-        assert insertar_paciente.status_code == (200 or None)
+        assert insertar_paciente.status_code == 200
         
         # editar_paciente = self.client.post('/api/pacientes/30432182', json={
         #     "nombre": "Aquila",
@@ -159,7 +159,7 @@ class MyTest(TestCase):
         borrar_paciente = self.client.delete('/api/enfermeros/19368052')
         assert borrar_paciente.status_code == 200
         
-        insertar_paciente = self.client.post('/api/enfermeros', json={
+        insertar_enfermero = self.client.post('/api/enfermeros', json={
             "dni_enfermero": 250583972,
             "nombre": "Abbot",
             "apellido": "Rollins",
@@ -168,7 +168,7 @@ class MyTest(TestCase):
             'fecha_nac': "2010-9-27",
             'estado': 0,
         })
-        assert insertar_paciente.status_code == (200 or None)
+        assert insertar_enfermero.status_code == (200 or None)
         
         # editar_paciente = self.client.post('/api/enfermeros/250583972', json={
         #     "dni_enfermero": 250583972,
