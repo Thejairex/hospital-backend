@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2022 a las 07:17:52
+-- Tiempo de generación: 17-11-2022 a las 09:10:12
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -123,7 +123,6 @@ INSERT INTO `forma_llamada` (`id_forma_llamada`, `forma_llamada`, `descripcion`)
 CREATE TABLE `llamada` (
   `id_llamada` int(11) NOT NULL,
   `dni_paciente` int(11) NOT NULL,
-  `id_zona` int(11) NOT NULL,
   `tipo` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `fecha_hora_llamada` datetime NOT NULL DEFAULT current_timestamp(),
   `fecha_hora_atentido` datetime DEFAULT NULL,
@@ -134,9 +133,10 @@ CREATE TABLE `llamada` (
 -- Volcado de datos para la tabla `llamada`
 --
 
-INSERT INTO `llamada` (`id_llamada`, `dni_paciente`, `id_zona`, `tipo`, `fecha_hora_llamada`, `fecha_hora_atentido`, `origen_llamada`) VALUES
-(29, 12801761, 3, 'normal', '2022-11-17 02:56:43', NULL, 'cama'),
-(38, 12801761, 1, 'normal', '2022-11-17 02:49:14', NULL, 'cama');
+INSERT INTO `llamada` (`id_llamada`, `dni_paciente`, `tipo`, `fecha_hora_llamada`, `fecha_hora_atentido`, `origen_llamada`) VALUES
+(46, 49583498, 'normal', '2022-11-17 04:28:00', NULL, 'cama'),
+(47, 49583498, 'emergencia', '2022-11-17 04:28:18', NULL, 'cama'),
+(48, 91728332, 'normal', '2022-11-17 04:42:35', NULL, 'cama');
 
 -- --------------------------------------------------------
 
@@ -239,6 +239,7 @@ CREATE TABLE `zona` (
   `numero` int(11) NOT NULL,
   `id_forma_llamada` int(11) NOT NULL,
   `dni_enfermero` int(11) NOT NULL,
+  `dni_paciente` int(11) NOT NULL,
   `descripcion` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -247,32 +248,53 @@ CREATE TABLE `zona` (
 -- Volcado de datos para la tabla `zona`
 --
 
-INSERT INTO `zona` (`id_zona`, `nombre`, `numero`, `id_forma_llamada`, `dni_enfermero`, `descripcion`, `estado`) VALUES
-(1, 'Galvin', 2, 1, 20479161, 'Nunc ut erat. Sed', 1),
-(2, 'Patience', 2, 1, 26118066, 'arcu imperdiet ullamcorper. Duis at lacus. Quisque purus sapien,', 1),
-(3, 'Keefe', 7, 1, 27081025, 'Suspendisse eleifend. Cras sed leo. Cras', 1),
-(4, 'Vladimir', 8, 1, 30211954, 'magna nec quam. Curabitur', 1),
-(5, 'Amela', 1, 1, 32595766, 'ante lectus convallis est, vitae', 0),
-(6, 'Gareth', 8, 1, 39759950, 'augue scelerisque mollis. Phasellus libero', 0),
-(7, 'Todd', 5, 1, 42204455, 'aliquam eu, accumsan sed, facilisis vitae, orci. Phasellus dapibus', 0),
-(8, 'Isabella', 8, 1, 42865726, 'ridiculus mus. Proin vel nisl. Quisque fringilla euismod', 0),
-(9, 'Yuri', 6, 1, 53400328, 'faucibus ut, nulla.', 0),
-(10, 'Ulric', 5, 1, 56294117, 'Nulla tempor', 1),
-(11, 'Rose', 9, 1, 68950765, 'semper pretium neque. Morbi quis urna. Nunc quis arcu vel', 1),
-(12, 'Edward', 3, 1, 70592330, 'Cum sociis natoque penatibus', 0),
-(13, 'Claire', 4, 1, 74120879, 'feugiat non, lobortis quis, pede. Suspendisse', 1),
-(14, 'Reuben', 8, 1, 77144022, 'vitae semper egestas, urna justo faucibus', 0),
-(15, 'Jameson', 10, 1, 78025393, 'Etiam imperdiet', 0),
-(16, 'Hector', 1, 1, 81808503, 'risus a ultricies', 1),
-(17, 'Vance', 9, 1, 82359841, 'sodales at,', 0),
-(18, 'Hadley', 4, 1, 83031287, 'Nullam scelerisque neque sed sem egestas blandit. Nam', 1),
-(19, 'Ursula', 6, 1, 84958402, 'magnis dis parturient montes, nascetur', 0),
-(20, 'Mariam', 9, 1, 87579908, 'vehicula aliquet libero. Integer in magna. Phasellus dolor elit,', 1),
-(21, 'Abraham', 7, 1, 88396721, 'elit, a feugiat tellus lorem eu metus. In lorem.', 1),
-(22, 'Hop', 4, 1, 91056678, 'elementum, dui quis', 0),
-(23, 'Todd', 6, 1, 92937187, 'nec, diam. Duis mi enim, condimentum', 0),
-(24, 'Kermit', 4, 1, 93841374, 'eleifend nec, malesuada ut, sem. Nulla interdum. Curabitur dictum. Phasellus', 0),
-(25, 'Elton', 4, 1, 250583972, 'lorem ipsum sodales purus, in molestie tortor nibh sit', 0);
+INSERT INTO `zona` (`id_zona`, `nombre`, `numero`, `id_forma_llamada`, `dni_enfermero`, `dni_paciente`, `descripcion`, `estado`) VALUES
+(1, 'Galvin', 2, 1, 20479161, 10039469, 'Nunc ut erat. Sed', 1),
+(2, 'Patience', 2, 1, 26118066, 11111111, 'arcu imperdiet ullamcorper. Duis at lacus. Quisque purus sapien,', 1),
+(3, 'Keefe', 7, 1, 27081025, 11203766, 'Suspendisse eleifend. Cras sed leo. Cras', 1),
+(4, 'Vladimir', 8, 1, 30211954, 12801761, 'magna nec quam. Curabitur', 1),
+(5, 'Amela', 1, 1, 32595766, 13876702, 'ante lectus convallis est, vitae', 0),
+(6, 'Gareth', 8, 1, 39759950, 30432182, 'augue scelerisque mollis. Phasellus libero', 0),
+(7, 'Todd', 5, 1, 42204455, 33520329, 'aliquam eu, accumsan sed, facilisis vitae, orci. Phasellus dapibus', 0),
+(8, 'Isabella', 8, 1, 42865726, 35932430, 'ridiculus mus. Proin vel nisl. Quisque fringilla euismod', 0),
+(9, 'Yuri', 6, 1, 53400328, 37634415, 'faucibus ut, nulla.', 0),
+(10, 'Ulric', 5, 1, 56294117, 39093614, 'Nulla tempor', 1),
+(11, 'Rose', 9, 1, 68950765, 49334864, 'semper pretium neque. Morbi quis urna. Nunc quis arcu vel', 1),
+(12, 'Edward', 3, 1, 70592330, 49583498, 'Cum sociis natoque penatibus', 0),
+(13, 'Claire', 4, 1, 74120879, 59150592, 'feugiat non, lobortis quis, pede. Suspendisse', 1),
+(14, 'Reuben', 8, 1, 77144022, 60454920, 'vitae semper egestas, urna justo faucibus', 0),
+(15, 'Jameson', 10, 1, 78025393, 61791624, 'Etiam imperdiet', 0),
+(16, 'Hector', 1, 1, 81808503, 64727944, 'risus a ultricies', 1),
+(17, 'Vance', 9, 1, 82359841, 64931056, 'sodales at,', 0),
+(18, 'Hadley', 4, 1, 83031287, 68176054, 'Nullam scelerisque neque sed sem egestas blandit. Nam', 1),
+(19, 'Ursula', 6, 1, 84958402, 68632848, 'magnis dis parturient montes, nascetur', 0),
+(20, 'Mariam', 9, 1, 87579908, 75067520, 'vehicula aliquet libero. Integer in magna. Phasellus dolor elit,', 1),
+(21, 'Abraham', 7, 1, 88396721, 77725435, 'elit, a feugiat tellus lorem eu metus. In lorem.', 1),
+(22, 'Hop', 4, 1, 91056678, 78648023, 'elementum, dui quis', 0),
+(23, 'Todd', 6, 1, 92937187, 79118870, 'nec, diam. Duis mi enim, condimentum', 0),
+(24, 'Kermit', 4, 1, 93841374, 79612848, 'eleifend nec, malesuada ut, sem. Nulla interdum. Curabitur dictum. Phasellus', 0),
+(25, 'Elton', 4, 1, 250583972, 80454994, 'lorem ipsum sodales purus, in molestie tortor nibh sit', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `zona_llamada`
+--
+
+CREATE TABLE `zona_llamada` (
+  `id_zona_llamada` int(11) NOT NULL,
+  `id_zona` int(11) NOT NULL,
+  `id_llamada` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `zona_llamada`
+--
+
+INSERT INTO `zona_llamada` (`id_zona_llamada`, `id_zona`, `id_llamada`) VALUES
+(1, 21, 46),
+(2, 21, 47),
+(3, 12, 48);
 
 --
 -- Índices para tablas volcadas
@@ -309,8 +331,7 @@ ALTER TABLE `forma_llamada`
 --
 ALTER TABLE `llamada`
   ADD PRIMARY KEY (`id_llamada`),
-  ADD KEY `id_paciente` (`dni_paciente`),
-  ADD KEY `id_zona` (`id_zona`);
+  ADD KEY `id_paciente` (`dni_paciente`);
 
 --
 -- Indices de la tabla `paciente`
@@ -339,7 +360,16 @@ ALTER TABLE `usuario`
 ALTER TABLE `zona`
   ADD PRIMARY KEY (`id_zona`),
   ADD KEY `id_forma_llamada` (`id_forma_llamada`),
-  ADD KEY `dni_enfermero` (`dni_enfermero`);
+  ADD KEY `dni_enfermero` (`dni_enfermero`),
+  ADD KEY `dni_paciente` (`dni_paciente`);
+
+--
+-- Indices de la tabla `zona_llamada`
+--
+ALTER TABLE `zona_llamada`
+  ADD PRIMARY KEY (`id_zona_llamada`),
+  ADD KEY `id_zona` (`id_zona`),
+  ADD KEY `id_llamada` (`id_llamada`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -373,7 +403,7 @@ ALTER TABLE `forma_llamada`
 -- AUTO_INCREMENT de la tabla `llamada`
 --
 ALTER TABLE `llamada`
-  MODIFY `id_llamada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_llamada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT de la tabla `paciente`
@@ -400,6 +430,12 @@ ALTER TABLE `zona`
   MODIFY `id_zona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
 
 --
+-- AUTO_INCREMENT de la tabla `zona_llamada`
+--
+ALTER TABLE `zona_llamada`
+  MODIFY `id_zona_llamada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- Restricciones para tablas volcadas
 --
 
@@ -413,8 +449,7 @@ ALTER TABLE `alergias`
 -- Filtros para la tabla `llamada`
 --
 ALTER TABLE `llamada`
-  ADD CONSTRAINT `llamada_ibfk_1` FOREIGN KEY (`dni_paciente`) REFERENCES `paciente` (`dni_paciente`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `llamada_ibfk_2` FOREIGN KEY (`id_zona`) REFERENCES `zona` (`id_zona`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `llamada_ibfk_1` FOREIGN KEY (`dni_paciente`) REFERENCES `paciente` (`dni_paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `patologia`
@@ -427,7 +462,15 @@ ALTER TABLE `patologia`
 --
 ALTER TABLE `zona`
   ADD CONSTRAINT `zona_ibfk_2` FOREIGN KEY (`dni_enfermero`) REFERENCES `enfermero` (`dni_enfermero`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `zona_ibfk_5` FOREIGN KEY (`id_forma_llamada`) REFERENCES `forma_llamada` (`id_forma_llamada`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `zona_ibfk_5` FOREIGN KEY (`id_forma_llamada`) REFERENCES `forma_llamada` (`id_forma_llamada`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `zona_ibfk_6` FOREIGN KEY (`dni_paciente`) REFERENCES `paciente` (`dni_paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `zona_llamada`
+--
+ALTER TABLE `zona_llamada`
+  ADD CONSTRAINT `zona_llamada_ibfk_1` FOREIGN KEY (`id_zona`) REFERENCES `zona` (`id_zona`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `zona_llamada_ibfk_2` FOREIGN KEY (`id_llamada`) REFERENCES `llamada` (`id_llamada`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
