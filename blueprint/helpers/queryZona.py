@@ -47,10 +47,10 @@ class qZona:
     def traer_zonas(self, column, data):
         try:
             cur = mysql.connection.cursor()
-            query = """SELECT z.*, p.dni_paciente, p.nombre "nombre_paciente",p.apellido "apellido_paciente", e.nombre "nombre_enfermero", e.apellido "apellido_enfermero" FROM zona  z
-				INNER JOIN llamada l on z.id_llamada = l.id_llamada
+            query = """SELECT z.*, p.dni_paciente, p.nombre "nombre_paciente",p.apellido "apellido_paciente", e.nombre "nombre_enfermero", e.apellido "apellido_enfermero", l.id_llamada FROM zona  z
+				INNER JOIN llamada l on z.id_zona = l.id_zona
                 INNER JOIN enfermero e ON  z.dni_enfermero = e.dni_enfermero
-                INNER JOIN paciente p ON  l.dni_paciente = p.dni_paciente"""
+                INNER JOIN paciente p ON  l.dni_paciente = p.dni_paciente;"""
             if len(column) != 0 and len(data) != 0:
                 query = query + ' WHERE '
                 i = 0
@@ -61,7 +61,7 @@ class qZona:
                          
                         query = query + ' and '
             cur.execute(query)
-            
+            mysql.connection.commit()
             return cur.fetchall()
         except Exception as e:
             raise e
@@ -77,7 +77,7 @@ class qZona:
                 INNER JOIN paciente p ON  l.dni_paciente = p.dni_paciente WHERE id_zona = {}""".format(id_zona)
             
             cur.execute(query)
-            
+            mysql.connection.commit()
             return cur.fetchone()
         except Exception as e:
             raise e

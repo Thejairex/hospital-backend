@@ -1,202 +1,202 @@
 [
 	{
 		"id_zona": 1,
-		"nombre": "Summer",
-		"numero": 7,
-		"id_forma_llamada": 2,
-		"id_llamada": 1,
-		"descripcion": "et malesuada fames ac turpis egestas. Aliquam fringilla cursus purus."
+		"nombre": "Galvin",
+		"numero": 2,
+		"id_forma_llamada": 0,
+		"descripcion": "Nunc ut erat. Sed",
+		"estado": 1
 	},
 	{
 		"id_zona": 2,
-		"nombre": "Yuli",
-		"numero": 6,
-		"id_forma_llamada": 2,
-		"id_llamada": 1,
-		"descripcion": "et, eros. Proin ultrices. Duis volutpat nunc sit amet metus."
+		"nombre": "Patience",
+		"numero": 2,
+		"id_forma_llamada": 0,
+		"descripcion": "arcu imperdiet ullamcorper. Duis at lacus. Quisque purus sapien,",
+		"estado": 1
 	},
 	{
 		"id_zona": 3,
-		"nombre": "Kevin",
-		"numero": 0,
-		"id_forma_llamada": 2,
-		"id_llamada": 1,
-		"descripcion": "Mauris blandit enim consequat purus. Maecenas libero est, congue a,"
+		"nombre": "Keefe",
+		"numero": 7,
+		"id_forma_llamada": 1,
+		"descripcion": "Suspendisse eleifend. Cras sed leo. Cras",
+		"estado": 1
 	},
 	{
 		"id_zona": 4,
-		"nombre": "Karyn",
-		"numero": 9,
-		"id_forma_llamada": 1,
-		"id_llamada": 1,
-		"descripcion": "mauris sagittis placerat. Cras dictum ultricies ligula. Nullam enim. Sed"
+		"nombre": "Vladimir",
+		"numero": 8,
+		"id_forma_llamada": 0,
+		"descripcion": "magna nec quam. Curabitur",
+		"estado": 1
 	},
 	{
 		"id_zona": 5,
-		"nombre": "Elliott",
-		"numero": 5,
-		"id_forma_llamada": 2,
-		"id_llamada": 1,
-		"descripcion": "vestibulum lorem, sit amet ultricies sem magna nec quam. Curabitur"
+		"nombre": "Amela",
+		"numero": 1,
+		"id_forma_llamada": 1,
+		"descripcion": "ante lectus convallis est, vitae",
+		"estado": 0
 	},
 	{
 		"id_zona": 6,
-		"nombre": "Geoffrey",
-		"numero": 4,
-		"id_forma_llamada": 2,
-		"id_llamada": 1,
-		"descripcion": "ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci"
+		"nombre": "Gareth",
+		"numero": 8,
+		"id_forma_llamada": 0,
+		"descripcion": "augue scelerisque mollis. Phasellus libero",
+		"estado": 0
 	},
 	{
 		"id_zona": 7,
-		"nombre": "Alea",
+		"nombre": "Todd",
 		"numero": 5,
-		"id_forma_llamada": 2,
-		"id_llamada": 1,
-		"descripcion": "tempus non, lacinia at, iaculis quis, pede. Praesent eu dui."
+		"id_forma_llamada": 0,
+		"descripcion": "aliquam eu, accumsan sed, facilisis vitae, orci. Phasellus dapibus",
+		"estado": 0
 	},
 	{
 		"id_zona": 8,
-		"nombre": "Coby",
-		"numero": 5,
-		"id_forma_llamada": 2,
-		"id_llamada": 1,
-		"descripcion": "Nulla tempor augue ac ipsum. Phasellus vitae mauris sit amet"
+		"nombre": "Isabella",
+		"numero": 8,
+		"id_forma_llamada": 0,
+		"descripcion": "ridiculus mus. Proin vel nisl. Quisque fringilla euismod",
+		"estado": 0
 	},
 	{
 		"id_zona": 9,
-		"nombre": "Ashton",
-		"numero": 4,
-		"id_forma_llamada": 1,
-		"id_llamada": 1,
-		"descripcion": "odio. Nam interdum enim non nisi. Aenean eget metus. In"
+		"nombre": "Yuri",
+		"numero": 6,
+		"id_forma_llamada": 0,
+		"descripcion": "faucibus ut, nulla.",
+		"estado": 0
 	},
 	{
 		"id_zona": 10,
-		"nombre": "Fletcher",
-		"numero": 7,
+		"nombre": "Ulric",
+		"numero": 5,
 		"id_forma_llamada": 1,
-		"id_llamada": 1,
-		"descripcion": "quis diam. Pellentesque habitant morbi tristique senectus et netus et"
+		"descripcion": "Nulla tempor",
+		"estado": 1
 	},
 	{
 		"id_zona": 11,
-		"nombre": "Christine",
-		"numero": 5,
-		"id_forma_llamada": 2,
-		"id_llamada": 1,
-		"descripcion": "parturient montes, nascetur ridiculus mus. Proin vel nisl. Quisque fringilla"
+		"nombre": "Rose",
+		"numero": 9,
+		"id_forma_llamada": 1,
+		"descripcion": "semper pretium neque. Morbi quis urna. Nunc quis arcu vel",
+		"estado": 1
 	},
 	{
 		"id_zona": 12,
-		"nombre": "Shafira",
+		"nombre": "Edward",
 		"numero": 3,
 		"id_forma_llamada": 1,
-		"id_llamada": 1,
-		"descripcion": "amet risus. Donec egestas. Aliquam nec enim. Nunc ut erat."
+		"descripcion": "Cum sociis natoque penatibus",
+		"estado": 0
 	},
 	{
 		"id_zona": 13,
-		"nombre": "Calista",
-		"numero": 9,
-		"id_forma_llamada": 1,
-		"id_llamada": 1,
-		"descripcion": "facilisis non, bibendum sed, est. Nunc laoreet lectus quis massa."
+		"nombre": "Claire",
+		"numero": 4,
+		"id_forma_llamada": 0,
+		"descripcion": "feugiat non, lobortis quis, pede. Suspendisse",
+		"estado": 1
 	},
 	{
 		"id_zona": 14,
-		"nombre": "Paki",
-		"numero": 4,
-		"id_forma_llamada": 2,
-		"id_llamada": 1,
-		"descripcion": "non lorem vitae odio sagittis semper. Nam tempor diam dictum"
+		"nombre": "Reuben",
+		"numero": 8,
+		"id_forma_llamada": 0,
+		"descripcion": "vitae semper egestas, urna justo faucibus",
+		"estado": 0
 	},
 	{
 		"id_zona": 15,
-		"nombre": "Drew",
-		"numero": 9,
-		"id_forma_llamada": 1,
-		"id_llamada": 1,
-		"descripcion": "In tincidunt congue turpis. In condimentum. Donec at arcu. Vestibulum"
+		"nombre": "Jameson",
+		"numero": 10,
+		"id_forma_llamada": 0,
+		"descripcion": "Etiam imperdiet",
+		"estado": 0
 	},
 	{
 		"id_zona": 16,
-		"nombre": "Ulric",
-		"numero": 7,
-		"id_forma_llamada": 2,
-		"id_llamada": 1,
-		"descripcion": "Suspendisse commodo tincidunt nibh. Phasellus nulla. Integer vulputate, risus a"
+		"nombre": "Hector",
+		"numero": 1,
+		"id_forma_llamada": 1,
+		"descripcion": "risus a ultricies",
+		"estado": 1
 	},
 	{
 		"id_zona": 17,
-		"nombre": "Autumn",
-		"numero": 3,
-		"id_forma_llamada": 2,
-		"id_llamada": 1,
-		"descripcion": "enim. Sed nulla ante, iaculis nec, eleifend non, dapibus rutrum,"
+		"nombre": "Vance",
+		"numero": 9,
+		"id_forma_llamada": 0,
+		"descripcion": "sodales at,",
+		"estado": 0
 	},
 	{
 		"id_zona": 18,
-		"nombre": "Susan",
+		"nombre": "Hadley",
 		"numero": 4,
-		"id_forma_llamada": 2,
-		"id_llamada": 1,
-		"descripcion": "consequat enim diam vel arcu. Curabitur ut odio vel est"
+		"id_forma_llamada": 1,
+		"descripcion": "Nullam scelerisque neque sed sem egestas blandit. Nam",
+		"estado": 1
 	},
 	{
 		"id_zona": 19,
-		"nombre": "Reed",
-		"numero": 9,
-		"id_forma_llamada": 2,
-		"id_llamada": 1,
-		"descripcion": "Donec vitae erat vel pede blandit congue. In scelerisque scelerisque"
+		"nombre": "Ursula",
+		"numero": 6,
+		"id_forma_llamada": 0,
+		"descripcion": "magnis dis parturient montes, nascetur",
+		"estado": 0
 	},
 	{
 		"id_zona": 20,
-		"nombre": "Travis",
-		"numero": 6,
-		"id_forma_llamada": 2,
-		"id_llamada": 1,
-		"descripcion": "mollis non, cursus non, egestas a, dui. Cras pellentesque. Sed"
+		"nombre": "Mariam",
+		"numero": 9,
+		"id_forma_llamada": 0,
+		"descripcion": "vehicula aliquet libero. Integer in magna. Phasellus dolor elit,",
+		"estado": 1
 	},
 	{
 		"id_zona": 21,
-		"nombre": "Hillary",
-		"numero": 3,
-		"id_forma_llamada": 1,
-		"id_llamada": 1,
-		"descripcion": "ante ipsum primis in faucibus orci luctus et ultrices posuere"
+		"nombre": "Abraham",
+		"numero": 7,
+		"id_forma_llamada": 0,
+		"descripcion": "elit, a feugiat tellus lorem eu metus. In lorem.",
+		"estado": 1
 	},
 	{
 		"id_zona": 22,
-		"nombre": "Hanae",
-		"numero": 7,
-		"id_forma_llamada": 2,
-		"id_llamada": 1,
-		"descripcion": "mattis. Integer eu lacus. Quisque imperdiet, erat nonummy ultricies ornare,"
+		"nombre": "Hop",
+		"numero": 4,
+		"id_forma_llamada": 0,
+		"descripcion": "elementum, dui quis",
+		"estado": 0
 	},
 	{
 		"id_zona": 23,
-		"nombre": "Nehru",
-		"numero": 7,
-		"id_forma_llamada": 1,
-		"id_llamada": 1,
-		"descripcion": "odio a purus. Duis elementum, dui quis accumsan convallis, ante"
+		"nombre": "Todd",
+		"numero": 6,
+		"id_forma_llamada": 0,
+		"descripcion": "nec, diam. Duis mi enim, condimentum",
+		"estado": 0
 	},
 	{
 		"id_zona": 24,
-		"nombre": "Elvis",
-		"numero": 1,
-		"id_forma_llamada": 2,
-		"id_llamada": 1,
-		"descripcion": "tellus justo sit amet nulla. Donec non justo. Proin non"
+		"nombre": "Kermit",
+		"numero": 4,
+		"id_forma_llamada": 0,
+		"descripcion": "eleifend nec, malesuada ut, sem. Nulla interdum. Curabitur dictum. Phasellus",
+		"estado": 0
 	},
 	{
 		"id_zona": 25,
-		"nombre": "Quail",
-		"numero": 1,
+		"nombre": "Elton",
+		"numero": 4,
 		"id_forma_llamada": 1,
-		"id_llamada": 1,
-		"descripcion": "Aenean gravida nunc sed pede. Cum sociis natoque penatibus et"
+		"descripcion": "lorem ipsum sodales purus, in molestie tortor nibh sit",
+		"estado": 0
 	}
 ]

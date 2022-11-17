@@ -9,6 +9,7 @@ from blueprint.loginApi import loginApi
 from blueprint.zonaApi import zonaApi
 from blueprint.pacienteApi import pacienteApi
 from blueprint.enfermeroApi import enfermeroApi
+from blueprint.llamadaApi import llamadaApi
 
 from blueprint.helpers.querys_test import query
 from blueprint.helpers.queryLlamada import qLlamada
@@ -28,6 +29,7 @@ class MyTest(TestCase):
 
         jwt = JWTManager(app)
 
+        app.register_blueprint(llamadaApi)
         app.register_blueprint(enfermeroApi)
         app.register_blueprint(pacienteApi)
         app.register_blueprint(zonaApi)
@@ -181,6 +183,46 @@ class MyTest(TestCase):
         # })
         
         # assert editar_paciente.status_code == (200 or None)
+        
+    # Testing llamada
+    def test_llamada_process_success(self):
+        user = self.client.post('/api/login', json={
+            'username': 'pete',
+            'password': '123123123'
+        })
+        
+        self.client.set_cookie('localhost', 'accessToken', user.get_json()['accessToken'])
+        traer_llamadas = self.client.get('/api/llamadas')
+        assert traer_llamadas.status_code == 200
+        
+        dniPaciente = [x[0] for x in query.qPaciente()]
+        id_zona = [x[0] for x in query.qZona()]
+        
+        insertar_llamada = self.client.post('/api/llamadas', json ={
+            'dni_paciente': dniPaciente[3],
+            'id_zona': id_zona[0],
+            'tipo': 'normal',
+            'fecha_hora_llamada': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            'fecha_hora_atentido': 'null',
+            'origen_llamada': 'cama'
+        })
+        
+        assert insertar_llamada.status_code == 200
+        
+        traer_una_llamada = self.client.get('/api/llamadas/29')
+        assert traer_una_llamada.status_code == 200
+        
+        editar_llamada = self.client.post('/api/llamadas/29', json={
+            'dni_paciente': dniPaciente[3],
+            'id_zona': id_zona[2],
+            'tipo': 'normal',
+            'fecha_hora_llamada': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            'fecha_hora_atentido': 'null',
+            'origen_llamada': 'cama'
+        })
+        
+        assert editar_llamada.status_code == 200
+        
 if __name__ == '__main__':
     app = MyTest.create_app()
     

@@ -29,3 +29,10 @@ class query():
         query = 'SELECT id_forma_llamada FROM forma_llamada'
         cur.execute(query)
         return cur.fetchall()
+    
+    @classmethod
+    def qZona(self):
+        cur = mysql.connection.cursor()
+        query = 'SELECT id_zona FROM zona'
+        cur.execute(query)
+        return cur.fetchall()

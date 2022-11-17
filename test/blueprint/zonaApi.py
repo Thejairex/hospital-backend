@@ -29,14 +29,14 @@ def zonas():
                 'numero': data[2],
                 'id_forma_llamada': data[3],
                 'dni_enfermero': data[4],
-                'id_llamada': data[5],
-                'descripcion': data[6],
-                'estado': data[7],
-                'dni_paciente': data[8],
+                'descripcion': data[5],
+                'estado': data[6],
+                'dni_paciente': data[7],
                 'nombre_paciente': data[9],
                 'apellido_paciente': data[10],
                 'nombre_enfermero': data[11],
-                'apellido_enfermero': data[12]
+                'apellido_enfermero': data[12],
+                'id_llamada': data[13]
             })
             
         return jsonify(jsonZona), 200
