@@ -4,10 +4,10 @@ class qZona:
     
     # Insertar un nuevo regristro a la tabla zona
     @classmethod
-    def insertar_zona(self, nombre,numero, id_forma_llamada, dni_enfermero, id_llamada, descripcion, estado):
+    def insertar_zona(self, nombre,numero, id_forma_llamada, dni_enfermero,dni_paciente, descripcion, estado):
         try:
             cur = mysql.connection.cursor()
-            query = """INSERT INTO `zona`(`id_zona`, `nombre`, `numero`, `id_forma_llamada`, `dni_enfermero`, `id_llamada`, `descripcion`, `estado`) VALUES (null,'{}',{},{},{},{},'{}',{})""".format(nombre,numero, id_forma_llamada, dni_enfermero, id_llamada, descripcion, estado)
+            query = """INSERT INTO `zona`(`id_zona`, `nombre`, `numero`, `id_forma_llamada`, `dni_enfermero`, `dni_paciente`, `descripcion`, `estado`) VALUES (null,'{}',{},{},{},{},'{}',{})""".format(nombre,numero, id_forma_llamada, dni_enfermero,dni_paciente, descripcion, estado)
             # INSERT INTO `zona`(`id_zona`, `nombre`, `numero`, `id_forma_llamada`, `dni_enfermero`, `id_llamada`, `descripcion`, `estado`) VALUES (null,'LOL',1,1,15752301,25,'LOLOLOLO',0)
             cur.execute(query)
             mysql.connection.commit()
@@ -17,10 +17,10 @@ class qZona:
     
     # Edita un registro de una zona
     @classmethod
-    def editar_zona(self, id_zona, nombre, numero, id_forma_llamada, dni_enfermero, id_llamada, descripcion,estado):
+    def editar_zona(self,id, nombre, numero, id_forma_llamada, dni_enfermero, dni_paciente,descripcion, estado):
         try:
             cur = mysql.connection.cursor()
-            query = "UPDATE zona SET nombre = '{}', numero = {}, id_forma_llamada = {}, dni_enfermero = {}, id_llamada = {}, descripcion = '{}', estado = {}  WHERE id_zona = {}".format(nombre, numero, id_forma_llamada, dni_enfermero, id_llamada, descripcion,estado,id_zona)
+            query = "UPDATE zona SET nombre = '{}', numero = {}, id_forma_llamada = {}, dni_enfermero = {}, dni_paciente = {}, descripcion = '{}', estado = {}  WHERE id_zona = {}".format(id, nombre, numero, id_forma_llamada, dni_enfermero, dni_paciente,descripcion, estado)
             
             cur.execute(query)
             mysql.connection.commit()
@@ -47,10 +47,7 @@ class qZona:
     def traer_zonas(self, column, data):
         try:
             cur = mysql.connection.cursor()
-            query = """SELECT z.*, p.dni_paciente, p.nombre "nombre_paciente",p.apellido "apellido_paciente", e.nombre "nombre_enfermero", e.apellido "apellido_enfermero", l.id_llamada FROM zona  z
-				LEFT JOIN llamada l on z.id_zona = l.id_zona
-                LEFT JOIN enfermero e ON  z.dni_enfermero = e.dni_enfermero
-                LEFT JOIN paciente p ON  l.dni_paciente = p.dni_paciente"""
+            query = """SELECT z.*, p.nombre "nombre_paciente",p.apellido "apellido_paciente", e.nombre "nombre_enfermero", e.apellido "apellido_enfermero" FROM zona z LEFT JOIN enfermero e ON z.dni_enfermero = e.dni_enfermero LEFT JOIN paciente p ON z.dni_paciente = p.dni_paciente"""
             if len(column) != 0 and len(data) != 0:
                 query = query + ' WHERE '
                 i = 0

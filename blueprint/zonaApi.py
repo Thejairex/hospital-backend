@@ -29,14 +29,14 @@ def zonas():
                 'numero': data[2],
                 'id_forma_llamada': data[3],
                 'dni_enfermero': data[4],
-                'descripcion': data[5],
-                'estado': data[6],
-                'dni_paciente': data[7],
+                'dni_paciente': data[5],
+                'descripcion': data[6],
+                'estado': data[7],
                 'nombre_paciente': data[8],
                 'apellido_paciente': data[9],
                 'nombre_enfermero': data[10],
                 'apellido_enfermero': data[11],
-                'id_llamada': data[12]
+                'id_llamada': qLlamada.traer_ultima_llamada(data[0])
             })
             
         return jsonify(jsonZona), 200
@@ -46,32 +46,32 @@ def zonas():
         numero = request.json.get('numero', None)   
         id_forma_llamada = request.json.get('id_forma_llamada', None)
         dni_enfermero = request.json.get('dni_enfermero', None)
-        id_llamada = qLlamada.traer_ultima_llamada()[0]
+        dni_paciente = request.json.get('dni_paciente', None)
         descripcion = request.json.get('descripcion', None)
         estado = request.json.get('estado', None)
         
-        return jsonify(qZona.insertar_zona(nombre,numero, id_forma_llamada, dni_enfermero, id_llamada, descripcion, estado)), 200
+        return jsonify(qZona.insertar_zona(nombre,numero, id_forma_llamada, dni_enfermero,dni_paciente, descripcion, estado)), 200
 
 @zonaApi.route('/api/zonas/<id>', methods=['POST','GET','DELETE'])
 @jwt_required(locations=['cookies','headers'])
 def zona(id):
     if request.method == 'GET':
-        dataZona = qZona.traer_una_zona(id)
+        data = qZona.traer_una_zona(id)
         
         return jsonify({
-                'id_zona': dataZona[0],
-                'nombre': dataZona[1],
-                'numero': dataZona[2],
-                'id_forma_llamada': dataZona[3],
-                'dni_enfermero': dataZona[4],
-                'id_llamada': dataZona[5],
-                'descripcion': dataZona[6],
-                'estado': dataZona[7],
-                'dni_paciente': dataZona[8],
-                'nombre_paciente': dataZona[9],
-                'apellido_paciente': dataZona[10],
-                'nombre_enfermero': dataZona[11],
-                'apellido_enfermero': dataZona[12]
+                'id_zona': data[0],
+                'nombre': data[1],
+                'numero': data[2],
+                'id_forma_llamada': data[3],
+                'dni_enfermero': data[4],
+                'dni_paciente': data[5],
+                'descripcion': data[6],
+                'estado': data[7],
+                'nombre_paciente': data[8],
+                'apellido_paciente': data[9],
+                'nombre_enfermero': data[10],
+                'apellido_enfermero': data[11],
+                'id_llamada': qLlamada.traer_ultima_llamada(data[0])
             }), 200
         
     if get_jwt_identity()['role'] == 'administrador':
@@ -85,11 +85,11 @@ def zona(id):
             numero = request.json.get('numero', None)   
             id_forma_llamada = request.json.get('id_forma_llamada', None)
             dni_enfermero = request.json.get('dni_enfermero', None)
-            id_llamada = qLlamada.traer_ultima_llamada()[0]
+            dni_paciente = request.json.get('dni_paciente', None)
             descripcion = request.json.get('descripcion', None)
             estado = request.json.get('estado', None)
             
-            return jsonify(qZona.editar_zona(id, nombre, numero, id_forma_llamada, dni_enfermero, id_llamada,descripcion, estado)), 200
+            return jsonify(qZona.editar_zona(id, nombre, numero, id_forma_llamada, dni_enfermero, dni_paciente,descripcion, estado)), 200
     else:
         return jsonify({'msg': 'No autorizado'}), 401
     

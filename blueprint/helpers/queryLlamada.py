@@ -3,13 +3,17 @@ from init import mysql
 class qLlamada:
     
     @classmethod
-    def traer_ultima_llamada(self):
+    def traer_ultima_llamada(self, id):
         try:  
             cur = mysql.connection.cursor()
-            query = 'SELECT MAX(id_llamada) FROM llamada'
+            query = 'SELECT MAX(id_llamada) FROM `zona_llamada` WHERE id_zona = {}'.format(id)
             cur.execute(query)
-            return cur.fetchone()
-        
+            x = cur.fetchone()
+            print(x[0])
+            if x[0] != None:
+                return x[0]
+            else:
+                return None
         except Exception as e:
             raise e
 

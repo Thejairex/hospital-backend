@@ -33,7 +33,7 @@ def fetch_llamada(i):
 i = 0
 for row in traffic:
     keys= tuple(row[c] for c in columns)
-    cursor.execute('INSERT INTO zona(id_zona,nombre, numero, id_forma_llamada, dni_enfermero, dni_paciente, descripcion,estado) VALUES(%s, %s, %s, 1, {}, null, %s,%s)'.format(fetch_enfermero(i), fetch_paciente(i)),keys)
+    cursor.execute('INSERT INTO zona(id_zona,nombre, numero, id_forma_llamada, dni_enfermero, dni_paciente, descripcion,estado) VALUES(%s, %s, %s, 1, {}, {}, %s,%s)'.format(fetch_enfermero(i), fetch_paciente(i)),keys)
     print(f'{row["nombre"]} data inserted Succefully')
     i +=1 
 
