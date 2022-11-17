@@ -12,10 +12,25 @@ def current_time():
 traffic = json.load(open('sql/Importaciones/dataLlamada.json'))
 columns = ['id_llamada', 'tipo', 'origen_llamada']
 
+def fetch_paciente(i):
+    x = cursor.execute('SELECT dni_paciente FROM paciente')
+    x = cursor.fetchall()
+    
+    for y in x[i]:
+        return y
+    
+def fetch_enfermero(i):
+    x = cursor.execute('SELECT dni_enfermero FROM enfermero')
+    x = cursor.fetchall()
+   
+    for y in x[i]:
+        return y
+i = 0
 for row in traffic:
     keys= tuple(row[c] for c in columns)
-    cursor.execute("INSERT INTO llamada VALUES(%s,%s,'{}',null,%s)".format(current_time()),keys)
+    cursor.execute("INSERT INTO llamada VALUES(%s,{},%s,'{}',null,%s,{})".format(fetch_paciente(i),current_time(),fetch_enfermero(i)),keys)
     print(f'{row["id_llamada"]} data inserted Succefully')
+    i+=1
 
 connection.commit()
 connection.close()

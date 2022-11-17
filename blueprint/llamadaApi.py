@@ -24,28 +24,26 @@ def pacientes():
             jsonPaciente.append({
                 'id_llamada': data[0],
                 'dni_paciente': data[1],
-                'id_zona': data[2],
-                'tipo': data[3],
-                'fecha_hora_llamada': data[4],
-                'fecha_hora_atentido': data[5],
-                'origen_llamada': data[6],
-                'nombre_paciente': data[7],
-                'apellido_paciente': data[8],
-                'nombre_zona': data[9],
-                'numero_zona': data[10]
+                'tipo': data[2],
+                'fecha_hora_llamada': data[3],
+                'fecha_hora_atentido': data[4],
+                'origen_llamada': data[5],
+                'nombre_paciente': data[6],
+                'apellido_paciente': data[7],
+                'dni_enfermero': data[8]
             })
             
         return jsonify(jsonPaciente), 200
     
     if request.method == 'POST':
         dni_paciente = request.json.get('dni_paciente', None)
-        id_zona = request.json.get('id_zona', None)
         tipo = request.json.get('tipo', None)
         fecha_hora_llamada = request.json.get('fecha_hora_llamada', None)
         fecha_hora_atentido = request.json.get('fecha_hora_atentido', 'null')
         origen_llamada = request.json.get('origen_llamada', None)
+        id_zona = request.json.get('id_zona', None)
         
-        return jsonify(qLlamada.insertar_llamada(dni_paciente, id_zona, tipo,fecha_hora_llamada, fecha_hora_atentido, origen_llamada)), 200
+        return jsonify(qLlamada.insertar_llamada(dni_paciente, tipo,fecha_hora_llamada, fecha_hora_atentido, origen_llamada, id_zona)), 200
 
 @llamadaApi.route('/api/llamadas/<id>', methods=['POST','GET','DELETE'])
 @jwt_required(locations=['cookies','headers'])
@@ -56,15 +54,13 @@ def zona(id):
             return jsonify({
                     'id_llamada': data[0],
                     'dni_paciente': data[1],
-                    'id_zona': data[2],
-                    'tipo': data[3],
-                    'fecha_hora_llamada': data[4],
-                    'fecha_hora_atentido': data[5],
-                    'origen_llamada': data[6],
-                    'nombre_paciente': data[7],
-                    'apellido_paciente': data[8],
-                    'nombre_zona': data[9],
-                    'numero_zona': data[10]
+                    'tipo': data[2],
+                    'fecha_hora_llamada': data[3],
+                    'fecha_hora_atentido': data[4],
+                    'origen_llamada': data[5],
+                    'nombre_paciente': data[6],
+                    'apellido_paciente': data[7],
+                    'dni_enfermero': data[8]
                 }), 200
         else:
             return jsonify({
@@ -75,13 +71,13 @@ def zona(id):
     
         if request.method == 'POST':
             dni_paciente = request.json.get('dni_paciente', None)
-            id_zona = request.json.get('id_zona', None)
             tipo = request.json.get('tipo', None)
             fecha_hora_llamada = request.json.get('fecha_hora_llamada', None)
             fecha_hora_atentido = request.json.get('fecha_hora_atentido', 'null')
             origen_llamada = request.json.get('origen_llamada', None)
+            id_zona = request.json.get('id_zona', None)
             
-            return jsonify(qLlamada.editar_llamada(id ,dni_paciente, id_zona, tipo,fecha_hora_llamada, fecha_hora_atentido, origen_llamada)), 200
+            return jsonify(qLlamada.editar_llamada(id ,dni_paciente, tipo,fecha_hora_llamada, fecha_hora_atentido, origen_llamada, id_zona)), 200
         
         
     else:

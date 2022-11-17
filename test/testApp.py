@@ -199,20 +199,20 @@ class MyTest(TestCase):
         id_zona = [x[0] for x in query.qZona()]
         
         insertar_llamada = self.client.post('/api/llamadas', json ={
-            'dni_paciente': dniPaciente[3],
-            'id_zona': id_zona[0],
-            'tipo': 'normal',
+            'dni_paciente': dniPaciente[20],
+            'id_zona': id_zona[20],
+            'tipo': 'Emergencia',
             'fecha_hora_llamada': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             'fecha_hora_atentido': 'null',
-            'origen_llamada': 'cama'
+            'origen_llamada': 'nodo'
         })
         
         assert insertar_llamada.status_code == 200
         
-        traer_una_llamada = self.client.get('/api/llamadas/29')
+        traer_una_llamada = self.client.get('/api/llamadas/18')
         assert traer_una_llamada.status_code == 200
         
-        editar_llamada = self.client.post('/api/llamadas/29', json={
+        editar_llamada = self.client.post('/api/llamadas/18', json={
             'dni_paciente': dniPaciente[3],
             'id_zona': id_zona[2],
             'tipo': 'normal',

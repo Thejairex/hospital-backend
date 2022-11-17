@@ -3,13 +3,17 @@ from init import mysql
 class qLlamada:
     
     @classmethod
-    def traer_ultima_llamada(self):
+    def traer_ultima_llamada(self, id):
         try:  
             cur = mysql.connection.cursor()
-            query = 'SELECT MAX(id_llamada) FROM llamada'
+            query = 'SELECT MAX(id_llamada) FROM `zona_llamada` WHERE id_zona = {}'.format(id)
             cur.execute(query)
-            return cur.fetchone()
-        
+            x = cur.fetchone()
+            print(x[0])
+            if x[0] != None:
+                return x[0]
+            else:
+                return None
         except Exception as e:
             raise e
 
@@ -18,8 +22,9 @@ class qLlamada:
         try:
             cur = mysql.connection.cursor()
             query = """SELECT l.*, p.nombre "nombre_paciente", p.apellido "apellido_paciente", z.nombre "nombre_zona", z.numero "numero_zona" FROM `llamada` l
-                INNER JOIN paciente p ON l.dni_paciente = p.dni_paciente
-                INNER JOIN zona z ON l.id_zona = z.id_zona"""
+                    LEFT JOIN paciente p ON l.dni_paciente = p.dni_paciente
+                    LEFT JOIN zona_llamada zl on l.id_llamada = zl.id_llamada
+                    LEFT JOIN zona z ON zl.id_zona = z.id_zona"""
             if len(column) != 0 and len(data) != 0:
                 query = query + ' WHERE '
                 i = 0
@@ -40,8 +45,9 @@ class qLlamada:
         try:
             cur = mysql.connection.cursor()
             query = """SELECT l.*, p.nombre "nombre_paciente", p.apellido "apellido_paciente", z.nombre "nombre_zona", z.numero "numero_zona" FROM `llamada` l
-                INNER JOIN paciente p ON l.dni_paciente = p.dni_paciente
-                INNER JOIN zona z ON l.id_zona = z.id_zona WHERE id_llamada = {}""".format(id_llamada)
+                LEFT JOIN paciente p ON l.dni_paciente = p.dni_paciente
+                LEFT JOIN zona_llamada zl on l.id_llamada = zl.id_llamada
+                LEFT JOIN zona z ON zl.id_zona = z.id_zona WHERE l.id_llamada = {}""".format(id_llamada)
             
             cur.execute(query)
             
@@ -50,10 +56,10 @@ class qLlamada:
             raise e
         
     @classmethod
-    def insertar_llamada(self,dni_paciente, id_zona, tipo,fecha_hora_llamada, fecha_hora_atentido, origen_llamada):
+    def insertar_llamada(self,dni_paciente, tipo,fecha_hora_llamada, fecha_hora_atentido, origen_llamada, id_zona):
         try:
             cur = mysql.connection.cursor()
-            query = """INSERT INTO llamada(dni_paciente, id_zona, tipo, fecha_hora_llamada, fecha_hora_atentido, origen_llamada) VALUES ({},{},'{}','{}',{},'{}')""".format(dni_paciente, id_zona, tipo,fecha_hora_llamada, fecha_hora_atentido, origen_llamada)
+            query = """INSERT INTO `llamada`(`id_llamada`, `dni_paciente`, `tipo`, `fecha_hora_llamada`, `fecha_hora_atentido`, `origen_llamada`, `dni_enfermero`) VALUES (null,{},'{}','{}','{}','{}',(SELECT z.dni_enfermero FROM zona z WHERE z.id_zona = {}))""".format(dni_paciente, tipo,fecha_hora_llamada, fecha_hora_atentido, origen_llamada, id_zona)
             cur.execute(query)
             mysql.connection.commit()
             return True
@@ -61,16 +67,16 @@ class qLlamada:
             raise e
         
     @classmethod
-    def editar_llamada(self, id,dni_paciente, id_zona, tipo,fecha_hora_llamada, fecha_hora_atentido, origen_llamada):
+    def editar_llamada(self, id,dni_paciente, tipo,fecha_hora_llamada, fecha_hora_atentido, origen_llamada, id_zona):
         try:
             cur = mysql.connection.cursor()
             query = """UPDATE llamada SET dni_paciente = {},
-            id_zona = {},
             tipo = '{}',
             fecha_hora_llamada = '{}',
             fecha_hora_atentido = {},
-            origen_llamada = '{}'
-            WHERE id_llamada = {}""".format( dni_paciente, id_zona, tipo,fecha_hora_llamada, fecha_hora_atentido, origen_llamada,id)
+            origen_llamada = '{}',
+            dni_enfermero = (SELECT z.dni_enfermero FROM zona z WHERE z.id_zona = {})
+            WHERE id_llamada = {}""".format( dni_paciente, tipo,fecha_hora_llamada, fecha_hora_atentido, origen_llamada, id_zona,id)
             
             cur.execute(query)
             mysql.connection.commit()
