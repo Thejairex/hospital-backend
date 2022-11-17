@@ -56,14 +56,16 @@ class qEnfermero:
     
     # Edita un registro de enfermero
     @classmethod
-    def editar_enfermero(self, dni,nombre, apellido,sexo, telefono ):
+    def editar_enfermero(self, dni,nombre, apellido,sexo, telefono, fecha_nac, estado ):
         try:
             cur = mysql.connection.cursor()
             query = """UPDATE enfermero SET nombre = '{}',
             apellido = '{}',
             sexo = '{}', 
-            telefono = {} 
-            WHERE dni_enfermero = {}""".format( nombre, apellido,sexo, telefono, dni)
+            telefono = {},
+            fecha_nac = '{}',
+            estado = {} 
+            WHERE dni_enfermero = {}""".format( nombre, apellido,sexo, telefono, fecha_nac, estado, dni)
             
             cur.execute(query)
             mysql.connection.commit()

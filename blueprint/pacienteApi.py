@@ -65,7 +65,8 @@ def zona(dni):
                     'telefono': data[5],
                     'fecha_hora_ingreso': data[6],
                     'fecha_hora_egreso': data[7],
-                    'tipo_sangre': data[8]
+                    'tipo_sangre': data[8],
+                    'direccion': data[9]
                 }), 200
         else:
             return jsonify({

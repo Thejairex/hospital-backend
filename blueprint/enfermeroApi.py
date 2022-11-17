@@ -55,7 +55,9 @@ def emfermero(dni):
                 'nombre': data[1],
                 'apellido': data[2],
                 'sexo': data[3],
-                'telefono': data[4]
+                'telefono': data[4],
+                'fecha_nac': data[5],
+                'estado': data[6]
             }), 200
         else:
             return jsonify({
@@ -67,11 +69,12 @@ def emfermero(dni):
             dni = dni
             nombre = request.json.get('nombre', None)
             apellido = request.json.get('apellido', None)
-            
-            telefono = request.json.get('telefono', None)
             sexo = request.json.get('sexo', None)
+            telefono = request.json.get('telefono', None)
+            fecha_nac = request.json.get('fecha_nac', None)
+            estado = request.json.get('estado', None)
             
-            return jsonify(qEnfermero.editar_enfermero(dni,nombre, apellido,sexo, telefono)), 200
+            return jsonify(qEnfermero.editar_enfermero(dni,nombre, apellido,sexo, telefono, fecha_nac, estado)), 200
             
         if request.method == 'DELETE':
             return jsonify(qEnfermero.borrar_enfermero(dni)), 200
