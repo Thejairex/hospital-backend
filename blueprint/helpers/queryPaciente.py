@@ -68,7 +68,7 @@ class qPacientes:
                 query = query + ' WHERE '
                 i = 0
                 for x in colum:
-                    query = query + " {} = {} ".format(x,data[i])
+                    query = query + " {} = '{}' ".format(x,data[i])
                     i += 1
                     if i != len(colum):
                          
@@ -91,4 +91,55 @@ class qPacientes:
             return cur.fetchone()
         except Exception as e:
             raise e
+    
+    @classmethod
+    def traer_antecedentes(sefl, dni_paciente):
         
+        try:
+            cur = mysql.connection.cursor()
+            query = "SELECT * FROM `antecedentes` WHERE id_antecedente = (SELECT MAX(id_antecedente) FROM `antecedentes` WHERE dni_paciente={})".format(dni_paciente)
+            query = "SELECT * FROM `antecedentes` WHERE dni_paciente = {}".format(dni_paciente)
+            cur.execute(query)
+            
+            y = cur.fetchone()
+            if y != None:
+                return {
+                        'id_antecedente': y[0],
+                        'dni_paciente': y[1],
+                        'diagnostico': y[2],
+                        'motivo': y[3],
+                        'tratamiento': y[4],
+                        'medicacion': y[5],
+                        'fecha_nac': y[6]
+                        
+                    }
+            else: 
+                None
+        except Exception as e:
+            raise e
+        
+    @classmethod
+    def traer_sus_antecedentes(self, dni_paciente):
+        def fun(y):
+            return {
+                    'id_antecedente': y[0],
+                    'dni_paciente': y[1],
+                    'diagnostico': y[2],
+                    'motivo': y[3],
+                    'tratamiento': y[4],
+                    'medicacion': y[5],
+                    'fecha_nac': y[6]
+                    
+                }
+        
+        try:
+            cur = mysql.connection.cursor()
+            query = "SELECT * FROM `antecedentes` WHERE dni_paciente = {}".format(dni_paciente)
+            
+            cur.execute(query)
+            x = cur.fetchall()
+            
+            result = map(fun, x)
+            return list(result)
+        except Exception as e:
+            raise e

@@ -14,7 +14,7 @@ columns = ['dni_paciente', 'nombre', 'apellido', 'fecha_nac', 'sexo', 'telefono'
 
 for row in traffic:
     keys= tuple(row[c] for c in columns)
-    cursor.execute("INSERT INTO paciente VALUES(%s,%s,%s,%s,%s,%s,'{}',null,%s,%s)".format(current_time()),keys)
+    cursor.execute("INSERT INTO paciente VALUES(%s,%s,%s,%s,%s,%s,'{}',null,%s,%s,null,null)".format(current_time()),keys)
     print(f'{row["nombre"]} data inserted Succefully')
 
 connection.commit()

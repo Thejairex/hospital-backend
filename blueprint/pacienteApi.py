@@ -31,7 +31,10 @@ def pacientes():
                 'fecha_hora_ingreso': data[6],
                 'fecha_hora_egreso': data[7],
                 'tipo_sangre': data[8],
-                'direccion': data[9]
+                'direccion': data[9],
+                'patologia': data[10],
+                'alergia': data[11],
+                'ultimo_antec': qPacientes.traer_antecedentes(data[0]),
             })
             
         return jsonify(jsonPaciente), 200
@@ -58,15 +61,18 @@ def zona(dni):
         if data != None:
             return jsonify({
                     'dni_paciente': data[0],
-                    'nombre': data[1],
-                    'apellido': data[2],
-                    'fecha_nac': data[3],
-                    'sexo': data[4],
-                    'telefono': data[5],
-                    'fecha_hora_ingreso': data[6],
-                    'fecha_hora_egreso': data[7],
-                    'tipo_sangre': data[8],
-                    'direccion': data[9]
+                'nombre': data[1],
+                'apellido': data[2],
+                'fecha_nac': data[3],
+                'sexo': data[4],
+                'telefono': data[5],
+                'fecha_hora_ingreso': data[6],
+                'fecha_hora_egreso': data[7],
+                'tipo_sangre': data[8],
+                'direccion': data[9],
+                'patologia': data[10],
+                'alergia': data[11],
+                'ultimo_antec': qPacientes.traer_antecedentes(data[0]),
                 }), 200
         else:
             return jsonify({
