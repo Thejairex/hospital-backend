@@ -1,0 +1,127 @@
+[
+	{
+		"id_llamada": 1,
+		"tipo": "Normal",
+		"origen_llamada": "Bano"
+	},
+	{
+		"id_llamada": 2,
+		"tipo": "Normal",
+		"origen_llamada": "Cama"
+	},
+	{
+		"id_llamada": 3,
+		"tipo": "Normal",
+		"origen_llamada": "Bano"
+	},
+	{
+		"id_llamada": 4,
+		"tipo": "Emergencia",
+		"origen_llamada": "Cama"
+	},
+	{
+		"id_llamada": 5,
+		"tipo": "Emergencia",
+		"origen_llamada": "Cama"
+	},
+	{
+		"id_llamada": 6,
+		"tipo": "Normal",
+		"origen_llamada": "Cama"
+	},
+	{
+		"id_llamada": 7,
+		"tipo": "Normal",
+		"origen_llamada": "Bano"
+	},
+	{
+		"id_llamada": 8,
+		"tipo": "Normal",
+		"origen_llamada": "Bano"
+	},
+	{
+		"id_llamada": 9,
+		"tipo": "Normal",
+		"origen_llamada": "Bano"
+	},
+	{
+		"id_llamada": 10,
+		"tipo": "Normal",
+		"origen_llamada": "Cama"
+	},
+	{
+		"id_llamada": 11,
+		"tipo": "Emergencia",
+		"origen_llamada": "Cama"
+	},
+	{
+		"id_llamada": 12,
+		"tipo": "Normal",
+		"origen_llamada": "Bano"
+	},
+	{
+		"id_llamada": 13,
+		"tipo": "Emergencia",
+		"origen_llamada": "Bano"
+	},
+	{
+		"id_llamada": 14,
+		"tipo": "Emergencia",
+		"origen_llamada": "Bano"
+	},
+	{
+		"id_llamada": 15,
+		"tipo": "Normal",
+		"origen_llamada": "Cama"
+	},
+	{
+		"id_llamada": 16,
+		"tipo": "Normal",
+		"origen_llamada": "Cama"
+	},
+	{
+		"id_llamada": 17,
+		"tipo": "Emergencia",
+		"origen_llamada": "Bano"
+	},
+	{
+		"id_llamada": 18,
+		"tipo": "Emergencia",
+		"origen_llamada": "Bano"
+	},
+	{
+		"id_llamada": 19,
+		"tipo": "Normal",
+		"origen_llamada": "Cama"
+	},
+	{
+		"id_llamada": 20,
+		"tipo": "Emergencia",
+		"origen_llamada": "Bano"
+	},
+	{
+		"id_llamada": 21,
+		"tipo": "Emergencia",
+		"origen_llamada": "Cama"
+	},
+	{
+		"id_llamada": 22,
+		"tipo": "Emergencia",
+		"origen_llamada": "Bano"
+	},
+	{
+		"id_llamada": 23,
+		"tipo": "Emergencia",
+		"origen_llamada": "Bano"
+	},
+	{
+		"id_llamada": 24,
+		"tipo": "Normal",
+		"origen_llamada": "Bano"
+	},
+	{
+		"id_llamada": 25,
+		"tipo": "Normal",
+		"origen_llamada": "Cama"
+	}
+]

@@ -26,7 +26,9 @@ def emfermeros():
                 'nombre': data[1],
                 'apellido': data[2],
                 'sexo': data[3],
-                'telefono': data[4]
+                'telefono': data[4],
+                'fecha_nac': data[5],
+                'estado': data[6]
             })
             
         return jsonify(jsonEnfermero), 200
@@ -35,11 +37,12 @@ def emfermeros():
         dni = request.json.get('dni_enfermero',None)
         nombre = request.json.get('nombre', None)
         apellido = request.json.get('apellido', None)
-        
-        telefono = request.json.get('telefono', None)
         sexo = request.json.get('sexo', None)
+        telefono = request.json.get('telefono', None)
+        fecha_nac = request.json.get('fecha_nac', None)
+        estado = request.json.get('estado', None)
         
-        return jsonify(qEnfermero.insertar_enfermero(dni,nombre, apellido,sexo, telefono)), 200
+        return jsonify(qEnfermero.insertar_enfermero(dni,nombre, apellido,sexo, telefono,fecha_nac,estado)), 200
 
 @enfermeroApi.route('/api/enfermeros/<dni>', methods=['POST','GET','DELETE'])
 @jwt_required(locations=['cookies','headers'])

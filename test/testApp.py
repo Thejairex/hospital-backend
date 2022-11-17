@@ -153,30 +153,34 @@ class MyTest(TestCase):
         })
         
         self.client.set_cookie('localhost', 'accessToken', user.get_json()['accessToken'])
-        un_paciente = self.client.get('/api/enfermero/0')
-        assert un_paciente.status_code == 200 or un_paciente.status == '404 NOT FOUND'
+        un_enfermero = self.client.get('/api/enfermero/19368052')
+        assert un_enfermero.status_code == 200 or un_enfermero.status == '404 NOT FOUND'
         
-        # borrar_paciente = self.client.delete('/api/enfermeros/18316403')
-        # assert borrar_paciente.status_code == 200
+        borrar_paciente = self.client.delete('/api/enfermeros/19368052')
+        assert borrar_paciente.status_code == 200
         
         insertar_paciente = self.client.post('/api/enfermeros', json={
             "dni_enfermero": 250583972,
             "nombre": "Abbot",
             "apellido": "Rollins",
             "sexo": "Masculino",
-            "telefono": 2835147
+            "telefono": 2835147,
+            'fecha_nac': "2010-9-27",
+            'estado': 0,
         })
         assert insertar_paciente.status_code == (200 or None)
         
-        editar_paciente = self.client.post('/api/enfermeros/250583972', json={
-            "dni_enfermero": 25058397,
-            "nombre": "Abbotasd",
-            "apellido": "Rollinsas",
-            "sexo": "Masculino",
-            "telefono": 2835147
-        })
+        # editar_paciente = self.client.post('/api/enfermeros/250583972', json={
+        #     "dni_enfermero": 250583972,
+        #     "nombre": "Abbot1",
+        #     "apellido": "Rollins2",
+        #     "sexo": "Masculino",
+        #     "telefono": 2835147,
+        #     'fecha_nac': "2010-9-27",
+        #     'estado': 0,
+        # })
         
-        assert editar_paciente.status_code == (200 or None)
+        # assert editar_paciente.status_code == (200 or None)
 if __name__ == '__main__':
     app = MyTest.create_app()
     

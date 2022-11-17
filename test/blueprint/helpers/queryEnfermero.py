@@ -12,7 +12,7 @@ class qEnfermero:
                 query = query + ' WHERE '
                 i = 0
                 for x in colum:
-                    query = query + " {} = {} ".format(x,data[i])
+                    query = query + " {} = '{}' ".format(x,data[i])
                     i += 1
                     if i != len(colum):
                          
@@ -38,12 +38,12 @@ class qEnfermero:
     
     # Insertar un nuevo regristro a la tabla enfermero
     @classmethod
-    def insertar_enfermero(self, dni,nombre, apellido,sexo, telefono ):
+    def insertar_enfermero(self, dni,nombre, apellido,sexo, telefono,fecha_nac,estado ):
         try:
             cur = mysql.connection.cursor()
             query = """INSERT INTO enfermero VALUES(
-                {}, '{}', '{}', '{}', {})
-            """.format(dni,nombre, apellido,sexo, telefono )
+                {}, '{}', '{}', '{}', {}, '{}', {})
+            """.format(dni,nombre, apellido,sexo, telefono ,fecha_nac,estado)
             cur.execute(query)
             mysql.connection.commit()
             return True 

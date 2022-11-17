@@ -1,0 +1,252 @@
+[
+	{
+		"dni_paciente": 86674296,
+		"nombre": "Indira",
+		"apellido": "Riggs",
+		"fecha_nac": "2002-10-31",
+		"sexo": "Masculino",
+		"telefono": 8088660,
+		"tipo_sangre": "B",
+		"direccion": "P.O. Box 194, 7714 Adipiscing St."
+	},
+	{
+		"dni_paciente": 10039469,
+		"nombre": "Zelda",
+		"apellido": "Gillespie",
+		"fecha_nac": "1997-1-27",
+		"sexo": "Masculino",
+		"telefono": 5861242,
+		"tipo_sangre": "B",
+		"direccion": "264-579 Ornare Road"
+	},
+	{
+		"dni_paciente": 75067520,
+		"nombre": "Phoebe",
+		"apellido": "Sullivan",
+		"fecha_nac": "1974-5-17",
+		"sexo": "Femenino",
+		"telefono": 9161815,
+		"tipo_sangre": "O",
+		"direccion": "P.O. Box 862, 5127 Curae Av."
+	},
+	{
+		"dni_paciente": 78648023,
+		"nombre": "Georgia",
+		"apellido": "Melton",
+		"fecha_nac": "1985-11-13",
+		"sexo": "Masculino",
+		"telefono": 6937891,
+		"tipo_sangre": "AB",
+		"direccion": "Ap #695-9573 Facilisis. St."
+	},
+	{
+		"dni_paciente": 37634415,
+		"nombre": "Knox",
+		"apellido": "Gomez",
+		"fecha_nac": "2015-9-16",
+		"sexo": "Masculino",
+		"telefono": 9850365,
+		"tipo_sangre": "AB",
+		"direccion": "1785 Felis. St."
+	},
+	{
+		"dni_paciente": 64727944,
+		"nombre": "Sydnee",
+		"apellido": "Patrick",
+		"fecha_nac": "2016-1-6",
+		"sexo": "Femenino",
+		"telefono": 347371,
+		"tipo_sangre": "A",
+		"direccion": "983-411 Mauris St."
+	},
+	{
+		"dni_paciente": 60454920,
+		"nombre": "Hayes",
+		"apellido": "Wilson",
+		"fecha_nac": "1965-5-10",
+		"sexo": "Femenino",
+		"telefono": 7855747,
+		"tipo_sangre": "AB",
+		"direccion": "248-7219 Convallis St."
+	},
+	{
+		"dni_paciente": 64931056,
+		"nombre": "Keith",
+		"apellido": "Zimmerman",
+		"fecha_nac": "2002-9-23",
+		"sexo": "Femenino",
+		"telefono": 1685498,
+		"tipo_sangre": "B",
+		"direccion": "3147 Duis St."
+	},
+	{
+		"dni_paciente": 12801761,
+		"nombre": "Noble",
+		"apellido": "Murphy",
+		"fecha_nac": "1956-3-20",
+		"sexo": "Femenino",
+		"telefono": 5714818,
+		"tipo_sangre": "AB",
+		"direccion": "545-4831 Aliquam Av."
+	},
+	{
+		"dni_paciente": 68176054,
+		"nombre": "Claire",
+		"apellido": "Ingram",
+		"fecha_nac": "1995-5-4",
+		"sexo": "Femenino",
+		"telefono": 7684427,
+		"tipo_sangre": "AB",
+		"direccion": "736-8699 Adipiscing. Ave"
+	},
+	{
+		"dni_paciente": 80454994,
+		"nombre": "Dawn",
+		"apellido": "Ross",
+		"fecha_nac": "1999-7-15",
+		"sexo": "Masculino",
+		"telefono": 2026531,
+		"tipo_sangre": "A",
+		"direccion": "143-6060 A St."
+	},
+	{
+		"dni_paciente": 49334864,
+		"nombre": "Oleg",
+		"apellido": "Hensley",
+		"fecha_nac": "2001-11-3",
+		"sexo": "Masculino",
+		"telefono": 4171197,
+		"tipo_sangre": "A",
+		"direccion": "446-5162 Proin Av."
+	},
+	{
+		"dni_paciente": 61791624,
+		"nombre": "Cedric",
+		"apellido": "Duran",
+		"fecha_nac": "2004-11-27",
+		"sexo": "Femenino",
+		"telefono": 9541209,
+		"tipo_sangre": "O",
+		"direccion": "432-4786 Vehicula Rd."
+	},
+	{
+		"dni_paciente": 35932430,
+		"nombre": "Dana",
+		"apellido": "Rodriguez",
+		"fecha_nac": "2005-2-8",
+		"sexo": "Masculino",
+		"telefono": 7289811,
+		"tipo_sangre": "AB",
+		"direccion": "Ap #995-7814 Vel Road"
+	},
+	{
+		"dni_paciente": 33520329,
+		"nombre": "Dora",
+		"apellido": "Sherman",
+		"fecha_nac": "2015-4-25",
+		"sexo": "Masculino",
+		"telefono": 370846,
+		"tipo_sangre": "B",
+		"direccion": "Ap #895-3782 Velit. Rd."
+	},
+	{
+		"dni_paciente": 39093614,
+		"nombre": "Dara",
+		"apellido": "Cobb",
+		"fecha_nac": "1994-6-3",
+		"sexo": "Femenino",
+		"telefono": 5645748,
+		"tipo_sangre": "AB",
+		"direccion": "Ap #260-3428 Laoreet St."
+	},
+	{
+		"dni_paciente": 49583498,
+		"nombre": "Alfonso",
+		"apellido": "Hess",
+		"fecha_nac": "1968-5-27",
+		"sexo": "Masculino",
+		"telefono": 8456295,
+		"tipo_sangre": "AB",
+		"direccion": "580-8215 Interdum Road"
+	},
+	{
+		"dni_paciente": 11203766,
+		"nombre": "Patrick",
+		"apellido": "Foreman",
+		"fecha_nac": "1975-9-22",
+		"sexo": "Femenino",
+		"telefono": 8562386,
+		"tipo_sangre": "AB",
+		"direccion": "3674 Iaculis Ave"
+	},
+	{
+		"dni_paciente": 79612848,
+		"nombre": "Sean",
+		"apellido": "Key",
+		"fecha_nac": "2007-1-4",
+		"sexo": "Masculino",
+		"telefono": 7176614,
+		"tipo_sangre": "A",
+		"direccion": "497-8331 Ut Rd."
+	},
+	{
+		"dni_paciente": 13876702,
+		"nombre": "Kuame",
+		"apellido": "Austin",
+		"fecha_nac": "2006-11-6",
+		"sexo": "Femenino",
+		"telefono": 2818151,
+		"tipo_sangre": "O",
+		"direccion": "907-5226 Nunc Ave"
+	},
+	{
+		"dni_paciente": 77725435,
+		"nombre": "Xavier",
+		"apellido": "Ellison",
+		"fecha_nac": "2009-11-16",
+		"sexo": "Femenino",
+		"telefono": 1173478,
+		"tipo_sangre": "O",
+		"direccion": "134-4221 Aliquet Road"
+	},
+	{
+		"dni_paciente": 59150592,
+		"nombre": "Oleg",
+		"apellido": "Burton",
+		"fecha_nac": "1955-6-6",
+		"sexo": "Femenino",
+		"telefono": 6595261,
+		"tipo_sangre": "B",
+		"direccion": "6981 A Ave"
+	},
+	{
+		"dni_paciente": 91728332,
+		"nombre": "Carol",
+		"apellido": "Dyer",
+		"fecha_nac": "1963-11-11",
+		"sexo": "Femenino",
+		"telefono": 5495841,
+		"tipo_sangre": "O",
+		"direccion": "684-4721 Rutrum Ave"
+	},
+	{
+		"dni_paciente": 79118870,
+		"nombre": "Ava",
+		"apellido": "Owen",
+		"fecha_nac": "2003-4-2",
+		"sexo": "Femenino",
+		"telefono": 6667862,
+		"tipo_sangre": "AB",
+		"direccion": "446-5354 Sed Rd."
+	},
+	{
+		"dni_paciente": 68632848,
+		"nombre": "Christen",
+		"apellido": "Reeves",
+		"fecha_nac": "1986-7-3",
+		"sexo": "Masculino",
+		"telefono": 3624618,
+		"tipo_sangre": "B",
+		"direccion": "P.O. Box 294, 8977 Suspendisse Rd."
+	}
+]

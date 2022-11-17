@@ -1,0 +1,227 @@
+[
+	{
+		"dni_enfermero": 53400328,
+		"nombre": "Orlando",
+		"apellido": "Norman Gaines",
+		"sexo": "Masculino",
+		"telefono": 7553074,
+		"fecha_nac": "2010-9-27",
+		"estado": 0
+	},
+	{
+		"dni_enfermero": 87579908,
+		"nombre": "George",
+		"apellido": "Wyoming Prince",
+		"sexo": "Femenino",
+		"telefono": 4819242,
+		"fecha_nac": "1992-8-28",
+		"estado": 0
+	},
+	{
+		"dni_enfermero": 19368052,
+		"nombre": "Kevyn",
+		"apellido": "Virginia Mccormick",
+		"sexo": "Masculino",
+		"telefono": 8216577,
+		"fecha_nac": "1979-3-14",
+		"estado": 0
+	},
+	{
+		"dni_enfermero": 77144022,
+		"nombre": "Quin",
+		"apellido": "Alexa O'Neill",
+		"sexo": "Femenino",
+		"telefono": 8372714,
+		"fecha_nac": "1990-8-25",
+		"estado": 1
+	},
+	{
+		"dni_enfermero": 30211954,
+		"nombre": "Angelica",
+		"apellido": "Garrison Valencia",
+		"sexo": "Femenino",
+		"telefono": 9408861,
+		"fecha_nac": "1956-6-26",
+		"estado": 1
+	},
+	{
+		"dni_enfermero": 20479161,
+		"nombre": "Griffin",
+		"apellido": "Dai Sheppard",
+		"sexo": "Masculino",
+		"telefono": 3738079,
+		"fecha_nac": "2001-12-15",
+		"estado": 1
+	},
+	{
+		"dni_enfermero": 88396721,
+		"nombre": "Porter",
+		"apellido": "Kelsie Larsen",
+		"sexo": "Femenino",
+		"telefono": 8584314,
+		"fecha_nac": "1957-7-8",
+		"estado": 0
+	},
+	{
+		"dni_enfermero": 27081025,
+		"nombre": "Eve",
+		"apellido": "Rana Sherman",
+		"sexo": "Femenino",
+		"telefono": 4469815,
+		"fecha_nac": "1981-12-7",
+		"estado": 0
+	},
+	{
+		"dni_enfermero": 78025393,
+		"nombre": "Rhoda",
+		"apellido": "Theodore Mcpherson",
+		"sexo": "Femenino",
+		"telefono": 3227251,
+		"fecha_nac": "2001-12-8",
+		"estado": 0
+	},
+	{
+		"dni_enfermero": 42865726,
+		"nombre": "Acton",
+		"apellido": "Oleg Cantu",
+		"sexo": "Femenino",
+		"telefono": 877317,
+		"fecha_nac": "1967-4-6",
+		"estado": 1
+	},
+	{
+		"dni_enfermero": 93841374,
+		"nombre": "Rahim",
+		"apellido": "Lyle Cross",
+		"sexo": "Masculino",
+		"telefono": 7837874,
+		"fecha_nac": "1976-1-23",
+		"estado": 1
+	},
+	{
+		"dni_enfermero": 26118066,
+		"nombre": "Steven",
+		"apellido": "Colette Jones",
+		"sexo": "Femenino",
+		"telefono": 7142779,
+		"fecha_nac": "1971-12-5",
+		"estado": 0
+	},
+	{
+		"dni_enfermero": 82359841,
+		"nombre": "Pearl",
+		"apellido": "Gay Meyers",
+		"sexo": "Femenino",
+		"telefono": 8468487,
+		"fecha_nac": "2000-3-15",
+		"estado": 1
+	},
+	{
+		"dni_enfermero": 42204455,
+		"nombre": "Daquan",
+		"apellido": "Sheila Gentry",
+		"sexo": "Masculino",
+		"telefono": 5854325,
+		"fecha_nac": "2001-9-2",
+		"estado": 0
+	},
+	{
+		"dni_enfermero": 74120879,
+		"nombre": "Isaac",
+		"apellido": "Colton Wagner",
+		"sexo": "Femenino",
+		"telefono": 9426743,
+		"fecha_nac": "1982-8-8",
+		"estado": 0
+	},
+	{
+		"dni_enfermero": 56294117,
+		"nombre": "Hanna",
+		"apellido": "Benedict Stewart",
+		"sexo": "Masculino",
+		"telefono": 5046043,
+		"fecha_nac": "2010-2-1",
+		"estado": 1
+	},
+	{
+		"dni_enfermero": 39759950,
+		"nombre": "Daria",
+		"apellido": "Colton Cantrell",
+		"sexo": "Masculino",
+		"telefono": 6750028,
+		"fecha_nac": "1981-5-11",
+		"estado": 1
+	},
+	{
+		"dni_enfermero": 70592330,
+		"nombre": "Nash",
+		"apellido": "Jolene Rogers",
+		"sexo": "Masculino",
+		"telefono": 8607118,
+		"fecha_nac": "2000-12-20",
+		"estado": 0
+	},
+	{
+		"dni_enfermero": 92937187,
+		"nombre": "Irene",
+		"apellido": "Lance Joyner",
+		"sexo": "Masculino",
+		"telefono": 8736750,
+		"fecha_nac": "1990-9-25",
+		"estado": 1
+	},
+	{
+		"dni_enfermero": 32595766,
+		"nombre": "Danielle",
+		"apellido": "Kyle Leach",
+		"sexo": "Femenino",
+		"telefono": 7576773,
+		"fecha_nac": "1964-1-20",
+		"estado": 1
+	},
+	{
+		"dni_enfermero": 84958402,
+		"nombre": "Tanek",
+		"apellido": "Howard Harding",
+		"sexo": "Femenino",
+		"telefono": 6422139,
+		"fecha_nac": "2006-5-14",
+		"estado": 0
+	},
+	{
+		"dni_enfermero": 83031287,
+		"nombre": "Eugenia",
+		"apellido": "Teegan Kim",
+		"sexo": "Femenino",
+		"telefono": 5185666,
+		"fecha_nac": "1986-4-5",
+		"estado": 0
+	},
+	{
+		"dni_enfermero": 91056678,
+		"nombre": "Hedda",
+		"apellido": "Ross Browning",
+		"sexo": "Femenino",
+		"telefono": 1534102,
+		"fecha_nac": "2020-10-20",
+		"estado": 1
+	},
+	{
+		"dni_enfermero": 68950765,
+		"nombre": "Jakeem",
+		"apellido": "Brian Forbes",
+		"sexo": "Masculino",
+		"telefono": 1545256,
+		"fecha_nac": "2012-2-4",
+		"estado": 0
+	},
+	{
+		"dni_enfermero": 81808503,
+		"nombre": "Felix",
+		"apellido": "Ciara Ewing",
+		"sexo": "Masculino",
+		"telefono": 9684486,
+		"fecha_nac": "2017-4-2",
+		"estado": 0
+	}
+]
