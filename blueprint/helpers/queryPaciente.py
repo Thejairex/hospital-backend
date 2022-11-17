@@ -24,7 +24,7 @@ class qPacientes:
     
     # Edita un registro de paciente
     @classmethod
-    def editar_paciente(self, dni, nombre, apellido, fecha_nac, telefono, sexo, fecha_hora_ingreso, fecha_hora_egreso, tipo_sangre):
+    def editar_paciente(self, dni, nombre, apellido, fecha_nac, telefono, sexo, fecha_hora_ingreso, fecha_hora_egreso, tipo_sangre, direccion):
         try:
             cur = mysql.connection.cursor()
             query = """UPDATE paciente SET nombre = '{}',
@@ -34,8 +34,9 @@ class qPacientes:
             sexo = '{}', 
             fecha_hora_ingreso = '{}', 
             fecha_hora_egreso = '{}', 
-            tipo_sangre = '{}' 
-            WHERE dni_paciente = {}""".format( nombre, apellido, fecha_nac, telefono, sexo, fecha_hora_ingreso, fecha_hora_egreso, tipo_sangre,dni)
+            tipo_sangre = '{}',
+            direccion = '{}'
+            WHERE dni_paciente = {}""".format( nombre, apellido, fecha_nac, telefono, sexo, fecha_hora_ingreso, fecha_hora_egreso, tipo_sangre, direccion,dni)
             
             cur.execute(query)
             mysql.connection.commit()
