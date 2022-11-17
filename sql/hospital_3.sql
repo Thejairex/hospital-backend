@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2022 a las 09:10:12
+-- Tiempo de generación: 17-11-2022 a las 09:58:01
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -126,17 +126,48 @@ CREATE TABLE `llamada` (
   `tipo` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `fecha_hora_llamada` datetime NOT NULL DEFAULT current_timestamp(),
   `fecha_hora_atentido` datetime DEFAULT NULL,
-  `origen_llamada` varchar(300) COLLATE utf8_unicode_ci NOT NULL
+  `origen_llamada` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `dni_enfermero` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `llamada`
 --
 
-INSERT INTO `llamada` (`id_llamada`, `dni_paciente`, `tipo`, `fecha_hora_llamada`, `fecha_hora_atentido`, `origen_llamada`) VALUES
-(46, 49583498, 'normal', '2022-11-17 04:28:00', NULL, 'cama'),
-(47, 49583498, 'emergencia', '2022-11-17 04:28:18', NULL, 'cama'),
-(48, 91728332, 'normal', '2022-11-17 04:42:35', NULL, 'cama');
+INSERT INTO `llamada` (`id_llamada`, `dni_paciente`, `tipo`, `fecha_hora_llamada`, `fecha_hora_atentido`, `origen_llamada`, `dni_enfermero`) VALUES
+(1, 10039469, 'Normal', '2022-11-17 05:40:32', NULL, 'Bano', 20479161),
+(2, 11111111, 'Normal', '2022-11-17 05:40:32', NULL, 'Cama', 26118066),
+(3, 11203766, 'Normal', '2022-11-17 05:40:32', NULL, 'Bano', 27081025),
+(4, 12801761, 'Emergencia', '2022-11-17 05:40:32', NULL, 'Cama', 30211954),
+(5, 13876702, 'Emergencia', '2022-11-17 05:40:32', NULL, 'Cama', 32595766),
+(6, 30432182, 'Normal', '2022-11-17 05:40:32', NULL, 'Cama', 39759950),
+(7, 33520329, 'Normal', '2022-11-17 05:40:32', NULL, 'Bano', 42204455),
+(8, 35932430, 'Normal', '2022-11-17 05:40:32', NULL, 'Bano', 42865726),
+(9, 37634415, 'Normal', '2022-11-17 05:40:32', NULL, 'Bano', 53400328),
+(10, 39093614, 'Normal', '2022-11-17 05:40:32', NULL, 'Cama', 56294117),
+(11, 49334864, 'Emergencia', '2022-11-17 05:40:32', NULL, 'Cama', 68950765),
+(12, 49583498, 'Normal', '2022-11-17 05:40:32', NULL, 'Bano', 70592330),
+(13, 59150592, 'Emergencia', '2022-11-17 05:40:32', NULL, 'Bano', 74120879),
+(14, 60454920, 'Emergencia', '2022-11-17 05:40:32', NULL, 'Bano', 77144022),
+(15, 61791624, 'Normal', '2022-11-17 05:40:32', NULL, 'Cama', 78025393),
+(16, 64727944, 'Normal', '2022-11-17 05:40:32', NULL, 'Cama', 81808503),
+(17, 64931056, 'Emergencia', '2022-11-17 05:40:32', NULL, 'Bano', 82359841),
+(18, 12801761, 'normal', '2022-11-17 05:53:49', NULL, 'cama', 27081025),
+(19, 68632848, 'Normal', '2022-11-17 05:40:32', NULL, 'Cama', 84958402),
+(20, 75067520, 'Emergencia', '2022-11-17 05:40:32', NULL, 'Bano', 87579908),
+(21, 77725435, 'Emergencia', '2022-11-17 05:40:32', NULL, 'Cama', 88396721),
+(22, 78648023, 'Emergencia', '2022-11-17 05:40:32', NULL, 'Bano', 91056678),
+(23, 79118870, 'Emergencia', '2022-11-17 05:40:32', NULL, 'Bano', 92937187),
+(24, 79612848, 'Normal', '2022-11-17 05:40:32', NULL, 'Bano', 93841374),
+(25, 80454994, 'Normal', '2022-11-17 05:40:32', NULL, 'Cama', 250583972),
+(49, 12801761, 'normal', '2022-11-17 05:48:04', '0000-00-00 00:00:00', 'cama', 20479161),
+(50, 12801761, 'normal', '2022-11-17 05:48:19', '0000-00-00 00:00:00', 'cama', 20479161),
+(51, 12801761, 'normal', '2022-11-17 05:48:48', '0000-00-00 00:00:00', 'cama', 20479161),
+(52, 12801761, 'normal', '2022-11-17 05:49:12', '0000-00-00 00:00:00', 'cama', 20479161),
+(53, 12801761, 'normal', '2022-11-17 05:51:33', '0000-00-00 00:00:00', 'cama', 20479161),
+(54, 12801761, 'normal', '2022-11-17 05:51:48', '0000-00-00 00:00:00', 'cama', 20479161),
+(55, 12801761, 'normal', '2022-11-17 05:52:40', '0000-00-00 00:00:00', 'cama', 20479161),
+(56, 77725435, 'Emergencia', '2022-11-17 05:53:49', '0000-00-00 00:00:00', 'nodo', 88396721);
 
 -- --------------------------------------------------------
 
@@ -292,9 +323,7 @@ CREATE TABLE `zona_llamada` (
 --
 
 INSERT INTO `zona_llamada` (`id_zona_llamada`, `id_zona`, `id_llamada`) VALUES
-(1, 21, 46),
-(2, 21, 47),
-(3, 12, 48);
+(4, 21, 18);
 
 --
 -- Índices para tablas volcadas
@@ -403,7 +432,7 @@ ALTER TABLE `forma_llamada`
 -- AUTO_INCREMENT de la tabla `llamada`
 --
 ALTER TABLE `llamada`
-  MODIFY `id_llamada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_llamada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT de la tabla `paciente`
@@ -433,7 +462,7 @@ ALTER TABLE `zona`
 -- AUTO_INCREMENT de la tabla `zona_llamada`
 --
 ALTER TABLE `zona_llamada`
-  MODIFY `id_zona_llamada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_zona_llamada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
