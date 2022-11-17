@@ -50,7 +50,7 @@ class qZona:
             query = """SELECT z.*, p.dni_paciente, p.nombre "nombre_paciente",p.apellido "apellido_paciente", e.nombre "nombre_enfermero", e.apellido "apellido_enfermero", l.id_llamada FROM zona  z
 				LEFT JOIN llamada l on z.id_zona = l.id_zona
                 LEFT JOIN enfermero e ON  z.dni_enfermero = e.dni_enfermero
-                LEFT JOIN paciente p ON  l.dni_paciente = p.dni_paciente;"""
+                LEFT JOIN paciente p ON  l.dni_paciente = p.dni_paciente"""
             if len(column) != 0 and len(data) != 0:
                 query = query + ' WHERE '
                 i = 0
