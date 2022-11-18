@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-11-2022 a las 05:51:52
+-- Tiempo de generación: 18-11-2022 a las 11:00:44
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -120,6 +120,40 @@ CREATE TABLE `llamada` (
   `dni_enfermero` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `llamada`
+--
+
+INSERT INTO `llamada` (`id_llamada`, `dni_paciente`, `tipo`, `fecha_hora_llamada`, `fecha_hora_atentido`, `origen_llamada`, `dni_enfermero`) VALUES
+(1, 10039469, 'Normal', '2022-11-18 06:32:56', '2022-11-18 06:43:02', 'Bano', 20479161),
+(2, 11203766, 'Normal', '2022-11-18 06:32:57', '2022-11-18 06:49:34', 'Cama', 26118066),
+(3, 12801761, 'Normal', '2022-11-18 06:32:57', '2022-11-18 06:54:56', 'Bano', 27081025),
+(4, 13876702, 'Emergencia', '2022-11-18 05:20:57', '2022-11-18 05:23:21', 'Cama', 30211954),
+(5, 33520329, 'Emergencia', '2022-11-18 06:32:57', '2022-11-18 06:55:13', 'Cama', 32595766),
+(6, 35932430, 'Normal', '2022-11-18 06:32:57', '2022-11-18 06:53:42', 'Cama', 39759950),
+(7, 37634415, 'Normal', '2022-11-18 06:50:57', '2022-11-18 06:53:56', 'Bano', 42204455),
+(8, 39093614, 'Normal', '2022-11-18 06:22:57', '2022-11-18 06:29:24', 'Bano', 42865726),
+(9, 46124532, 'Normal', '2022-11-18 06:24:57', '2022-11-18 06:26:59', 'Bano', 53400328),
+(10, 49334864, 'Normal', '2022-11-18 06:32:57', '2022-11-18 06:54:55', 'Cama', 56294117),
+(11, 49583498, 'Emergencia', '2022-11-18 06:32:57', '2022-11-18 06:45:24', 'Cama', 68950765),
+(12, 59150592, 'Normal', '2022-11-18 06:53:57', '2022-11-18 07:00:24', 'Bano', 70592330),
+(13, 60454920, 'Emergencia', '2022-11-18 06:32:57', '2022-11-18 06:48:31', 'Bano', 74120879),
+(14, 61791624, 'Emergencia', '2022-11-18 06:24:57', '2022-11-18 06:37:24', 'Bano', 77144022),
+(15, 64727944, 'Normal', '2022-11-18 06:56:57', '2022-11-18 06:59:59', 'Cama', 78025393),
+(16, 64931056, 'Normal', '2022-11-18 06:32:57', NULL, 'Cama', 81808503),
+(17, 68176054, 'Emergencia', '2022-11-18 06:32:57', NULL, 'Bano', 82359841),
+(18, 68632848, 'Emergencia', '2022-11-18 06:32:57', NULL, 'Bano', 83031287),
+(19, 75067520, 'Normal', '2022-11-18 06:32:57', NULL, 'Cama', 84958402),
+(20, 77725435, 'Emergencia', '2022-11-18 06:32:57', NULL, 'Bano', 87579908),
+(21, 78648023, 'Emergencia', '2022-11-18 06:32:57', NULL, 'Cama', 88396721),
+(22, 79118870, 'Emergencia', '2022-11-18 06:32:57', NULL, 'Bano', 91056678),
+(23, 79612848, 'Emergencia', '2022-11-18 06:32:57', NULL, 'Bano', 92937187),
+(24, 80454994, 'Normal', '2022-11-18 06:32:57', NULL, 'Bano', 93841374),
+(25, 86674296, 'Normal', '2022-11-18 06:32:57', NULL, 'Cama', 250583972),
+(63, 49583498, 'normal', '2022-11-18 06:27:14', '2022-11-18 06:30:24', 'cama', 20479161),
+(64, 91728333, 'Emergencia', '2022-11-18 06:28:15', '2022-11-18 06:29:24', 'Cama', 26118066),
+(65, 79118870, 'normal', '2022-11-18 06:30:08', '2022-11-18 06:40:24', 'Bano', 27081025);
+
 -- --------------------------------------------------------
 
 --
@@ -214,6 +248,38 @@ CREATE TABLE `zona` (
   `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `zona`
+--
+
+INSERT INTO `zona` (`id_zona`, `nombre`, `numero`, `id_forma_llamada`, `dni_enfermero`, `dni_paciente`, `descripcion`, `estado`) VALUES
+(1, 'Galvin', 2, 1, 20479161, 10039469, 'Nunc ut erat. Sed', 1),
+(2, 'Patience', 2, 1, 26118066, 11203766, 'arcu imperdiet ullamcorper. Duis at lacus. Quisque purus sapien,', 1),
+(3, 'Keefe', 7, 1, 27081025, 12801761, 'Suspendisse eleifend. Cras sed leo. Cras', 1),
+(4, 'Vladimir', 8, 1, 30211954, 13876702, 'magna nec quam. Curabitur', 1),
+(5, 'Amela', 1, 1, 32595766, 33520329, 'ante lectus convallis est, vitae', 0),
+(6, 'Gareth', 8, 1, 39759950, 35932430, 'augue scelerisque mollis. Phasellus libero', 0),
+(7, 'Todd', 5, 1, 42204455, 37634415, 'aliquam eu, accumsan sed, facilisis vitae, orci. Phasellus dapibus', 0),
+(8, 'Isabella', 8, 1, 42865726, 39093614, 'ridiculus mus. Proin vel nisl. Quisque fringilla euismod', 0),
+(9, 'Yuri', 6, 1, 53400328, 46124532, 'faucibus ut, nulla.', 0),
+(10, 'Ulric', 5, 1, 56294117, 49334864, 'Nulla tempor', 1),
+(11, 'Rose', 9, 1, 68950765, 49583498, 'semper pretium neque. Morbi quis urna. Nunc quis arcu vel', 1),
+(12, 'Edward', 3, 1, 70592330, 59150592, 'Cum sociis natoque penatibus', 0),
+(13, 'Claire', 4, 1, 74120879, 60454920, 'feugiat non, lobortis quis, pede. Suspendisse', 1),
+(14, 'Reuben', 8, 1, 77144022, 61791624, 'vitae semper egestas, urna justo faucibus', 0),
+(15, 'Jameson', 10, 1, 78025393, 64727944, 'Etiam imperdiet', 0),
+(16, 'Hector', 1, 1, 81808503, 64931056, 'risus a ultricies', 1),
+(17, 'Vance', 9, 1, 82359841, 68176054, 'sodales at,', 0),
+(18, 'Hadley', 4, 1, 83031287, 68632848, 'Nullam scelerisque neque sed sem egestas blandit. Nam', 1),
+(19, 'Ursula', 6, 1, 84958402, 75067520, 'magnis dis parturient montes, nascetur', 0),
+(20, 'Mariam', 9, 1, 87579908, 77725435, 'vehicula aliquet libero. Integer in magna. Phasellus dolor elit,', 1),
+(21, 'Abraham', 7, 1, 88396721, 78648023, 'elit, a feugiat tellus lorem eu metus. In lorem.', 1),
+(22, 'Hop', 4, 1, 91056678, 79118870, 'elementum, dui quis', 0),
+(23, 'Todd', 6, 1, 92937187, 79612848, 'nec, diam. Duis mi enim, condimentum', 0),
+(24, 'Kermit', 4, 1, 93841374, 80454994, 'eleifend nec, malesuada ut, sem. Nulla interdum. Curabitur dictum. Phasellus', 0),
+(25, 'Elton', 4, 1, 250583972, 86674296, 'lorem ipsum sodales purus, in molestie tortor nibh sit', 0),
+(168, 'Enfermeria', 1, 1, 20479161, 49583498, 'Zona de descanzo', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -225,6 +291,17 @@ CREATE TABLE `zona_llamada` (
   `id_zona` int(11) NOT NULL,
   `id_llamada` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `zona_llamada`
+--
+
+INSERT INTO `zona_llamada` (`id_zona_llamada`, `id_zona`, `id_llamada`) VALUES
+(5, 1, 1),
+(6, 21, 4),
+(7, 5, 5),
+(8, 18, 7),
+(9, 24, 7);
 
 --
 -- Índices para tablas volcadas
@@ -313,7 +390,7 @@ ALTER TABLE `forma_llamada`
 -- AUTO_INCREMENT de la tabla `llamada`
 --
 ALTER TABLE `llamada`
-  MODIFY `id_llamada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id_llamada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT de la tabla `paciente`
@@ -331,13 +408,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `zona`
 --
 ALTER TABLE `zona`
-  MODIFY `id_zona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
+  MODIFY `id_zona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
 
 --
 -- AUTO_INCREMENT de la tabla `zona_llamada`
 --
 ALTER TABLE `zona_llamada`
-  MODIFY `id_zona_llamada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_zona_llamada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas
