@@ -4,7 +4,7 @@ class qPacientes:
     
     # Insertar un nuevo regristro a la tabla paciente
     @classmethod
-    def insertar_paciente(self, dni, nombre, apellido, fecha_nac, telefono, sexo, fecha_hora_ingreso, fecha_hora_egreso, tipo_sangre, direccion, patologia, alergia):
+    def insertar_paciente(self, dni,nombre, apellido, fecha_nac,sexo, telefono, fecha_hora_ingreso, fecha_hora_egreso, tipo_sangre, direccion, patologia, alergia):
         try:
             cur = mysql.connection.cursor()
             query = """INSERT INTO paciente(`dni_paciente`, `nombre`, `apellido`, `fecha_nac`, `sexo`, `telefono`, `fecha_hora_ingreso`, `fecha_hora_egreso`, `tipo_sangre`, `direccion`,`patologia`,`alergia`) VALUES ({},'{}','{}','{}','{}',{},'{}','{}','{}','{}','{}','{}')

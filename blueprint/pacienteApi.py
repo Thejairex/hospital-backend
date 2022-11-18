@@ -63,7 +63,7 @@ def pacientes():
         patologia = request.json.get('patologia', None)
         alergia = request.json.get('alergia', None)
 
-        return jsonify(qPacientes.insertar_paciente(dni,nombre, apellido, fecha_nac,telefono, sexo, fecha_hora_ingreso, fecha_hora_egreso, tipo_sangre, direccion, patologia, alergia)), 200
+        return jsonify(qPacientes.insertar_paciente(dni,nombre, apellido, fecha_nac, sexo, telefono, fecha_hora_ingreso, fecha_hora_egreso, tipo_sangre, direccion, patologia, alergia)), 200
 
 # Route protected
 @pacienteApi.route('/api/pacientes/<dni>', methods=['POST','GET','DELETE'])
