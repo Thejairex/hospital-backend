@@ -7,7 +7,7 @@ class qPacientes:
     def insertar_paciente(self, dni,nombre, apellido, fecha_nac,sexo, telefono, fecha_hora_ingreso, fecha_hora_egreso, tipo_sangre, direccion, patologia, alergia):
         try:
             cur = mysql.connection.cursor()
-            query = """INSERT INTO paciente(`dni_paciente`, `nombre`, `apellido`, `fecha_nac`, `sexo`, `telefono`, `fecha_hora_ingreso`, `fecha_hora_egreso`, `tipo_sangre`, `direccion`,`patologia`,`alergia`) VALUES ({},'{}','{}','{}','{}',{},'{}','{}','{}','{}','{}','{}')
+            query = """INSERT INTO paciente(`dni_paciente`, `nombre`, `apellido`, `fecha_nac`, `sexo`, `telefono`, `fecha_hora_ingreso`, `fecha_hora_egreso`, `tipo_sangre`, `direccion`,`patologia`,`alergia`) VALUES ({},'{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')
             """.format(dni, nombre, apellido, fecha_nac, sexo, telefono, fecha_hora_ingreso, fecha_hora_egreso, tipo_sangre, direccion, patologia, alergia)
             cur.execute(query)
             
@@ -30,7 +30,7 @@ class qPacientes:
             query = """UPDATE paciente SET nombre = '{}',
             apellido = '{}',
             fecha_nac = '{}',
-            telefono = {},
+            telefono = '{}',
             sexo = '{}', 
             fecha_hora_ingreso = '{}', 
             fecha_hora_egreso = '{}', 
