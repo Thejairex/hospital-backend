@@ -38,7 +38,7 @@ class MyTest(TestCase):
     
     # Testea que todas las tablas existan
     def test_all_tables_success(self):
-        tablas = ['alergias','antecedentes','enfermero','forma_llamada','llamada','paciente','patologia','usuario','zona']
+        tablas = ['antecedentes','enfermero','forma_llamada','llamada','paciente','usuario','zona']
         for tabla in tablas:
             result = query.qAll(tabla)
             assert result == () or len(result) != 0
@@ -197,28 +197,32 @@ class MyTest(TestCase):
         
         dniPaciente = [x[0] for x in query.qPaciente()]
         id_zona = [x[0] for x in query.qZona()]
+        dniEnfermero = [x[0] for x in query.qEnfermero()]
         
         insertar_llamada = self.client.post('/api/llamadas', json ={
-            'dni_paciente': dniPaciente[20],
-            'id_zona': id_zona[20],
+            'dni_paciente': dniPaciente[1],
+            'id_zona': id_zona[-1],
             'tipo': 'Emergencia',
             'fecha_hora_llamada': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             'fecha_hora_atentido': 'null',
-            'origen_llamada': 'nodo'
+            'origen_llamada': 'nodo',
+            'dniEnfermero': dniEnfermero[1]
         })
         
         assert insertar_llamada.status_code == 200
         
-        traer_una_llamada = self.client.get('/api/llamadas/18')
+        traer_una_llamada = self.client.get('/api/llamadas/57')
         assert traer_una_llamada.status_code == 200
         
-        editar_llamada = self.client.post('/api/llamadas/18', json={
+        editar_llamada = self.client.post('/api/llamadas/58', json={
             'dni_paciente': dniPaciente[3],
-            'id_zona': id_zona[2],
+            'id_zona': id_zona[-1],
             'tipo': 'normal',
             'fecha_hora_llamada': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             'fecha_hora_atentido': 'null',
-            'origen_llamada': 'cama'
+            'origen_llamada': 'cama',
+            'dniEnfermero': dniEnfermero[1]
+            
         })
         
         assert editar_llamada.status_code == 200

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-11-2022 a las 06:46:34
+-- Tiempo de generación: 17-11-2022 a las 22:51:20
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -24,28 +24,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `alergias`
---
-
-CREATE TABLE `alergias` (
-  `id_alergia` int(11) NOT NULL,
-  `alergia` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
-  `condicion` int(1) NOT NULL,
-  `dni_paciente` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `antecedentes`
 --
 
 CREATE TABLE `antecedentes` (
   `id_antecedente` int(11) NOT NULL,
-  `antec_personal` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
-  `antec_observacion` text COLLATE utf8_unicode_ci NOT NULL,
-  `dni_paciente` int(11) NOT NULL
+  `dni_paciente` int(11) NOT NULL,
+  `diagnostico` text COLLATE utf8_unicode_ci NOT NULL,
+  `motivo` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `tratamiento` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `medicacion` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `fecha_antec` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `antecedentes`
+--
+
+INSERT INTO `antecedentes` (`id_antecedente`, `dni_paciente`, `diagnostico`, `motivo`, `tratamiento`, `medicacion`, `fecha_antec`) VALUES
+(1, 46124532, 'Bolsas de aire en el Pulmon izquierdo', 'Falta de aire y dolor intenso en los pulmones', 'Operacion necesaria, e internacion prolongada', 'Protector grastico', '2021-07-13'),
+(2, 49583498, 'asdasd', 'asdasd', 'asdasd', 'asdasd', '2021-07-13'),
+(3, 49583498, 'asdasd', 'asdasd', 'asdasdas', 'dasd', '2021-07-13');
 
 -- --------------------------------------------------------
 
@@ -58,40 +57,41 @@ CREATE TABLE `enfermero` (
   `nombre` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
   `apellido` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
   `sexo` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
-  `telefono` int(11) NOT NULL
+  `telefono` int(11) NOT NULL,
+  `fecha_nac` date NOT NULL,
+  `estado` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `enfermero`
 --
 
-INSERT INTO `enfermero` (`dni_enfermero`, `nombre`, `apellido`, `sexo`, `telefono`) VALUES
-(15752301, 'Olympia', 'Donaldson', 'Femenino', 7127848),
-(17645132, 'Carissa', 'Haynes', 'Masculino', 1786791),
-(19681332, 'Jennifer', 'Jacobson', 'Femenino', 1828075),
-(25058397, 'Abbot', 'Rollins', 'Masculino', 2835147),
-(30869558, 'Allen', 'Hampton', 'Femenino', 5446768),
-(31299616, 'Stewart', 'Cook', 'Femenino', 2661898),
-(41917631, 'Felix', 'Kinney', 'Masculino', 6042828),
-(46502872, 'Wing', 'Kirby', 'Masculino', 5482060),
-(50164879, 'Lois', 'Kirkland', 'Masculino', 2433016),
-(54984044, 'Tanek', 'Wyatt', 'Femenino', 3284265),
-(55530097, 'Macaulay', 'Skinner', 'Masculino', 9116851),
-(57122918, 'Charlotte', 'Bradshaw', 'Masculino', 9714271),
-(58117520, 'Rana', 'Gill', 'Femenino', 8612787),
-(58377713, 'Marny', 'Galloway', 'Femenino', 4712104),
-(58451379, 'Moana', 'Walters', 'Femenino', 4988112),
-(68430449, 'Richard', 'Bray', 'Femenino', 3694302),
-(70994638, 'Garth', 'Oliver', 'Femenino', 3866683),
-(71176427, 'Aidan', 'Leach', 'Femenino', 7723088),
-(75941397, 'Giselle', 'Ward', 'Masculino', 3858580),
-(76154950, 'Akeem', 'Espinoza', 'Masculino', 2228964),
-(87246215, 'Hunter', 'Mckay', 'Masculino', 1771145),
-(92813644, 'Madeson', 'Hammond', 'Masculino', 3641054),
-(93767789, 'Nash', 'Wilson', 'Masculino', 8667186),
-(98331588, 'Catherine', 'Wade', 'Femenino', 3245147),
-(98648257, 'Xyla', 'Rivera', 'Masculino', 2872479),
-(250583972, 'Abbotasd', 'Rollinsas', 'Masculino', 2835147);
+INSERT INTO `enfermero` (`dni_enfermero`, `nombre`, `apellido`, `sexo`, `telefono`, `fecha_nac`, `estado`) VALUES
+(20479161, 'Griffin', 'Dai Sheppard', 'Masculino', 3738079, '2001-12-15', 1),
+(26118066, 'Steven', 'Colette Jones', 'Femenino', 7142779, '1971-12-05', 0),
+(27081025, 'Eve', 'Rana Sherman', 'Femenino', 4469815, '1981-12-07', 0),
+(30211954, 'Angelica', 'Garrison Valencia', 'Femenino', 9408861, '1956-06-26', 1),
+(32595766, 'Danielle', 'Kyle Leach', 'Femenino', 7576773, '1964-01-20', 1),
+(39759950, 'Daria', 'Colton Cantrell', 'Masculino', 6750028, '1981-05-11', 1),
+(42204455, 'Daquan', 'Sheila Gentry', 'Masculino', 5854325, '2001-09-02', 0),
+(42865726, 'Acton', 'Oleg Cantu', 'Femenino', 877317, '1967-04-06', 1),
+(53400328, 'Orlando', 'Norman Gaines', 'Masculino', 7553074, '2010-09-27', 0),
+(56294117, 'Hanna', 'Benedict Stewart', 'Masculino', 5046043, '2010-02-01', 1),
+(68950765, 'Jakeem', 'Brian Forbes', 'Masculino', 1545256, '2012-02-04', 0),
+(70592330, 'Nash', 'Jolene Rogers', 'Masculino', 8607118, '2000-12-20', 0),
+(74120879, 'Isaac', 'Colton Wagner', 'Femenino', 9426743, '1982-08-08', 0),
+(77144022, 'Quin', 'Alexa O\'Neill', 'Femenino', 8372714, '1990-08-25', 1),
+(78025393, 'Rhoda', 'Theodore Mcpherson', 'Femenino', 3227251, '2001-12-08', 0),
+(81808503, 'Felix', 'Ciara Ewing', 'Masculino', 9684486, '2017-04-02', 0),
+(82359841, 'Pearl', 'Gay Meyers', 'Femenino', 8468487, '2000-03-15', 1),
+(83031287, 'Eugenia', 'Teegan Kim', 'Femenino', 5185666, '1986-04-05', 0),
+(84958402, 'Tanek', 'Howard Harding', 'Femenino', 6422139, '2006-05-14', 0),
+(87579908, 'George', 'Wyoming Prince', 'Femenino', 4819242, '1992-08-28', 0),
+(88396721, 'Porter', 'Kelsie Larsen', 'Femenino', 8584314, '1957-07-08', 0),
+(91056678, 'Hedda', 'Ross Browning', 'Femenino', 1534102, '2020-10-20', 1),
+(92937187, 'Irene', 'Lance Joyner', 'Masculino', 8736750, '1990-09-25', 1),
+(93841374, 'Rahim', 'Lyle Cross', 'Masculino', 7837874, '1976-01-23', 1),
+(250583972, 'Abbot1', 'Rollins2', 'Masculino', 2835147, '2010-09-27', 0);
 
 -- --------------------------------------------------------
 
@@ -121,42 +121,13 @@ INSERT INTO `forma_llamada` (`id_forma_llamada`, `forma_llamada`, `descripcion`)
 
 CREATE TABLE `llamada` (
   `id_llamada` int(11) NOT NULL,
-  `tipo` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `dni_paciente` int(11) NOT NULL,
+  `tipo` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `fecha_hora_llamada` datetime NOT NULL DEFAULT current_timestamp(),
   `fecha_hora_atentido` datetime DEFAULT NULL,
-  `origen_llamada` varchar(300) COLLATE utf8_unicode_ci NOT NULL
+  `origen_llamada` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `dni_enfermero` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `llamada`
---
-
-INSERT INTO `llamada` (`id_llamada`, `tipo`, `fecha_hora_llamada`, `fecha_hora_atentido`, `origen_llamada`) VALUES
-(1, 'Normal', '2022-11-16 02:20:41', NULL, 'Bano'),
-(2, 'Normal', '2022-11-16 02:20:41', NULL, 'Cama'),
-(3, 'Normal', '2022-11-16 02:20:41', NULL, 'Bano'),
-(4, 'Emergencia', '2022-11-16 02:20:41', NULL, 'Cama'),
-(5, 'Emergencia', '2022-11-16 02:20:41', NULL, 'Cama'),
-(6, 'Normal', '2022-11-16 02:20:41', NULL, 'Cama'),
-(7, 'Normal', '2022-11-16 02:20:41', NULL, 'Bano'),
-(8, 'Normal', '2022-11-16 02:20:41', NULL, 'Bano'),
-(9, 'Normal', '2022-11-16 02:20:41', NULL, 'Bano'),
-(10, 'Normal', '2022-11-16 02:20:41', NULL, 'Cama'),
-(11, 'Emergencia', '2022-11-16 02:20:41', NULL, 'Cama'),
-(12, 'Normal', '2022-11-16 02:20:41', NULL, 'Bano'),
-(13, 'Emergencia', '2022-11-16 02:20:41', NULL, 'Bano'),
-(14, 'Emergencia', '2022-11-16 02:20:41', NULL, 'Bano'),
-(15, 'Normal', '2022-11-16 02:20:41', NULL, 'Cama'),
-(16, 'Normal', '2022-11-16 02:20:41', NULL, 'Cama'),
-(17, 'Emergencia', '2022-11-16 02:20:41', NULL, 'Bano'),
-(18, 'Emergencia', '2022-11-16 02:20:41', NULL, 'Bano'),
-(19, 'Normal', '2022-11-16 02:20:41', NULL, 'Cama'),
-(20, 'Emergencia', '2022-11-16 02:20:41', NULL, 'Bano'),
-(21, 'Emergencia', '2022-11-16 02:20:41', NULL, 'Cama'),
-(22, 'Emergencia', '2022-11-16 02:20:41', NULL, 'Bano'),
-(23, 'Emergencia', '2022-11-16 02:20:41', NULL, 'Bano'),
-(24, 'Normal', '2022-11-16 02:20:41', NULL, 'Bano'),
-(25, 'Normal', '2022-11-16 02:20:41', NULL, 'Cama');
 
 -- --------------------------------------------------------
 
@@ -174,52 +145,42 @@ CREATE TABLE `paciente` (
   `fecha_hora_ingreso` datetime DEFAULT current_timestamp(),
   `fecha_hora_egreso` datetime DEFAULT NULL,
   `tipo_sangre` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
-  `direccion` varchar(300) COLLATE utf8_unicode_ci NOT NULL
+  `direccion` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `patologia` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `alergia` text COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `paciente`
 --
 
-INSERT INTO `paciente` (`dni_paciente`, `nombre`, `apellido`, `fecha_nac`, `sexo`, `telefono`, `fecha_hora_ingreso`, `fecha_hora_egreso`, `tipo_sangre`, `direccion`) VALUES
-(10039469, 'Zelda', 'Gillespie', '1997-01-27', 'Masculino', 5861242, '2022-11-16 02:06:40', NULL, 'B', '264-579 Ornare Road'),
-(11203766, 'Patrick', 'Foreman', '1975-09-22', 'Femenino', 8562386, '2022-11-16 02:06:40', NULL, 'AB', '3674 Iaculis Ave'),
-(12801761, 'Noble', 'Murphy', '1956-03-20', 'Femenino', 5714818, '2022-11-16 02:06:40', NULL, 'AB', '545-4831 Aliquam Av.'),
-(13876702, 'Kuame', 'Austin', '2006-11-06', 'Femenino', 2818151, '2022-11-16 02:06:40', NULL, 'O', '907-5226 Nunc Ave'),
-(33520329, 'Dora', 'Sherman', '2015-04-25', 'Masculino', 370846, '2022-11-16 02:06:40', NULL, 'B', 'Ap #895-3782 Velit. Rd.'),
-(35932430, 'Dana', 'Rodriguez', '2005-02-08', 'Masculino', 7289811, '2022-11-16 02:06:40', NULL, 'AB', 'Ap #995-7814 Vel Road'),
-(37634415, 'Knox', 'Gomez', '2015-09-16', 'Masculino', 9850365, '2022-11-16 02:06:40', NULL, 'AB', '1785 Felis. St.'),
-(39093614, 'Dara', 'Cobb', '1994-06-03', 'Femenino', 5645748, '2022-11-16 02:06:40', NULL, 'AB', 'Ap #260-3428 Laoreet St.'),
-(49334864, 'Oleg', 'Hensley', '2001-11-03', 'Masculino', 4171197, '2022-11-16 02:06:40', NULL, 'A', '446-5162 Proin Av.'),
-(49583498, 'Alfonso', 'Hess', '1968-05-27', 'Masculino', 8456295, '2022-11-16 02:06:40', NULL, 'AB', '580-8215 Interdum Road'),
-(59150592, 'Oleg', 'Burton', '1955-06-06', 'Femenino', 6595261, '2022-11-16 02:06:40', NULL, 'B', '6981 A Ave'),
-(60454920, 'Hayes', 'Wilson', '1965-05-10', 'Femenino', 7855747, '2022-11-16 02:06:40', NULL, 'AB', '248-7219 Convallis St.'),
-(61791624, 'Cedric', 'Duran', '2004-11-27', 'Femenino', 9541209, '2022-11-16 02:06:40', NULL, 'O', '432-4786 Vehicula Rd.'),
-(64727944, 'Sydnee', 'Patrick', '2016-01-06', 'Femenino', 347371, '2022-11-16 02:06:40', NULL, 'A', '983-411 Mauris St.'),
-(64931056, 'Keith', 'Zimmerman', '2002-09-23', 'Femenino', 1685498, '2022-11-16 02:06:40', NULL, 'B', '3147 Duis St.'),
-(68176054, 'Claire', 'Ingram', '1995-05-04', 'Femenino', 7684427, '2022-11-16 02:06:40', NULL, 'AB', '736-8699 Adipiscing. Ave'),
-(68632848, 'Christen', 'Reeves', '1986-07-03', 'Masculino', 3624618, '2022-11-16 02:06:40', NULL, 'B', 'P.O. Box 294, 8977 Suspendisse Rd.'),
-(75067520, 'Phoebe', 'Sullivan', '1974-05-17', 'Femenino', 9161815, '2022-11-16 02:06:40', NULL, 'O', 'P.O. Box 862, 5127 Curae Av.'),
-(77725435, 'Xavier', 'Ellison', '2009-11-16', 'Femenino', 1173478, '2022-11-16 02:06:40', NULL, 'O', '134-4221 Aliquet Road'),
-(78648023, 'Georgia', 'Melton', '1985-11-13', 'Masculino', 6937891, '2022-11-16 02:06:40', NULL, 'AB', 'Ap #695-9573 Facilisis. St.'),
-(79118870, 'Ava', 'Owen', '2003-04-02', 'Femenino', 6667862, '2022-11-16 02:06:40', NULL, 'AB', '446-5354 Sed Rd.'),
-(79612848, 'Sean', 'Key', '2007-01-04', 'Masculino', 7176614, '2022-11-16 02:06:40', NULL, 'A', '497-8331 Ut Rd.'),
-(80454994, 'Dawn', 'Ross', '1999-07-15', 'Masculino', 2026531, '2022-11-16 02:06:40', NULL, 'A', '143-6060 A St.'),
-(86674296, 'Indira', 'Riggs', '2002-10-31', 'Masculino', 8088660, '2022-11-16 02:06:40', NULL, 'B', 'P.O. Box 194, 7714 Adipiscing St.'),
-(91728332, 'Carol', 'Dyer', '1963-11-11', 'Femenino', 5495841, '2022-11-16 02:06:40', NULL, 'O', '684-4721 Rutrum Ave');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `patologia`
---
-
-CREATE TABLE `patologia` (
-  `id_patologia` int(11) NOT NULL,
-  `patologia` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
-  `condicion` int(11) NOT NULL,
-  `dni_paciente` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+INSERT INTO `paciente` (`dni_paciente`, `nombre`, `apellido`, `fecha_nac`, `sexo`, `telefono`, `fecha_hora_ingreso`, `fecha_hora_egreso`, `tipo_sangre`, `direccion`, `patologia`, `alergia`) VALUES
+(10039469, 'Zelda', 'Gillespie', '1997-01-27', 'Masculino', 5861242, '2022-11-17 17:54:48', NULL, 'B', '264-579 Ornare Road', NULL, NULL),
+(11203766, 'Patrick', 'Foreman', '1975-09-22', 'Femenino', 8562386, '2022-11-17 17:54:48', NULL, 'AB', '3674 Iaculis Ave', NULL, NULL),
+(12801761, 'Noble', 'Murphy', '1956-03-20', 'Femenino', 5714818, '2022-11-17 17:54:48', NULL, 'AB', '545-4831 Aliquam Av.', NULL, NULL),
+(13876702, 'Kuame', 'Austin', '2006-11-06', 'Femenino', 2818151, '2022-11-17 17:54:48', NULL, 'O', '907-5226 Nunc Ave', NULL, NULL),
+(33520329, 'Dora', 'Sherman', '2015-04-25', 'Masculino', 370846, '2022-11-17 17:54:48', NULL, 'B', 'Ap #895-3782 Velit. Rd.', NULL, NULL),
+(35932430, 'Dana', 'Rodriguez', '2005-02-08', 'Masculino', 7289811, '2022-11-17 17:54:48', NULL, 'AB', 'Ap #995-7814 Vel Road', NULL, NULL),
+(37634415, 'Knox', 'Gomez', '2015-09-16', 'Masculino', 9850365, '2022-11-17 17:54:48', NULL, 'AB', '1785 Felis. St.', NULL, NULL),
+(39093614, 'Dara', 'Cobb', '1994-06-03', 'Femenino', 5645748, '2022-11-17 17:54:48', NULL, 'AB', 'Ap #260-3428 Laoreet St.', NULL, NULL),
+(46124532, 'Francisco Efrain', 'Romano Guardia', '2003-01-04', 'Masculina', 7725110, '2022-11-17 17:59:08', NULL, 'AB', 'San vicente 123', 'Asma', 'Polen'),
+(49334864, 'Oleg', 'Hensley', '2001-11-03', 'Masculino', 4171197, '2022-11-17 17:54:48', NULL, 'A', '446-5162 Proin Av.', NULL, NULL),
+(49583498, 'Alfonso', 'Hess', '1968-05-27', 'Masculino', 8456295, '2022-11-17 17:54:48', NULL, 'AB', '580-8215 Interdum Road', NULL, NULL),
+(59150592, 'Oleg', 'Burton', '1955-06-06', 'Femenino', 6595261, '2022-11-17 17:54:48', NULL, 'B', '6981 A Ave', NULL, NULL),
+(60454920, 'Hayes', 'Wilson', '1965-05-10', 'Femenino', 7855747, '2022-11-17 17:54:48', NULL, 'AB', '248-7219 Convallis St.', NULL, NULL),
+(61791624, 'Cedric', 'Duran', '2004-11-27', 'Femenino', 9541209, '2022-11-17 17:54:48', NULL, 'O', '432-4786 Vehicula Rd.', NULL, NULL),
+(64727944, 'Sydnee', 'Patrick', '2016-01-06', 'Femenino', 347371, '2022-11-17 17:54:48', NULL, 'A', '983-411 Mauris St.', NULL, NULL),
+(64931056, 'Keith', 'Zimmerman', '2002-09-23', 'Femenino', 1685498, '2022-11-17 17:54:48', NULL, 'B', '3147 Duis St.', NULL, NULL),
+(68176054, 'Claire', 'Ingram', '1995-05-04', 'Femenino', 7684427, '2022-11-17 17:54:48', NULL, 'AB', '736-8699 Adipiscing. Ave', NULL, NULL),
+(68632848, 'Christen', 'Reeves', '1986-07-03', 'Masculino', 3624618, '2022-11-17 17:54:48', NULL, 'B', 'P.O. Box 294, 8977 Suspendisse Rd.', NULL, NULL),
+(75067520, 'Phoebe', 'Sullivan', '1974-05-17', 'Femenino', 9161815, '2022-11-17 17:54:48', NULL, 'O', 'P.O. Box 862, 5127 Curae Av.', NULL, NULL),
+(77725435, 'Xavier', 'Ellison', '2009-11-16', 'Femenino', 1173478, '2022-11-17 17:54:48', NULL, 'O', '134-4221 Aliquet Road', NULL, NULL),
+(78648023, 'Georgia', 'Melton', '1985-11-13', 'Masculino', 6937891, '2022-11-17 17:54:48', NULL, 'AB', 'Ap #695-9573 Facilisis. St.', NULL, NULL),
+(79118870, 'Ava', 'Owen', '2003-04-02', 'Femenino', 6667862, '2022-11-17 17:54:48', NULL, 'AB', '446-5354 Sed Rd.', NULL, NULL),
+(79612848, 'Sean', 'Key', '2007-01-04', 'Masculino', 7176614, '2022-11-17 17:54:48', NULL, 'A', '497-8331 Ut Rd.', NULL, NULL),
+(80454994, 'Dawn', 'Ross', '1999-07-15', 'Masculino', 2026531, '2022-11-17 17:54:48', NULL, 'A', '143-6060 A St.', NULL, NULL),
+(86674296, 'Indira', 'Riggs', '2002-10-31', 'Masculino', 8088660, '2022-11-17 17:54:48', NULL, 'B', 'P.O. Box 194, 7714 Adipiscing St.', NULL, NULL),
+(91728332, 'Carol', 'Dyer', '1963-11-11', 'Femenino', 5495841, '2022-11-17 17:54:48', NULL, 'O', '684-4721 Rutrum Ave', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -242,7 +203,7 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`id_usuario`, `usuario`, `contrasena`, `email`, `rol`) VALUES
 (1, 'pete', '932f3c1b56257ce8539ac269d7aab42550dacf8818d075f0bdf1990562aae3ef', 'pete@gmail.com', 1),
 (2, 'jair', '932f3c1b56257ce8539ac269d7aab42550dacf8818d075f0bdf1990562aae3ef', 'jair@gmail.com', 0),
-(4, 'TikkiX2', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'efrainrg@gmail.com', 0);
+(4, 'TikkiX2', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'efrainrg@gmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -255,53 +216,27 @@ CREATE TABLE `zona` (
   `nombre` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
   `numero` int(11) NOT NULL,
   `id_forma_llamada` int(11) NOT NULL,
-  `dni_paciente` int(11) NOT NULL,
   `dni_enfermero` int(11) NOT NULL,
-  `id_llamada` int(11) NOT NULL,
-  `descripcion` text COLLATE utf8_unicode_ci NOT NULL
+  `dni_paciente` int(11) NOT NULL,
+  `descripcion` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `zona`
+-- Estructura de tabla para la tabla `zona_llamada`
 --
 
-INSERT INTO `zona` (`id_zona`, `nombre`, `numero`, `id_forma_llamada`, `dni_paciente`, `dni_enfermero`, `id_llamada`, `descripcion`) VALUES
-(1, 'Summer', 7, 2, 10039469, 15752301, 1, 'et malesuada fames ac turpis egestas. Aliquam fringilla cursus purus.'),
-(2, 'Yuli', 6, 2, 11203766, 17645132, 2, 'et, eros. Proin ultrices. Duis volutpat nunc sit amet metus.'),
-(3, 'Kevin', 0, 2, 12801761, 19681332, 3, 'Mauris blandit enim consequat purus. Maecenas libero est, congue a,'),
-(4, 'Karyn', 9, 1, 13876702, 25058397, 4, 'mauris sagittis placerat. Cras dictum ultricies ligula. Nullam enim. Sed'),
-(5, 'Elliott', 5, 2, 33520329, 30869558, 5, 'vestibulum lorem, sit amet ultricies sem magna nec quam. Curabitur'),
-(6, 'Geoffrey', 4, 2, 35932430, 31299616, 6, 'ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci'),
-(7, 'Alea', 5, 2, 37634415, 41917631, 7, 'tempus non, lacinia at, iaculis quis, pede. Praesent eu dui.'),
-(8, 'Coby', 5, 2, 39093614, 46502872, 8, 'Nulla tempor augue ac ipsum. Phasellus vitae mauris sit amet'),
-(9, 'Ashton', 4, 1, 49334864, 50164879, 9, 'odio. Nam interdum enim non nisi. Aenean eget metus. In'),
-(10, 'Fletcher', 7, 1, 49583498, 54984044, 10, 'quis diam. Pellentesque habitant morbi tristique senectus et netus et'),
-(11, 'Christine', 5, 2, 59150592, 55530097, 11, 'parturient montes, nascetur ridiculus mus. Proin vel nisl. Quisque fringilla'),
-(12, 'Shafira', 3, 1, 60454920, 57122918, 12, 'amet risus. Donec egestas. Aliquam nec enim. Nunc ut erat.'),
-(13, 'Calista', 9, 1, 61791624, 58117520, 13, 'facilisis non, bibendum sed, est. Nunc laoreet lectus quis massa.'),
-(14, 'Paki', 4, 2, 64727944, 58377713, 14, 'non lorem vitae odio sagittis semper. Nam tempor diam dictum'),
-(15, 'Drew', 9, 1, 64931056, 58451379, 15, 'In tincidunt congue turpis. In condimentum. Donec at arcu. Vestibulum'),
-(16, 'Ulric', 7, 2, 68176054, 68430449, 16, 'Suspendisse commodo tincidunt nibh. Phasellus nulla. Integer vulputate, risus a'),
-(17, 'Autumn', 3, 2, 68632848, 70994638, 17, 'enim. Sed nulla ante, iaculis nec, eleifend non, dapibus rutrum,'),
-(18, 'Susan', 4, 2, 75067520, 71176427, 18, 'consequat enim diam vel arcu. Curabitur ut odio vel est'),
-(19, 'Reed', 9, 2, 77725435, 75941397, 19, 'Donec vitae erat vel pede blandit congue. In scelerisque scelerisque'),
-(20, 'Travis', 6, 2, 78648023, 76154950, 20, 'mollis non, cursus non, egestas a, dui. Cras pellentesque. Sed'),
-(21, 'Hillary', 3, 1, 79118870, 87246215, 21, 'ante ipsum primis in faucibus orci luctus et ultrices posuere'),
-(22, 'Hanae', 7, 2, 79612848, 92813644, 22, 'mattis. Integer eu lacus. Quisque imperdiet, erat nonummy ultricies ornare,'),
-(23, 'Nehru', 7, 1, 80454994, 93767789, 23, 'odio a purus. Duis elementum, dui quis accumsan convallis, ante'),
-(24, 'Elvis', 1, 2, 86674296, 98331588, 24, 'tellus justo sit amet nulla. Donec non justo. Proin non'),
-(25, 'Quail', 1, 1, 91728332, 98648257, 25, 'Aenean gravida nunc sed pede. Cum sociis natoque penatibus et');
+CREATE TABLE `zona_llamada` (
+  `id_zona_llamada` int(11) NOT NULL,
+  `id_zona` int(11) NOT NULL,
+  `id_llamada` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `alergias`
---
-ALTER TABLE `alergias`
-  ADD PRIMARY KEY (`id_alergia`),
-  ADD KEY `dni_paciente` (`dni_paciente`);
 
 --
 -- Indices de la tabla `antecedentes`
@@ -326,20 +261,14 @@ ALTER TABLE `forma_llamada`
 -- Indices de la tabla `llamada`
 --
 ALTER TABLE `llamada`
-  ADD PRIMARY KEY (`id_llamada`);
+  ADD PRIMARY KEY (`id_llamada`),
+  ADD KEY `id_paciente` (`dni_paciente`);
 
 --
 -- Indices de la tabla `paciente`
 --
 ALTER TABLE `paciente`
   ADD PRIMARY KEY (`dni_paciente`);
-
---
--- Indices de la tabla `patologia`
---
-ALTER TABLE `patologia`
-  ADD PRIMARY KEY (`id_patologia`),
-  ADD KEY `dni_paciente` (`dni_paciente`);
 
 --
 -- Indices de la tabla `usuario`
@@ -355,8 +284,15 @@ ALTER TABLE `usuario`
 ALTER TABLE `zona`
   ADD PRIMARY KEY (`id_zona`),
   ADD KEY `id_forma_llamada` (`id_forma_llamada`),
-  ADD KEY `dni_paciente` (`dni_paciente`),
   ADD KEY `dni_enfermero` (`dni_enfermero`),
+  ADD KEY `dni_paciente` (`dni_paciente`);
+
+--
+-- Indices de la tabla `zona_llamada`
+--
+ALTER TABLE `zona_llamada`
+  ADD PRIMARY KEY (`id_zona_llamada`),
+  ADD KEY `id_zona` (`id_zona`),
   ADD KEY `id_llamada` (`id_llamada`);
 
 --
@@ -364,16 +300,10 @@ ALTER TABLE `zona`
 --
 
 --
--- AUTO_INCREMENT de la tabla `alergias`
---
-ALTER TABLE `alergias`
-  MODIFY `id_alergia` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `antecedentes`
 --
 ALTER TABLE `antecedentes`
-  MODIFY `id_antecedente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_antecedente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `enfermero`
@@ -391,19 +321,13 @@ ALTER TABLE `forma_llamada`
 -- AUTO_INCREMENT de la tabla `llamada`
 --
 ALTER TABLE `llamada`
-  MODIFY `id_llamada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_llamada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
   MODIFY `dni_paciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98996538;
-
---
--- AUTO_INCREMENT de la tabla `patologia`
---
-ALTER TABLE `patologia`
-  MODIFY `id_patologia` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -415,17 +339,17 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `zona`
 --
 ALTER TABLE `zona`
-  MODIFY `id_zona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+  MODIFY `id_zona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
+
+--
+-- AUTO_INCREMENT de la tabla `zona_llamada`
+--
+ALTER TABLE `zona_llamada`
+  MODIFY `id_zona_llamada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `alergias`
---
-ALTER TABLE `alergias`
-  ADD CONSTRAINT `alergias_ibfk_1` FOREIGN KEY (`dni_paciente`) REFERENCES `paciente` (`dni_paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `antecedentes`
@@ -434,19 +358,25 @@ ALTER TABLE `antecedentes`
   ADD CONSTRAINT `antecedentes_ibfk_1` FOREIGN KEY (`dni_paciente`) REFERENCES `paciente` (`dni_paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `patologia`
+-- Filtros para la tabla `llamada`
 --
-ALTER TABLE `patologia`
-  ADD CONSTRAINT `patologia_ibfk_1` FOREIGN KEY (`dni_paciente`) REFERENCES `paciente` (`dni_paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `llamada`
+  ADD CONSTRAINT `llamada_ibfk_1` FOREIGN KEY (`dni_paciente`) REFERENCES `paciente` (`dni_paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `zona`
 --
 ALTER TABLE `zona`
-  ADD CONSTRAINT `zona_ibfk_1` FOREIGN KEY (`dni_paciente`) REFERENCES `paciente` (`dni_paciente`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `zona_ibfk_2` FOREIGN KEY (`dni_enfermero`) REFERENCES `enfermero` (`dni_enfermero`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `zona_ibfk_3` FOREIGN KEY (`id_forma_llamada`) REFERENCES `forma_llamada` (`id_forma_llamada`),
-  ADD CONSTRAINT `zona_ibfk_4` FOREIGN KEY (`id_llamada`) REFERENCES `llamada` (`id_llamada`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `zona_ibfk_5` FOREIGN KEY (`id_forma_llamada`) REFERENCES `forma_llamada` (`id_forma_llamada`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `zona_ibfk_6` FOREIGN KEY (`dni_paciente`) REFERENCES `paciente` (`dni_paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `zona_llamada`
+--
+ALTER TABLE `zona_llamada`
+  ADD CONSTRAINT `zona_llamada_ibfk_1` FOREIGN KEY (`id_zona`) REFERENCES `zona` (`id_zona`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `zona_llamada_ibfk_2` FOREIGN KEY (`id_llamada`) REFERENCES `llamada` (`id_llamada`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

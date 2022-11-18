@@ -112,7 +112,7 @@ class qPacientes:
                         'motivo': y[3],
                         'tratamiento': y[4],
                         'medicacion': y[5],
-                        'fecha_nac': y[6]
+                        'fecha': y[6]
                         
                     }
             else: 
@@ -130,7 +130,7 @@ class qPacientes:
                     'motivo': y[3],
                     'tratamiento': y[4],
                     'medicacion': y[5],
-                    'fecha_nac': y[6]
+                    'fecha': y[6]
                     
                 }
         
