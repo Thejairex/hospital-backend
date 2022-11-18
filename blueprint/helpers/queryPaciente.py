@@ -141,7 +141,11 @@ class qPacientes:
             cur.execute(query)
             x = cur.fetchall()
             
-            result = map(fun, x)
-            return list(result)
+            if len(x) != 0:
+                result = map(fun, x)
+                return list(result)
+            
+            else:
+                return None
         except Exception as e:
             raise e

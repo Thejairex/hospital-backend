@@ -74,7 +74,7 @@ def zona(dni):
                 'direccion': data[9],
                 'patologia': data[10],
                 'alergia': data[11],
-                'ultimo_antec': qPacientes.traer_antecedentes(data[0]),
+                'ultimo_antec': qPacientes.traer_sus_antecedentes(data[0]),
                 }), 200
         else:
             return jsonify({
