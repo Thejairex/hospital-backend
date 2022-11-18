@@ -20,7 +20,7 @@ class qZona:
     def editar_zona(self,id, nombre, numero, id_forma_llamada, dni_enfermero, dni_paciente,descripcion, estado):
         try:
             cur = mysql.connection.cursor()
-            query = "UPDATE zona SET nombre = '{}', numero = {}, id_forma_llamada = {}, dni_enfermero = {}, dni_paciente = {}, descripcion = '{}', estado = {}  WHERE id_zona = {}".format(id, nombre, numero, id_forma_llamada, dni_enfermero, dni_paciente,descripcion, estado)
+            query = "UPDATE zona SET nombre = '{}', numero = {}, id_forma_llamada = {}, dni_enfermero = {}, dni_paciente = {}, descripcion = '{}', estado = {}  WHERE id_zona = {}".format( nombre, numero, id_forma_llamada, dni_enfermero, dni_paciente,descripcion, estado, id)
             
             cur.execute(query)
             mysql.connection.commit()
