@@ -121,12 +121,12 @@ def logout():
 def usuarios():
     usuarios = qUser.traer_usuarios()
     jsonUsuario = []
-    for data in jsonUsuario:
+    for data in usuarios:
             jsonUsuario.append({
-                'id_usuario': data[0],
-                'usuario': data[1],
+                'id_user': data[0],
+                'username': data[1],
                 'email': data[3],
-                'rol': data[4]
+                'role': data[4]
             })
     return jsonify(jsonUsuario)
 
@@ -137,10 +137,10 @@ def usuario(id):
         usuario = qUser.traer_un_usuarios(id)
         if usuario != (None or ()):
             return jsonify({
-                'id_usuario': usuario[0],
-                    'usuario': usuario[1],
-                    'email': usuario[3],
-                    'rol': usuario[4]
+                'id_user': usuario[0],
+                'username': usuario[1],
+                'email': usuario[3],
+                'role': usuario[4]
             })
         
         else:
