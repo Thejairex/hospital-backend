@@ -50,8 +50,10 @@ def pacientes():
         fecha_hora_egreso = request.json.get('fecha_hora_egreso', None)
         tipo_sangre = request.json.get('tipo_sangre', None)
         direccion = request.json.get('direccion', None)
-        
-        return jsonify(qPacientes.insertar_paciente(dni,nombre, apellido, fecha_nac,telefono, sexo, fecha_hora_ingreso, fecha_hora_egreso, tipo_sangre, direccion)), 200
+        patologia = request.json.get('patologia', None)
+        alergia = request.json.get('alergia', None)
+
+        return jsonify(qPacientes.insertar_paciente(dni,nombre, apellido, fecha_nac,telefono, sexo, fecha_hora_ingreso, fecha_hora_egreso, tipo_sangre, direccion, patologia, alergia)), 200
 
 @pacienteApi.route('/api/pacientes/<dni>', methods=['POST','GET','DELETE'])
 @jwt_required(locations=['cookies','headers'])
@@ -92,8 +94,10 @@ def zona(dni):
             fecha_hora_egreso = request.json.get('fecha_hora_egreso', None)
             tipo_sangre = request.json.get('tipo_sangre', None)
             direccion = request.json.get('direccion', None)
+            patologia = request.json.get('patologia', None)
+            alergia = request.json.get('alergia', None)
             
-            return jsonify(qPacientes.editar_paciente(dni, nombre, apellido, fecha_nac, telefono, sexo, fecha_hora_ingreso, fecha_hora_egreso, tipo_sangre, direccion)), 200
+            return jsonify(qPacientes.editar_paciente(dni, nombre, apellido, fecha_nac, telefono, sexo, fecha_hora_ingreso, fecha_hora_egreso, tipo_sangre, direccion, patologia, alergia)), 200
         
         if request.method == 'DELETE':
             return jsonify(qPacientes.borrar_paciente(dni)), 200
