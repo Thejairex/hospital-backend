@@ -2,7 +2,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, Blueprint, jsonify
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, set_access_cookies, unset_jwt_cookies, verify_jwt_in_request
 import hashlib
-
+from datetime import datetime, timedelta
 # Import blueprint
 from init import jwt
 from blueprint.helpers.queryLogin import qUser
@@ -31,7 +31,7 @@ def login():
                 'username': userData[1],
                 'email': userData[3],
                 'role': roleTempo[userData[4]]
-                })
+                }, expires_delta=datetime.now() + timedelta(days=1))
 
                 response = jsonify({
                         'accessToken': access_token,
