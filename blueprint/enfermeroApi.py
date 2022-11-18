@@ -12,6 +12,7 @@ enfermeroApi = Blueprint('enfermeroApi', __name__, template_folder='app/template
 
 # Route general
 @enfermeroApi.route('/api/enfermeros', methods = ['GET','POST'])
+@jwt_required(locations=['cookies','headers'])
 def emfermeros():
     
     # Fetch all enfermeros
@@ -39,17 +40,21 @@ def emfermeros():
             
         return jsonify(jsonEnfermero), 200
     
-    # Insert new enfermero
-    if request.method == 'POST':
-        dni = request.json.get('dni_enfermero',None)
-        nombre = request.json.get('nombre', None)
-        apellido = request.json.get('apellido', None)
-        sexo = request.json.get('sexo', None)
-        telefono = request.json.get('telefono', None)
-        fecha_nac = request.json.get('fecha_nac', None)
-        estado = request.json.get('estado', None)
-        
-        return jsonify(qEnfermero.insertar_enfermero(dni,nombre, apellido,sexo, telefono,fecha_nac,estado)), 200
+    if get_jwt_identity()['role'] == 'administrador':
+        # Insert new enfermero
+        if request.method == 'POST':
+            dni = request.json.get('dni_enfermero',None)
+            nombre = request.json.get('nombre', None)
+            apellido = request.json.get('apellido', None)
+            sexo = request.json.get('sexo', None)
+            telefono = request.json.get('telefono', None)
+            fecha_nac = request.json.get('fecha_nac', None)
+            estado = request.json.get('estado', None)
+            
+            return jsonify(qEnfermero.insertar_enfermero(dni,nombre, apellido,sexo, telefono,fecha_nac,estado)), 200
+    
+    else:
+        return jsonify({'msg': 'No autorizado'}), 403
 
 # Route protected
 @enfermeroApi.route('/api/enfermeros/<dni>', methods=['POST','GET','DELETE'])
@@ -74,21 +79,22 @@ def emfermero(dni):
                 'msg': 'Not Found'
             }) ,404
             
+    
+    # Edit one efermero
+    if request.method == 'POST':
+        dni = dni
+        nombre = request.json.get('nombre', None)
+        apellido = request.json.get('apellido', None)
+        sexo = request.json.get('sexo', None)
+        telefono = request.json.get('telefono', None)
+        fecha_nac = request.json.get('fecha_nac', None)
+        estado = request.json.get('estado', None)
+        
+        return jsonify(qEnfermero.editar_enfermero(dni,nombre, apellido,sexo, telefono, fecha_nac, estado)), 200
+
     # Verifies the role is Administrador
     if get_jwt_identity()['role'] == 'administrador':
         
-        # Edit one efermero
-        if request.method == 'POST':
-            dni = dni
-            nombre = request.json.get('nombre', None)
-            apellido = request.json.get('apellido', None)
-            sexo = request.json.get('sexo', None)
-            telefono = request.json.get('telefono', None)
-            fecha_nac = request.json.get('fecha_nac', None)
-            estado = request.json.get('estado', None)
-            
-            return jsonify(qEnfermero.editar_enfermero(dni,nombre, apellido,sexo, telefono, fecha_nac, estado)), 200
-            
         if request.method == 'DELETE':
             return jsonify(qEnfermero.borrar_enfermero(dni)), 200
         

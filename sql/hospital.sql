@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2022 a las 22:51:20
+-- Tiempo de generación: 18-11-2022 a las 05:51:52
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -29,22 +29,13 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `antecedentes` (
   `id_antecedente` int(11) NOT NULL,
-  `dni_paciente` int(11) NOT NULL,
+  `dni_paciente` bigint(11) NOT NULL,
   `diagnostico` text COLLATE utf8_unicode_ci NOT NULL,
   `motivo` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
   `tratamiento` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
   `medicacion` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
   `fecha_antec` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `antecedentes`
---
-
-INSERT INTO `antecedentes` (`id_antecedente`, `dni_paciente`, `diagnostico`, `motivo`, `tratamiento`, `medicacion`, `fecha_antec`) VALUES
-(1, 46124532, 'Bolsas de aire en el Pulmon izquierdo', 'Falta de aire y dolor intenso en los pulmones', 'Operacion necesaria, e internacion prolongada', 'Protector grastico', '2021-07-13'),
-(2, 49583498, 'asdasd', 'asdasd', 'asdasd', 'asdasd', '2021-07-13'),
-(3, 49583498, 'asdasd', 'asdasd', 'asdasdas', 'dasd', '2021-07-13');
 
 -- --------------------------------------------------------
 
@@ -121,7 +112,7 @@ INSERT INTO `forma_llamada` (`id_forma_llamada`, `forma_llamada`, `descripcion`)
 
 CREATE TABLE `llamada` (
   `id_llamada` int(11) NOT NULL,
-  `dni_paciente` int(11) NOT NULL,
+  `dni_paciente` bigint(11) NOT NULL,
   `tipo` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `fecha_hora_llamada` datetime NOT NULL DEFAULT current_timestamp(),
   `fecha_hora_atentido` datetime DEFAULT NULL,
@@ -136,12 +127,12 @@ CREATE TABLE `llamada` (
 --
 
 CREATE TABLE `paciente` (
-  `dni_paciente` int(11) NOT NULL,
+  `dni_paciente` bigint(11) NOT NULL,
   `nombre` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
   `apellido` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
   `fecha_nac` date NOT NULL,
   `sexo` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `telefono` int(11) NOT NULL,
+  `telefono` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `fecha_hora_ingreso` datetime DEFAULT current_timestamp(),
   `fecha_hora_egreso` datetime DEFAULT NULL,
   `tipo_sangre` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
@@ -155,32 +146,33 @@ CREATE TABLE `paciente` (
 --
 
 INSERT INTO `paciente` (`dni_paciente`, `nombre`, `apellido`, `fecha_nac`, `sexo`, `telefono`, `fecha_hora_ingreso`, `fecha_hora_egreso`, `tipo_sangre`, `direccion`, `patologia`, `alergia`) VALUES
-(10039469, 'Zelda', 'Gillespie', '1997-01-27', 'Masculino', 5861242, '2022-11-17 17:54:48', NULL, 'B', '264-579 Ornare Road', NULL, NULL),
-(11203766, 'Patrick', 'Foreman', '1975-09-22', 'Femenino', 8562386, '2022-11-17 17:54:48', NULL, 'AB', '3674 Iaculis Ave', NULL, NULL),
-(12801761, 'Noble', 'Murphy', '1956-03-20', 'Femenino', 5714818, '2022-11-17 17:54:48', NULL, 'AB', '545-4831 Aliquam Av.', NULL, NULL),
-(13876702, 'Kuame', 'Austin', '2006-11-06', 'Femenino', 2818151, '2022-11-17 17:54:48', NULL, 'O', '907-5226 Nunc Ave', NULL, NULL),
-(33520329, 'Dora', 'Sherman', '2015-04-25', 'Masculino', 370846, '2022-11-17 17:54:48', NULL, 'B', 'Ap #895-3782 Velit. Rd.', NULL, NULL),
-(35932430, 'Dana', 'Rodriguez', '2005-02-08', 'Masculino', 7289811, '2022-11-17 17:54:48', NULL, 'AB', 'Ap #995-7814 Vel Road', NULL, NULL),
-(37634415, 'Knox', 'Gomez', '2015-09-16', 'Masculino', 9850365, '2022-11-17 17:54:48', NULL, 'AB', '1785 Felis. St.', NULL, NULL),
-(39093614, 'Dara', 'Cobb', '1994-06-03', 'Femenino', 5645748, '2022-11-17 17:54:48', NULL, 'AB', 'Ap #260-3428 Laoreet St.', NULL, NULL),
-(46124532, 'Francisco Efrain', 'Romano Guardia', '2003-01-04', 'Masculina', 7725110, '2022-11-17 17:59:08', NULL, 'AB', 'San vicente 123', 'Asma', 'Polen'),
-(49334864, 'Oleg', 'Hensley', '2001-11-03', 'Masculino', 4171197, '2022-11-17 17:54:48', NULL, 'A', '446-5162 Proin Av.', NULL, NULL),
-(49583498, 'Alfonso', 'Hess', '1968-05-27', 'Masculino', 8456295, '2022-11-17 17:54:48', NULL, 'AB', '580-8215 Interdum Road', NULL, NULL),
-(59150592, 'Oleg', 'Burton', '1955-06-06', 'Femenino', 6595261, '2022-11-17 17:54:48', NULL, 'B', '6981 A Ave', NULL, NULL),
-(60454920, 'Hayes', 'Wilson', '1965-05-10', 'Femenino', 7855747, '2022-11-17 17:54:48', NULL, 'AB', '248-7219 Convallis St.', NULL, NULL),
-(61791624, 'Cedric', 'Duran', '2004-11-27', 'Femenino', 9541209, '2022-11-17 17:54:48', NULL, 'O', '432-4786 Vehicula Rd.', NULL, NULL),
-(64727944, 'Sydnee', 'Patrick', '2016-01-06', 'Femenino', 347371, '2022-11-17 17:54:48', NULL, 'A', '983-411 Mauris St.', NULL, NULL),
-(64931056, 'Keith', 'Zimmerman', '2002-09-23', 'Femenino', 1685498, '2022-11-17 17:54:48', NULL, 'B', '3147 Duis St.', NULL, NULL),
-(68176054, 'Claire', 'Ingram', '1995-05-04', 'Femenino', 7684427, '2022-11-17 17:54:48', NULL, 'AB', '736-8699 Adipiscing. Ave', NULL, NULL),
-(68632848, 'Christen', 'Reeves', '1986-07-03', 'Masculino', 3624618, '2022-11-17 17:54:48', NULL, 'B', 'P.O. Box 294, 8977 Suspendisse Rd.', NULL, NULL),
-(75067520, 'Phoebe', 'Sullivan', '1974-05-17', 'Femenino', 9161815, '2022-11-17 17:54:48', NULL, 'O', 'P.O. Box 862, 5127 Curae Av.', NULL, NULL),
-(77725435, 'Xavier', 'Ellison', '2009-11-16', 'Femenino', 1173478, '2022-11-17 17:54:48', NULL, 'O', '134-4221 Aliquet Road', NULL, NULL),
-(78648023, 'Georgia', 'Melton', '1985-11-13', 'Masculino', 6937891, '2022-11-17 17:54:48', NULL, 'AB', 'Ap #695-9573 Facilisis. St.', NULL, NULL),
-(79118870, 'Ava', 'Owen', '2003-04-02', 'Femenino', 6667862, '2022-11-17 17:54:48', NULL, 'AB', '446-5354 Sed Rd.', NULL, NULL),
-(79612848, 'Sean', 'Key', '2007-01-04', 'Masculino', 7176614, '2022-11-17 17:54:48', NULL, 'A', '497-8331 Ut Rd.', NULL, NULL),
-(80454994, 'Dawn', 'Ross', '1999-07-15', 'Masculino', 2026531, '2022-11-17 17:54:48', NULL, 'A', '143-6060 A St.', NULL, NULL),
-(86674296, 'Indira', 'Riggs', '2002-10-31', 'Masculino', 8088660, '2022-11-17 17:54:48', NULL, 'B', 'P.O. Box 194, 7714 Adipiscing St.', NULL, NULL),
-(91728332, 'Carol', 'Dyer', '1963-11-11', 'Femenino', 5495841, '2022-11-17 17:54:48', NULL, 'O', '684-4721 Rutrum Ave', NULL, NULL);
+(10039469, 'Zelda', 'Gillespie', '1997-01-27', 'Masculino', '5861242', '2022-11-17 17:54:48', NULL, 'B', '264-579 Ornare Road', NULL, NULL),
+(11203766, 'Patrick', 'Foreman', '1975-09-22', 'Femenino', '8562386', '2022-11-17 17:54:48', NULL, 'AB', '3674 Iaculis Ave', NULL, NULL),
+(12801761, 'Noble', 'Murphy', '1956-03-20', 'Femenino', '5714818', '2022-11-17 17:54:48', NULL, 'AB', '545-4831 Aliquam Av.', NULL, NULL),
+(13876702, 'Kuame', 'Austin', '2006-11-06', 'Femenino', '2818151', '2022-11-17 17:54:48', NULL, 'O', '907-5226 Nunc Ave', NULL, NULL),
+(33520329, 'Dora', 'Sherman', '2015-04-25', 'Masculino', '370846', '2022-11-17 17:54:48', NULL, 'B', 'Ap #895-3782 Velit. Rd.', NULL, NULL),
+(35932430, 'Dana', 'Rodriguez', '2005-02-08', 'Masculino', '7289811', '2022-11-17 17:54:48', NULL, 'AB', 'Ap #995-7814 Vel Road', NULL, NULL),
+(37634415, 'Knox', 'Gomez', '2015-09-16', 'Masculino', '9850365', '2022-11-17 17:54:48', NULL, 'AB', '1785 Felis. St.', NULL, NULL),
+(39093614, 'Dara', 'Cobb', '1994-06-03', 'Femenino', '5645748', '2022-11-17 17:54:48', NULL, 'AB', 'Ap #260-3428 Laoreet St.', NULL, NULL),
+(46124532, 'Francisco Efrain', 'Romano Guardia', '2003-01-04', 'Masculina', '7725110', '2022-11-17 17:59:08', NULL, 'AB', 'San vicente 123', 'Asma', 'Polen'),
+(49334864, 'Oleg', 'Hensley', '2001-11-03', 'Masculino', '4171197', '2022-11-17 17:54:48', NULL, 'A', '446-5162 Proin Av.', NULL, NULL),
+(49583498, 'Alfonso', 'Hess', '1968-05-27', 'Masculino', '8456295', '2022-11-17 17:54:48', NULL, 'AB', '580-8215 Interdum Road', NULL, NULL),
+(59150592, 'Oleg', 'Burton', '1955-06-06', 'Femenino', '6595261', '2022-11-17 17:54:48', NULL, 'B', '6981 A Ave', NULL, NULL),
+(60454920, 'Hayes', 'Wilson', '1965-05-10', 'Femenino', '7855747', '2022-11-17 17:54:48', NULL, 'AB', '248-7219 Convallis St.', NULL, NULL),
+(61791624, 'Cedric', 'Duran', '2004-11-27', 'Femenino', '9541209', '2022-11-17 17:54:48', NULL, 'O', '432-4786 Vehicula Rd.', NULL, NULL),
+(64727944, 'Sydnee', 'Patrick', '2016-01-06', 'Femenino', '347371', '2022-11-17 17:54:48', NULL, 'A', '983-411 Mauris St.', NULL, NULL),
+(64931056, 'Keith', 'Zimmerman', '2002-09-23', 'Femenino', '1685498', '2022-11-17 17:54:48', NULL, 'B', '3147 Duis St.', NULL, NULL),
+(68176054, 'Claire', 'Ingram', '1995-05-04', 'Femenino', '7684427', '2022-11-17 17:54:48', NULL, 'AB', '736-8699 Adipiscing. Ave', NULL, NULL),
+(68632848, 'Christen', 'Reeves', '1986-07-03', 'Masculino', '3624618', '2022-11-17 17:54:48', NULL, 'B', 'P.O. Box 294, 8977 Suspendisse Rd.', NULL, NULL),
+(75067520, 'Phoebe', 'Sullivan', '1974-05-17', 'Femenino', '9161815', '2022-11-17 17:54:48', NULL, 'O', 'P.O. Box 862, 5127 Curae Av.', NULL, NULL),
+(77725435, 'Xavier', 'Ellison', '2009-11-16', 'Femenino', '1173478', '2022-11-17 17:54:48', NULL, 'O', '134-4221 Aliquet Road', NULL, NULL),
+(78648023, 'Georgia', 'Melton', '1985-11-13', 'Masculino', '6937891', '2022-11-17 17:54:48', NULL, 'AB', 'Ap #695-9573 Facilisis. St.', NULL, NULL),
+(79118870, 'Ava', 'Owen', '2003-04-02', 'Femenino', '6667862', '2022-11-17 17:54:48', NULL, 'AB', '446-5354 Sed Rd.', NULL, NULL),
+(79612848, 'Sean', 'Key', '2007-01-04', 'Masculino', '7176614', '2022-11-17 17:54:48', NULL, 'A', '497-8331 Ut Rd.', NULL, NULL),
+(80454994, 'Dawn', 'Ross', '1999-07-15', 'Masculino', '2026531', '2022-11-17 17:54:48', NULL, 'A', '143-6060 A St.', NULL, NULL),
+(86674296, 'Indira', 'Riggs', '2002-10-31', 'Masculino', '8088660', '2022-11-17 17:54:48', NULL, 'B', 'P.O. Box 194, 7714 Adipiscing St.', NULL, NULL),
+(91728332, 'Carol', 'Dyer', '1963-11-11', 'Femenino', '5495841', '2022-11-17 17:54:48', NULL, 'O', '684-4721 Rutrum Ave', NULL, NULL),
+(91728333, 'Aquila', 'Cox', '1982-02-06', 'Femenino', '5290770', '2022-11-17 22:41:32', '0000-00-00 00:00:00', 'AB', 'Alejo Bruix 5455', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -217,7 +209,7 @@ CREATE TABLE `zona` (
   `numero` int(11) NOT NULL,
   `id_forma_llamada` int(11) NOT NULL,
   `dni_enfermero` int(11) NOT NULL,
-  `dni_paciente` int(11) NOT NULL,
+  `dni_paciente` bigint(11) DEFAULT NULL,
   `descripcion` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -321,13 +313,13 @@ ALTER TABLE `forma_llamada`
 -- AUTO_INCREMENT de la tabla `llamada`
 --
 ALTER TABLE `llamada`
-  MODIFY `id_llamada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id_llamada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `dni_paciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98996538;
+  MODIFY `dni_paciente` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98996538;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -339,7 +331,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `zona`
 --
 ALTER TABLE `zona`
-  MODIFY `id_zona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
+  MODIFY `id_zona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
 
 --
 -- AUTO_INCREMENT de la tabla `zona_llamada`
@@ -355,21 +347,21 @@ ALTER TABLE `zona_llamada`
 -- Filtros para la tabla `antecedentes`
 --
 ALTER TABLE `antecedentes`
-  ADD CONSTRAINT `antecedentes_ibfk_1` FOREIGN KEY (`dni_paciente`) REFERENCES `paciente` (`dni_paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `antecedentes_ibfk_1` FOREIGN KEY (`dni_paciente`) REFERENCES `paciente` (`dni_paciente`);
 
 --
 -- Filtros para la tabla `llamada`
 --
 ALTER TABLE `llamada`
-  ADD CONSTRAINT `llamada_ibfk_1` FOREIGN KEY (`dni_paciente`) REFERENCES `paciente` (`dni_paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `llamada_ibfk_1` FOREIGN KEY (`dni_paciente`) REFERENCES `paciente` (`dni_paciente`);
 
 --
 -- Filtros para la tabla `zona`
 --
 ALTER TABLE `zona`
   ADD CONSTRAINT `zona_ibfk_2` FOREIGN KEY (`dni_enfermero`) REFERENCES `enfermero` (`dni_enfermero`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `zona_ibfk_5` FOREIGN KEY (`id_forma_llamada`) REFERENCES `forma_llamada` (`id_forma_llamada`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `zona_ibfk_6` FOREIGN KEY (`dni_paciente`) REFERENCES `paciente` (`dni_paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `zona_ibfk_7` FOREIGN KEY (`id_forma_llamada`) REFERENCES `forma_llamada` (`id_forma_llamada`),
+  ADD CONSTRAINT `zona_ibfk_8` FOREIGN KEY (`dni_paciente`) REFERENCES `paciente` (`dni_paciente`);
 
 --
 -- Filtros para la tabla `zona_llamada`

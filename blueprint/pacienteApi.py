@@ -13,6 +13,7 @@ pacienteApi = Blueprint('pacienteApi', __name__, template_folder='app/templates'
 
 # Routes general
 @pacienteApi.route('/api/pacientes', methods = ['GET','POST'])
+@jwt_required(locations=['cookies','headers'])
 def pacientes():
     
     # Fetch all pacientes
@@ -94,26 +95,26 @@ def zona(dni):
                 'msg': 'Not Found'
             }) ,404
     
+    
+    # Edit one paciente
+    if request.method == 'POST':
+        dni = dni
+        nombre = request.json.get('nombre', None)
+        apellido = request.json.get('apellido', None)
+        fecha_nac = request.json.get('fecha_nac', None)
+        telefono = request.json.get('telefono', None)
+        sexo = request.json.get('sexo', None)
+        fecha_hora_ingreso = request.json.get('fecha_hora_ingreso', None)
+        fecha_hora_egreso = request.json.get('fecha_hora_egreso', None)
+        tipo_sangre = request.json.get('tipo_sangre', None)
+        direccion = request.json.get('direccion', None)
+        patologia = request.json.get('patologia', None)
+        alergia = request.json.get('alergia', None)
+        
+        return jsonify(qPacientes.editar_paciente(dni, nombre, apellido, fecha_nac, telefono, sexo, fecha_hora_ingreso, fecha_hora_egreso, tipo_sangre, direccion, patologia, alergia)), 200
     # Verifies the role is Administrador
     if get_jwt_identity()['role'] == 'administrador':
     
-        # Edit one paciente
-        if request.method == 'POST':
-            dni = dni
-            nombre = request.json.get('nombre', None)
-            apellido = request.json.get('apellido', None)
-            fecha_nac = request.json.get('fecha_nac', None)
-            telefono = request.json.get('telefono', None)
-            sexo = request.json.get('sexo', None)
-            fecha_hora_ingreso = request.json.get('fecha_hora_ingreso', None)
-            fecha_hora_egreso = request.json.get('fecha_hora_egreso', None)
-            tipo_sangre = request.json.get('tipo_sangre', None)
-            direccion = request.json.get('direccion', None)
-            patologia = request.json.get('patologia', None)
-            alergia = request.json.get('alergia', None)
-            
-            return jsonify(qPacientes.editar_paciente(dni, nombre, apellido, fecha_nac, telefono, sexo, fecha_hora_ingreso, fecha_hora_egreso, tipo_sangre, direccion, patologia, alergia)), 200
-        
         # Delete paciente
         if request.method == 'DELETE':
             return jsonify(qPacientes.borrar_paciente(dni)), 200

@@ -14,6 +14,7 @@ llamadaApi = Blueprint('llamadaApi', __name__, template_folder='app/templates')
 
 # Routes general
 @llamadaApi.route('/api/llamadas', methods = ['GET','POST'])
+@jwt_required(locations=['cookies','headers'])
 def pacientes():
     
     # Fecht all llamada

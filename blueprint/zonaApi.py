@@ -14,6 +14,7 @@ zonaApi = Blueprint('zonaApi', __name__, template_folder='app/templates')
 
 # Routes general
 @zonaApi.route('/api/zonas', methods = ['GET','POST'])
+@jwt_required(locations=['cookies','headers'])
 def zonas():
     
     # Fetch all Zones
@@ -85,6 +86,18 @@ def zona(id):
                 'id_llamada': qLlamada.traer_ultima_llamada(data[0])
             }), 200
         
+    # Edit one zona
+    if request.method == 'POST':
+        nombre = request.json.get('nombre', None)
+        numero = request.json.get('numero', None)   
+        id_forma_llamada = request.json.get('id_forma_llamada', None)
+        dni_enfermero = request.json.get('dni_enfermero', None)
+        dni_paciente = request.json.get('dni_paciente', None)
+        descripcion = request.json.get('descripcion', None)
+        estado = request.json.get('estado', None)
+        
+        return jsonify(qZona.editar_zona(id, nombre, numero, id_forma_llamada, dni_enfermero, dni_paciente,descripcion, estado)), 200    
+        
     # Verifies the role is Administrador
     if get_jwt_identity()['role'] == 'administrador':
         
@@ -92,17 +105,7 @@ def zona(id):
         if request.method == 'DELETE':
             return jsonify(qZona.borrar_zona(id)), 200
         
-        # Edit one zona
-        if request.method == 'POST':
-            nombre = request.json.get('nombre', None)
-            numero = request.json.get('numero', None)   
-            id_forma_llamada = request.json.get('id_forma_llamada', None)
-            dni_enfermero = request.json.get('dni_enfermero', None)
-            dni_paciente = request.json.get('dni_paciente', None)
-            descripcion = request.json.get('descripcion', None)
-            estado = request.json.get('estado', None)
-            
-            return jsonify(qZona.editar_zona(id, nombre, numero, id_forma_llamada, dni_enfermero, dni_paciente,descripcion, estado)), 200
+        
     else:
         return jsonify({'msg': 'No autorizado'}), 401
     
