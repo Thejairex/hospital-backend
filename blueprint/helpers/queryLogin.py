@@ -69,3 +69,13 @@ class qUser():
             else: 
                 raise e
         
+    @classmethod
+    def eliminar_usuario(self, id):
+        try:
+            cur=mysql.connection.cursor()
+            query="DELETE FROM usuario WHERE id_usuario = {}".format(id)
+            cur.execute(query)
+            mysql.connection.commit()
+            return cur.fetchone()
+        except Exception as e:
+            raise e

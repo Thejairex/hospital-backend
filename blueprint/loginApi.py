@@ -156,3 +156,6 @@ def usuario(id):
         role = request.json.get("role", None)
         
         return jsonify(qUser.editar_usuario(id,username,password,email,role))
+    
+    if request.method == "delete":
+        return jsonify(qUser.eliminar_usuario(id))
