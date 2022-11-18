@@ -123,10 +123,10 @@ def usuarios():
     jsonUsuario = []
     for data in jsonUsuario:
             jsonUsuario.append({
-                'id_usuario': usuarios[0],
-                'usuario': usuarios[1],
-                'email': usuarios[3],
-                'rol': usuarios[4]
+                'id_usuario': data[0],
+                'usuario': data[1],
+                'email': data[3],
+                'rol': data[4]
             })
     return jsonify(jsonUsuario)
 
