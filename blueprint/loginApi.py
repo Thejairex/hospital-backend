@@ -20,7 +20,6 @@ def login():
         password = request.json.get("password", None)
         password = hashlib.sha256(password.encode('utf-8')).hexdigest()
         userData = qUser.userLogin(username)
-        refresh = datetime.now() + timedelta(days=1)
         if userData != None:
             if userData[2] == password:
                 
@@ -31,7 +30,7 @@ def login():
                 'username': userData[1],
                 'email': userData[3],
                 'role': roleTempo[userData[4]]
-                }, expires_delta=refresh)
+                })
 
                 response = jsonify({
                         'accessToken': access_token,

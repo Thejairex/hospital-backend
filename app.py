@@ -3,7 +3,7 @@
 from flask import Flask
 from flask_mysqldb import MySQL
 from flask_jwt_extended import JWTManager
-
+from datetime import timedelta
 # Import moduls
 from config import Config
 from blueprint.llamadaApi import llamadaApi
@@ -25,6 +25,7 @@ app.config['MYSQL_HOST'] = Config.MYSQL_HOST
 app.config['MYSQL_USER'] = Config.MYSQL_USER
 app.config['MYSQL_PASSWORD'] = Config.MYSQL_PASSWORD
 app.config['MYSQL_DB'] = Config.MYSQL_DB
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(days=1)
 
 # Import blueprint to app
 app.register_blueprint(llamadaApi)
