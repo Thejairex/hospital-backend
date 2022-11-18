@@ -115,3 +115,44 @@ def logout():
     response = jsonify({"msg": "Logout Successful"})
     unset_jwt_cookies(response)
     return response
+
+@loginApi.route('/api/users', methods = ['GET'])
+@jwt_required(locations=['cookies','headers'])
+def usuarios():
+    usuarios = qUser.traer_usuarios()
+    jsonUsuario = []
+    for data in jsonUsuario:
+            jsonUsuario.append({
+                'id_usuario': usuarios[0],
+                'usuario': usuarios[1],
+                'email': usuarios[3],
+                'rol': usuarios[4]
+            })
+    return jsonify(jsonUsuario)
+
+@loginApi.route('/api/users/<id>', methods = ['GET','POST','DELETE'])
+@jwt_required(locations=['cookies','headers'])
+def usuario(id):
+    if request.method == "GET":
+        usuario = qUser.traer_un_usuarios(id)
+        if usuario != (None or ()):
+            return jsonify({
+                'id_usuario': usuario[0],
+                    'usuario': usuario[1],
+                    'email': usuario[3],
+                    'rol': usuario[4]
+            })
+        
+        else:
+            return jsonify({
+                'msg': 'Not Found'
+            }) ,404
+            
+    if request.method == "POST":
+        username = request.json.get("username", None)
+        email = request.json.get("email", None)
+        password = request.json.get("password", None)
+        password = hashlib.sha256(password.encode('utf-8')).hexdigest()
+        role = request.json.get("role", None)
+        
+        return jsonify(qUser.editar_usuario(id,username,password,email,role))
