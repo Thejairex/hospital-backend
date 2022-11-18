@@ -31,7 +31,7 @@ def login():
                 'username': userData[1],
                 'email': userData[3],
                 'role': roleTempo[userData[4]]
-                }, expires_delta=datetime.now() + timedelta(days=1))
+                }, expires_delta=(datetime.now() + timedelta(days=1)))
 
                 response = jsonify({
                         'accessToken': access_token,
