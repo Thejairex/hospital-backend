@@ -68,10 +68,7 @@ class qZona:
     def traer_una_zona(self, id_zona):
         try:
             cur = mysql.connection.cursor()
-            query = """SELECT z.*, p.dni_paciente, p.nombre "nombre_paciente",p.apellido "apellido_paciente", e.nombre "nombre_enfermero", e.apellido "apellido_enfermero", l.id_llamada FROM zona  z
-				LEFT JOIN llamada l on z.id_zona = l.id_zona
-                LEFT JOIN enfermero e ON  z.dni_enfermero = e.dni_enfermero
-                LEFT JOIN paciente p ON  l.dni_paciente = p.dni_paciente WHERE id_zona = {}""".format(id_zona)
+            query = """SELECT z.*, p.nombre "nombre_paciente",p.apellido "apellido_paciente", e.nombre "nombre_enfermero", e.apellido "apellido_enfermero" FROM zona z LEFT JOIN enfermero e ON z.dni_enfermero = e.dni_enfermero LEFT JOIN paciente p ON z.dni_paciente = p.dni_paciente WHERE z.id_zona = {}""".format(id_zona)
             
             cur.execute(query)
             mysql.connection.commit()
