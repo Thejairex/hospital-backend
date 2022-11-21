@@ -2,7 +2,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, Blueprint, jsonify
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, set_access_cookies, unset_jwt_cookies, verify_jwt_in_request
 import hashlib
-from datetime import datetime, timedelta
 # Import blueprint
 from init import jwt
 from blueprint.helpers.queryLogin import qUser
@@ -23,20 +22,18 @@ def login():
         if userData != None:
             if userData[2] == password:
                 
-                roleTempo = ['usuario','administrador']
-                
                 access_token = create_access_token(identity={
                 'id_user': userData[0],
                 'username': userData[1],
                 'email': userData[3],
-                'role': roleTempo[userData[4]]
+                'role': userData[4]
                 })
 
                 response = jsonify({
                         'accessToken': access_token,
                         'username': userData[1],
                         'email': userData[3],
-                        'role': roleTempo[userData[4]]
+                        'role': userData[4]
                     })
                 
                 set_access_cookies(response, access_token)
@@ -151,11 +148,9 @@ def usuario(id):
     if request.method == "POST":
         username = request.json.get("username", None)
         email = request.json.get("email", None)
-        password = request.json.get("password", None)
-        password = hashlib.sha256(password.encode('utf-8')).hexdigest()
         role = request.json.get("role", None)
         
-        return jsonify(qUser.editar_usuario(id,username,password,email,role))
+        return jsonify(qUser.editar_usuario(id,username,email,role))
     
     if request.method == "delete":
         return jsonify(qUser.eliminar_usuario(id))

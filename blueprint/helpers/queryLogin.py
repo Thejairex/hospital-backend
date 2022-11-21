@@ -51,14 +51,13 @@ class qUser():
             raise e
         
     @classmethod
-    def editar_usuario(self,id, username, password, email, role):
+    def editar_usuario(self,id, username, email, role):
         try:
             cur=mysql.connection.cursor()
             query="""UPDATE usuario SET 
             usuario = '{}',
-            contrasena = '{}',
             email = '{}',
-            rol = {} WHERE id_usuario = {}""".format(username,password, email, role, id)
+            rol = {} WHERE id_usuario = {}""".format(username, email, role, id)
             cur.execute(query)
             mysql.connection.commit()
         
