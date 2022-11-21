@@ -62,7 +62,7 @@ def user():
 @loginApi.route("/api/signup", methods=['POST'])
 @jwt_required(locations=['cookies','headers']) 
 def signup():
-    if get_jwt_identity()['role'] != 1:
+    if get_jwt_identity()['role'] != '1':
         return jsonify({'msg': 'No autorizado'}), 401
     if request.method == 'POST':
         username = request.json.get("username", None)
