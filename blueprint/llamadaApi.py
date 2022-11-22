@@ -89,19 +89,17 @@ def zona(id):
                 'msg': 'Not Found'
             }) ,404
     
-    # verifies the role is administrador
-    if get_jwt_identity()['role'] == 'administrador':
     
-        # Edit one llamada
-        if request.method == 'POST':
-            dni_paciente = request.json.get('dni_paciente', None)
-            tipo = request.json.get('tipo', None)
-            fecha_hora_llamada = request.json.get('fecha_hora_llamada', None)
-            fecha_hora_atentido = request.json.get('fecha_hora_atentido', 'null')
-            origen_llamada = request.json.get('origen_llamada', None)
-            id_zona = request.json.get('id_zona', None)
-            
-            return jsonify(qLlamada.editar_llamada(id ,dni_paciente, tipo,fecha_hora_llamada, fecha_hora_atentido, origen_llamada, id_zona)), 200
+    # Edit one llamada
+    if request.method == 'POST':
+        dni_paciente = request.json.get('dni_paciente', None)
+        tipo = request.json.get('tipo', None)
+        fecha_hora_llamada = request.json.get('fecha_hora_llamada', None)
+        fecha_hora_atentido = request.json.get('fecha_hora_atentido', 'null')
+        origen_llamada = request.json.get('origen_llamada', None)
+        id_zona = request.json.get('id_zona', None)
+        
+        return jsonify(qLlamada.editar_llamada(id ,dni_paciente, tipo,fecha_hora_llamada, fecha_hora_atentido, origen_llamada, id_zona)), 200
         
         
     else:
