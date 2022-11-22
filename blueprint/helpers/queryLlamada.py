@@ -62,7 +62,7 @@ class qLlamada:
             cur.execute(query)
             
             ultima_llamada = cur.fetchone()
-            query = "INSERT INTO 'zona_llamada' VALUES(null,{},{})".format(id_zona,ultima_llamada[0])
+            query = "INSERT INTO `zona_llamada`(`id_zona_llamada`, `id_zona`, `id_llamada`) VALUES(null,{},{})".format(id_zona,ultima_llamada[0])
             cur.execute(query)
             mysql.connection.commit()
             return True
