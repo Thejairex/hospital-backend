@@ -97,13 +97,10 @@ def zona(id):
         estado = request.json.get('estado', None)
         
         return jsonify(qZona.editar_zona(id, nombre, numero, id_forma_llamada, dni_enfermero, dni_paciente,descripcion, estado)), 200    
-        
-    # Verifies the role is Administrador
-    if get_jwt_identity()['role'] == 'administrador':
-        
-        # Delete a Zona
-        if request.method == 'DELETE':
-            return jsonify(qZona.borrar_zona(id)), 200
+
+    # Delete a Zona
+    if request.method == 'DELETE':
+        return jsonify(qZona.borrar_zona(id)), 200
         
         
     else:
