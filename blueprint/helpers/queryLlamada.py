@@ -1,5 +1,5 @@
 from init import mysql
-
+import time
 class qLlamada:
     
     @classmethod
@@ -57,12 +57,22 @@ class qLlamada:
         
     @classmethod
     def insertar_llamada(self,dni_paciente, tipo,fecha_hora_llamada, fecha_hora_atentido, origen_llamada, id_zona):
+        def hacer_relacion(id_zona):
+            query = "SELECT MAX(id_llamada) FROM `llamada`"
+            cur.execute(query)
+            
+            ultima_llamada = cur.fetchone()
+            query = "INSERT INTO 'zona_llamada' VALUES(null,{},{})".format(id_zona,ultima_llamada)
+            cur.execute(query)
+            mysql.connection.commit()
+            return True
         try:
             cur = mysql.connection.cursor()
             query = """INSERT INTO `llamada`(`id_llamada`, `dni_paciente`, `tipo`, `fecha_hora_llamada`, `fecha_hora_atentido`, `origen_llamada`, `dni_enfermero`) VALUES (null,{},'{}','{}','{}','{}',(SELECT z.dni_enfermero FROM zona z WHERE z.id_zona = {}))""".format(dni_paciente, tipo,fecha_hora_llamada, fecha_hora_atentido, origen_llamada, id_zona)
             cur.execute(query)
             mysql.connection.commit()
-            return True
+            time.sleep(1.2)
+            return hacer_relacion()
         except Exception as e:
             raise e
         

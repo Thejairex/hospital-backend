@@ -112,13 +112,11 @@ def zona(dni):
         alergia = request.json.get('alergia', None)
         
         return jsonify(qPacientes.editar_paciente(dni, nombre, apellido, fecha_nac, telefono, sexo, fecha_hora_ingreso, fecha_hora_egreso, tipo_sangre, direccion, patologia, alergia)), 200
-    # Verifies the role is Administrador
-    if get_jwt_identity()['role'] == 'administrador':
     
-        # Delete paciente
-        if request.method == 'DELETE':
-            return jsonify(qPacientes.borrar_paciente(dni)), 200
-        
+    # Delete paciente
+    if request.method == 'DELETE':
+        return jsonify(qPacientes.borrar_paciente(dni)), 200
+    
         
     else:
         return jsonify({'msg': 'No autorizado'}), 403

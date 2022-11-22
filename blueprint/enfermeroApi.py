@@ -92,13 +92,11 @@ def emfermero(dni):
         
         return jsonify(qEnfermero.editar_enfermero(dni,nombre, apellido,sexo, telefono, fecha_nac, estado)), 200
 
-    # Verifies the role is Administrador
-    if get_jwt_identity()['role'] == 'administrador':
-        
-        if request.method == 'DELETE':
-            return jsonify(qEnfermero.borrar_enfermero(dni)), 200
-        
-        
+
+    if request.method == 'DELETE':
+        return jsonify(qEnfermero.borrar_enfermero(dni)), 200
+    
+    
     else:
         return jsonify({'msg': 'No autorizado'}), 403
     
