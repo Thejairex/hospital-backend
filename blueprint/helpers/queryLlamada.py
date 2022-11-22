@@ -62,7 +62,7 @@ class qLlamada:
             cur.execute(query)
             
             ultima_llamada = cur.fetchone()
-            query = "INSERT INTO 'zona_llamada' VALUES(null,{},{})".format(id_zona,ultima_llamada)
+            query = "INSERT INTO 'zona_llamada' VALUES(null,{},{})".format(id_zona,ultima_llamada[0])
             cur.execute(query)
             mysql.connection.commit()
             return True
@@ -72,7 +72,7 @@ class qLlamada:
             cur.execute(query)
             mysql.connection.commit()
             time.sleep(1.2)
-            return hacer_relacion()
+            return hacer_relacion(id_zona)
         except Exception as e:
             raise e
         
